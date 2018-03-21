@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 1259704f27cfe9f46b4f3b85cc4674df
+timeCreated: 1513093479
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Omnibus
+  fontNames:
+  - Omnibus
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
