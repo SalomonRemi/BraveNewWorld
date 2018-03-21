@@ -12,12 +12,14 @@ public class CameraFollow : MonoBehaviour {
     {
 		if (GameObject.FindGameObjectWithTag ("Player"))
         {
-			Vector3 targetDir = target.position - transform.position;
-			float step = speed * Time.deltaTime;
-			Vector3 newDir = Vector3.RotateTowards (transform.forward, targetDir, step, 0.0F);
-			Debug.DrawRay (transform.position, newDir, Color.red);
-			//newDir.y = 0f;
-			transform.rotation = Quaternion.LookRotation (newDir);
-		}
+            //Vector3 targetDir = target.position - transform.position;
+            //float step = speed * Time.deltaTime;
+            //Vector3 newDir = Vector3.RotateTowards (transform.forward, targetDir, step, 0.0F);
+            //Debug.DrawRay (transform.position, newDir, Color.red);
+            //newDir.y = 0f;
+            //transform.rotation = Quaternion.LookRotation (newDir);
+
+            transform.LookAt(target);
+        }
 	}
 }

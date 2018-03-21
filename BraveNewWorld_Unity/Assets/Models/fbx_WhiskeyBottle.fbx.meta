@@ -1,15 +1,47 @@
 fileFormatVersion: 2
-guid: b50fc9455df1f404f9144e0bc749c083
-timeCreated: 1511707058
+guid: d860cb1da4ce1c04392356d9eea12c52
+timeCreated: 1513097498
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: PillsBox1:pPipe3
+    100000: pCylinder12
+    100002: pCylinder14
+    100004: pCylinder15
+    100006: pCylinder16
+    100008: pCylinder17
+    100010: pCylinder18
+    100012: polySurface6
+    100014: polySurface7
+    100016: transform13
+    100018: transform14
+    100020: transform15
+    100022: transform16
+    100024: transform17
+    100026: //RootNode
+    400000: pCylinder12
+    400002: pCylinder14
+    400004: pCylinder15
+    400006: pCylinder16
+    400008: pCylinder17
+    400010: pCylinder18
+    400012: polySurface6
+    400014: polySurface7
+    400016: transform13
+    400018: transform14
+    400020: transform15
+    400022: transform16
+    400024: transform17
+    400026: //RootNode
+    2300000: pCylinder17
+    2300002: polySurface6
+    2300004: polySurface7
+    3300000: pCylinder17
+    3300002: polySurface6
+    3300004: polySurface7
+    4300000: pCylinder17
+    4300002: polySurface6
+    4300004: polySurface7
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -38,7 +70,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1.5
+    globalScale: 1.8
     meshCompression: 0
     addColliders: 0
     importVisibility: 1
@@ -46,7 +78,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
