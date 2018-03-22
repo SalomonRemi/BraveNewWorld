@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4506476136935060}
   - component: {fileID: 33052586627774678}
   - component: {fileID: 23419382885319888}
-  - component: {fileID: 95793024882296896}
   m_Layer: 0
   m_Name: Logo3D_V1.0
   m_TagString: Untagged
@@ -81,20 +80,3 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1459434560751132}
   m_Mesh: {fileID: 4300000, guid: fc7d148564a91674a83ddd0959b9da1d, type: 3}
---- !u!95 &95793024882296896
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1459434560751132}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: fc7d148564a91674a83ddd0959b9da1d, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
