@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class digicodeBtn : MonoBehaviour {
+
     public bool clicked;
     public float btnValue;
     public bool validate;
+    public bool reset;
     public digiCode parent;
 
     private void Start()
@@ -20,7 +22,11 @@ public class digicodeBtn : MonoBehaviour {
         if (validate) //  && parent.enabledAmmount == 4 && !MissionManager.instance.keyPadCorrect
         {
             parent.validateInput();
-
+        }
+        else if(reset)
+        {
+            parent.keycode = 0;
+            parent.enabledAmmount = 0;
         }
         else if (parent.enabledAmmount < 4 && !clicked)
         {
