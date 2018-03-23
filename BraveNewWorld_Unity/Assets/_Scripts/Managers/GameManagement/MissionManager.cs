@@ -138,7 +138,7 @@ public class MissionManager : MonoBehaviour {
 
 		yield return new WaitForSeconds (2);
 
-		recapText.text = "Trouvez les livres puis déverrouillez un accès pour s’en débarrasser";
+		recapText.text = "Localisez les livres puis déverrouillez un accès pour se débarrasser de ce matériel défecteux";
 
 		while (!finishedLevel)
 		{
@@ -179,7 +179,7 @@ public class MissionManager : MonoBehaviour {
 
 		yield return new WaitForSeconds(5f);
 
-		recapText.text = "Trouvez la facture qui concerne la livraison arrivée y a 5 jours en salle de fécondation, et permettez lui l’accès jusqu’à la salle concernée.";
+		recapText.text = "Trouvez la facture arrivée il y a 5 jours. La livraison est arrivée en salle de fécondation, permettez lui l'accès jusqu'à la salle concernée";
 
 		while (!finishedLevel)
 		{
@@ -224,7 +224,7 @@ public class MissionManager : MonoBehaviour {
 
         commandPanel.SetBool("isDigicodeAvailable", true);
 
-        recapText.text = "Trouvez le numéro de matricule de Jack, puis donnez lui accès au self";
+        recapText.text = "Trouvez le numéro de matricule de Jack, puis donnez lui accès au self. Son emploi du temps se trouve dans le manuel.";
         
 		while (!finishedStep01)
         {
