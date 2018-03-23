@@ -42,11 +42,13 @@ public class keyBtn : MonoBehaviour {
 
     public void enableButton() //APPELLER QUAND ON CLICK, DANS PLAYER INTERACT
     {
-		if (validate)
+		if (validate && parent.keyPressed.Count > 0)
 		{ 
 			parent.ComfirmInput ();
 		} 
-		else if (parent.enabledAmmount < MissionManager.instance.doorAmmount && !clicked) 
+		else if(validate && parent.keyPressed.Count == 0) AudioManager.instance.PlaySound("buttonFalse");
+
+		if (parent.enabledAmmount < MissionManager.instance.doorAmmount && !clicked && !validate) 
 		{ 
 			parent.keyPressed.Add(buttonIntValue);
 			parent.enabledAmmount++;
@@ -58,7 +60,7 @@ public class keyBtn : MonoBehaviour {
 		{
 			for (int i = 0; i < parent.keyPressed.Count; i++) 
 			{
-				if (buttonIntValue == parent.keyPressed [i])
+				if (buttonIntValue == parent.keyPressed[i])
 				{
 					gameObject.GetComponent<Renderer>().material.color = Color.grey;
 					gameObject.GetComponent<keyBtn>().clicked = false;

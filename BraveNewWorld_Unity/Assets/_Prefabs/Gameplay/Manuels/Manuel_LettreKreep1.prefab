@@ -37,13 +37,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1688772070619830}
-  m_LocalRotation: {x: -0.69446933, y: 0.10949852, z: 0.7028637, w: 0.10819049}
-  m_LocalPosition: {x: 0.4356115, y: 0.111, z: -3.685}
+  m_LocalRotation: {x: 0.12479028, y: 0.69600934, z: -0.6960071, w: 0.12479051}
+  m_LocalPosition: {x: 2.904, y: 0.048, z: 3.536}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -17.710001, y: -89.312004, z: 179.99998}
+  m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: -159.67001}
 --- !u!23 &23300672923505330
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -108,10 +108,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bookPagesSprites:
-  - {fileID: 21300000, guid: c7be972214f2dcb49930bfacaee4cd0d, type: 3}
   - {fileID: 21300000, guid: 7424d8583fb00ea47bcc17684a177d5b, type: 3}
-  - {fileID: 21300000, guid: e9775625336dbf8449bdfdee454ee1f8, type: 3}
-  - {fileID: 21300000, guid: d57ce6f8e395f8243be82a4bea8bb375, type: 3}
+  - {fileID: 21300000, guid: c7be972214f2dcb49930bfacaee4cd0d, type: 3}
+  - {fileID: 21300000, guid: 44498a271cb780241afb5448937ddacb, type: 3}
+  - {fileID: 21300000, guid: b38f1555bc2bc5246a7c1a87e231e51c, type: 3}
   displayName: Lettres cachees
 --- !u!114 &114328116017281282
 MonoBehaviour:

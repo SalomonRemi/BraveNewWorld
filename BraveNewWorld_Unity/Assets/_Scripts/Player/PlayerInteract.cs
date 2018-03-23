@@ -41,34 +41,10 @@ public class PlayerInteract : MonoBehaviour {
         interactionObjectText.gameObject.SetActive(false);
         interactionVerbText.gameObject.SetActive(false);
         interactInputImage.gameObject.SetActive(false);
-        //StartCoroutine (sitDown ());
     }
 
 	void Update ()
 	{
-        //if (isSitting)
-        //      {
-        //	if (MissionManager.instance.canExitChair)
-        //          {
-        //		sitMessage.SetActive (true);
-        //	}
-
-        //          if (!GameManager.instance.manualVisible)
-        //          {
-        //		if (Input.GetKeyDown (KeyCode.E) && MissionManager.instance.canExitChair)
-        //              {
-        //			Cursor.lockState = CursorLockMode.None;
-        //			Cursor.visible = true;
-        //			StartCoroutine (sitDown ());
-        //		}
-        //	}
-        //}
-        //      else
-        //      {
-        //	sitMessage.SetActive (false);
-        //      }
-
-
         Ray ray = cam.ScreenPointToRay (new Vector3 (cam.pixelWidth / 2, cam.pixelHeight / 2, 0));
         Vector3 rayOrigin = new Vector3(ray.origin.x, ray.origin.y - 0.7f, ray.origin.z);
 		Debug.DrawRay (ray.origin, ray.direction * rangetouch, Color.yellow);
@@ -93,26 +69,6 @@ public class PlayerInteract : MonoBehaviour {
                         hit.transform.gameObject.GetComponent<flipSwitch>().flip();
                     }
                 }
-                else
-                {
-					//if (hit.transform.gameObject.CompareTag ("chair")) {
-					//	StartCoroutine (sitDown ());
-					//}
-					//if (hit.transform.gameObject.CompareTag ("manual")) {
-					//	GameManager.instance.pagesSprites = hit.transform.gameObject.GetComponent<bookPages>().bookPagesSprites;
-					//	GameManager.instance.manualVisible = true;
-     //                   AudioManager.instance.PlaySound("clickDoc");
-     //               }
-					//if (hit.transform.gameObject.CompareTag ("drawer")) {
-					//	hit.transform.gameObject.GetComponent<drawerOpen> ().open ();
-					//}
-					//if (hit.transform.gameObject.CompareTag ("document"))
-     //               {
-     //                   Debug.Log("wow");
-					//	hit.transform.gameObject.GetComponent<DocumentOpener> ().CreateDoc ();
-     //                   AudioManager.instance.PlaySound("clickDoc");
-     //               }
-				}
 			} 
 		}
 

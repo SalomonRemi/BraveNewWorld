@@ -62,9 +62,9 @@ public class HeadBob : MonoBehaviour {
 
     void Update()
     {
-        HeadBobIDLE();
-        HeadBobVertical();
-        HeadBobSideMovement();
+		HeadBobIDLE();
+		HeadBobVertical();
+		HeadBobSideMovement();
         //HeadBobHitGround();
     }
 
@@ -73,8 +73,9 @@ public class HeadBob : MonoBehaviour {
     {
         affectedCamLocalY = camera.transform.localPosition.y;
 
-        if (fpsController.GetIsMovingForward() == true && cc.isGrounded || fpsController.GetIsMovingBackward() == true && cc.isGrounded
-            || fpsController.GetIsMovingLeft() == true && cc.isGrounded || fpsController.GetIsMovingRight() == true && cc.isGrounded)
+		if ((fpsController.GetIsMovingForward() == true && cc.isGrounded || fpsController.GetIsMovingBackward() == true && cc.isGrounded
+			|| fpsController.GetIsMovingLeft() == true && cc.isGrounded || fpsController.GetIsMovingRight() == true && cc.isGrounded)
+			&& !GameManager.instance.documentOpen)
         {
             //MOVING FORWARD
             camPauseCounter += Time.deltaTime;
@@ -97,9 +98,9 @@ public class HeadBob : MonoBehaviour {
     {
         affectedLocalY = transform.localPosition.y;
 
-        if (fpsController.GetIsSprinting() == false && fpsController.GetIsMovingForward() == false && fpsController.GetIsMovingBackward() == false
+        if ((fpsController.GetIsSprinting() == false && fpsController.GetIsMovingForward() == false && fpsController.GetIsMovingBackward() == false
             && fpsController.GetIsMovingLeft() == false && fpsController.GetIsMovingRight() == false
-            && fpsController.GetIsFalling() == false && fpsController.GetIsJumping() == false)
+			&& fpsController.GetIsFalling() == false && fpsController.GetIsJumping() == false) || GameManager.instance.documentOpen)
         {
             //IDLE
             pauseCounter += Time.deltaTime;
