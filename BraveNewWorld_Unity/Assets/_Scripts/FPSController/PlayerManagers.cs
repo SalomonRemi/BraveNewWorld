@@ -32,8 +32,6 @@ public class PlayerManagers : MonoBehaviour {
         Vector3 lineOrigin = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f));
         
         Debug.DrawRay(lineOrigin, cam.transform.forward * 200, Color.green);
-
-        LineOfSight();
     }
 
     public void LineOfSight()

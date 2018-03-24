@@ -19,6 +19,13 @@ public class GameManager : MonoBehaviour {
     public bool isPaused = false;
     public GameObject menuScreen;
 
+    [Header("Line Of Sight")]
+    public bool canLOS = false;
+    public Collider chariotCol;
+    public string chariotLine;
+
+    private bool sawChariot;
+
     [Header("Other")]
     public bool flashKeypad = true;
     public bool doorOpen = false;
@@ -134,6 +141,22 @@ public class GameManager : MonoBehaviour {
 				}
 			}
 		}
+
+        if(canLOS)
+        {
+            PlayerManagers.instance.LineOfSight();
+
+            if (PlayerManagers.instance.LOS_objectCol == chariotCol && !sawChariot)
+            {
+                if(Vector3.Distance(player.transform.position, chariotCol.transform.position) < 5f)
+                {
+                    Dialogue dialogueChariot = new Dialogue();
+                    dialogueChariot.sentences.Add(chariotLine);
+                    FindObjectOfType<DialogSystem>().StartDialogue(dialogueChariot);
+                    sawChariot = true;
+                }
+            }
+        }
 	}
 
 	void addPages()

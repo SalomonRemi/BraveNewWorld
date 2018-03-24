@@ -12,12 +12,14 @@ public class MissionManager : MonoBehaviour {
 
     public Animator elevatorDoorAnim;
     public Animator hallDoorAnim;
+    public Animator doorRoomAnim;
+    public GameObject tutoMoveObject;
 
     [HideInInspector] public bool goToNextStep;
     [HideInInspector] public bool isInElevator;
     [HideInInspector] public bool isInHall;
     [HideInInspector] public bool enterInRoom;
-
+    [HideInInspector] public bool closeDoor;
 
     [Header("Missions Settings")]
 
@@ -29,12 +31,10 @@ public class MissionManager : MonoBehaviour {
     [HideInInspector] public bool keyPadCorrect = false;
     //public bool fileDelivered = false;
     [HideInInspector] public bool mission1indication = false;
+    [HideInInspector] public float doorAmmount = 0;
 
-	public float doorAmmount = 0;
 	public TextMeshPro recapText;
-
     public flipSwitch flipper;
-
     public TextMeshPro digiTxt;
 
 	[HideInInspector] public bool digiFinishPuzzle = false;
@@ -71,6 +71,7 @@ public class MissionManager : MonoBehaviour {
         isInElevator = true;
         isInHall = true;
         enterInRoom = false;
+        closeDoor = false;
 
 		player = GameObject.FindGameObjectWithTag ("Player");
         StartCoroutine(startIntroduction());
@@ -78,24 +79,27 @@ public class MissionManager : MonoBehaviour {
 	}
 
 
+    #region Introduction
     public IEnumerator startIntroduction()
     {
         yield return new WaitForSeconds(0.5f);
 
         Dialogue dialogue1 = new Dialogue();
-        dialogue1.sentences.Add("Dialogue 1 : 1");
-        dialogue1.sentences.Add("Dialogue 1 : 2");
+        dialogue1.sentences.Add("Bienvenue Wilson, j'espère que vous vous sentez déjà chez vous ici.");
+        dialogue1.sentences.Add("Sachez que nous sommes les premiers producteurs de l'Etat dans notre domaine et nous avons par conséquent beaucoup de responsabilitées.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
 
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(13f);
 
         elevatorDoorAnim.SetBool("Open", true);
+        AudioManager.instance.PlaySound("elevatorDoor");
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
 
+        tutoMoveObject.SetActive(true);
 
-        while(!goToNextStep)
+        while (!goToNextStep)
         {
             if(!isInElevator)
             {
@@ -104,13 +108,17 @@ public class MissionManager : MonoBehaviour {
             yield return null;
         }
 
+        Destroy(tutoMoveObject);
+        yield return new WaitForSeconds(.5f);
+
         Dialogue dialogue2 = new Dialogue();
-        dialogue2.sentences.Add("Dialogue 2 : 1");
-        dialogue2.sentences.Add("Dialogue 2 : 2");
+        dialogue2.sentences.Add("Ne vous laissez pas impressionner par cette théâtralité, il n'y a pas plus proche du réel que votre fonction");
+        dialogue2.sentences.Add("Certains ici ne l'étaient pas ou n’avaient pas conscience de leur chance d’être parmi nous.");
+        dialogue2.sentences.Add("Nous étions responsable de leur bonheur et nous avons par conséquent décidé de régler ce problème.");
+        dialogue2.sentences.Add("Je vous en prie.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue2);
 
-
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(21f);
 
         hallDoorAnim.SetBool("Open", true);
 
@@ -127,8 +135,8 @@ public class MissionManager : MonoBehaviour {
         }
 
         Dialogue dialogue3 = new Dialogue();
-        dialogue3.sentences.Add("Dialogue 3 : 1");
-        dialogue3.sentences.Add("Dialogue 3 : 2");
+        dialogue3.sentences.Add("Ne vous inquiétez pas, je vous accompagnerai le temps de vous familiariser avec nos méthodes.");
+        dialogue3.sentences.Add("À vous de tout faire pour justifier votre présence ici.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue3);
 
         yield return new WaitForSeconds(5f);
@@ -142,9 +150,28 @@ public class MissionManager : MonoBehaviour {
             yield return null;
         }
 
+        while (goToNextStep)
+        {
+            if (closeDoor)
+            {
+                goToNextStep = false;
+            }
+            yield return null;
+        }
+
+        doorRoomAnim.SetBool("Open", false);
+
+        yield return new WaitForSeconds(.5f);
+
+        Dialogue dialogue4 = new Dialogue();
+        dialogue4.sentences.Add("Les récents incidents m'obligent à vérouiller la porte, vous m'en voyez désolé.");
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue4);
+
+        yield return new WaitForSeconds(3f);
+
         StartCoroutine(startMission());
     }
-
+#endregion 
 
     public IEnumerator startMission()
     {

@@ -17,6 +17,7 @@ public class DialogSystem : MonoBehaviour {
 
 	public void StartDialogue(Dialogue dialogue) // APPELÉ DANS MISSION MANAGER, DEMARRE UN DIALOGUE
     {
+        GameManager.instance.canLOS = false; // DESACTIVE DIALOGUE DYNAMIQUE
 		if (sentences.Count != 0)
         {
 			sentences.Clear ();
@@ -45,7 +46,8 @@ public class DialogSystem : MonoBehaviour {
     {
 		dialogueText.text = "";
 		Debug.Log ("Conversation Over");
-	}
+        GameManager.instance.canLOS = true; // ACTIVE DIALOGUE DYNAMIQUE
+    }
 
 	IEnumerator dialogueType(string sentence)
     {
