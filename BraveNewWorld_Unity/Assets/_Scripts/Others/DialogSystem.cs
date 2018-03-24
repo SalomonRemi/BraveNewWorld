@@ -53,14 +53,14 @@ public class DialogSystem : MonoBehaviour {
     {
         dialogueText.text = "";
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
 
         float waitingTime = 0;
         dialogueText.text = sentence;
 
         foreach(char letter in sentence) // EN FONCTION DU NOMBRE DE CHAR IN SETENCES AUGMENTER LE TEMPS DE WAIT
         {
-            waitingTime += 0.06f;
+            waitingTime += 0.05f;
         }
         yield return new WaitForSeconds(waitingTime);
 

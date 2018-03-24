@@ -89,8 +89,10 @@ public class MissionManager : MonoBehaviour {
         dialogue1.sentences.Add("Sachez que nous sommes les premiers producteurs de l'Etat dans notre domaine et nous avons par conséquent beaucoup de responsabilitées.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
 
+        AudioManager.instance.PlayMusic("introDialog01");
 
-        yield return new WaitForSeconds(13f);
+
+        yield return new WaitForSeconds(12f);
 
         elevatorDoorAnim.SetBool("Open", true);
         AudioManager.instance.PlaySound("elevatorDoor");
@@ -115,10 +117,14 @@ public class MissionManager : MonoBehaviour {
         dialogue2.sentences.Add("Ne vous laissez pas impressionner par cette théâtralité, il n'y a pas plus proche du réel que votre fonction");
         dialogue2.sentences.Add("Certains ici ne l'étaient pas ou n’avaient pas conscience de leur chance d’être parmi nous.");
         dialogue2.sentences.Add("Nous étions responsable de leur bonheur et nous avons par conséquent décidé de régler ce problème.");
-        dialogue2.sentences.Add("Je vous en prie.");
+        dialogue2.sentences.Add("Avancez, je vous prie.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue2);
 
-        yield return new WaitForSeconds(21f);
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("introDialog02");
+
+
+        yield return new WaitForSeconds(15f);
 
         hallDoorAnim.SetBool("Open", true);
 
@@ -138,6 +144,9 @@ public class MissionManager : MonoBehaviour {
         dialogue3.sentences.Add("Ne vous inquiétez pas, je vous accompagnerai le temps de vous familiariser avec nos méthodes.");
         dialogue3.sentences.Add("À vous de tout faire pour justifier votre présence ici.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue3);
+
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("introDialog03");
 
         yield return new WaitForSeconds(5f);
 
