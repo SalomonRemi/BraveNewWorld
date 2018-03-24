@@ -25,6 +25,7 @@ public class PlayerInteract : MonoBehaviour {
     public string documentVerb;
     public string drawerVerb;
 	public string doorVerb;
+    public string doorButtonVerb;
 
 
     private Vector3 prevSitpos;
@@ -92,6 +93,10 @@ public class PlayerInteract : MonoBehaviour {
                 {
                     hit.transform.gameObject.GetComponent<DocumentOpener>().CreateDoc();
                     AudioManager.instance.PlaySound("clickDoc");
+                }
+                if(hit.transform.gameObject.CompareTag("doorButton"))
+                {
+                    hit.transform.gameObject.GetComponent<DoorButton>().OpenDoor();
                 }
             }
         }
@@ -167,6 +172,16 @@ public class PlayerInteract : MonoBehaviour {
 
 					interactInputImage.gameObject.SetActive(true);
 				}
+                if (hitInfo.transform.gameObject.CompareTag("doorButton"))
+                {
+                    interactionObjectText.gameObject.SetActive(true);
+                    interactionObjectText.text = hitInfo.transform.gameObject.GetComponent<DoorButton>().displayName;
+
+                    interactionVerbText.gameObject.SetActive(true);
+                    interactionVerbText.text = doorButtonVerb;
+
+                    interactInputImage.gameObject.SetActive(true);
+                }
             }
             else
             {

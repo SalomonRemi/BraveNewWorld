@@ -8,15 +8,27 @@ public class MissionManager : MonoBehaviour {
 
 	public static MissionManager instance = null;
 
+    [Header("Introduction Settings")]
 
-    public bool finishedLevel = false;
-	public bool finishedStep01 = false;
+    public Animator elevatorDoorAnim;
+    public Animator hallDoorAnim;
+
+    [HideInInspector] public bool goToNextStep;
+    [HideInInspector] public bool isInElevator;
+    [HideInInspector] public bool isInHall;
+    [HideInInspector] public bool enterInRoom;
+
+
+    [Header("Missions Settings")]
+
     public Animator levier;
     public Animator commandPanel;
 
-	public bool keyPadCorrect = false;
-	public bool fileDelivered = false;
-	public bool mission1indication = false;
+    [HideInInspector] public bool finishedLevel = false;
+    [HideInInspector] public bool finishedStep01 = false;
+    [HideInInspector] public bool keyPadCorrect = false;
+    //public bool fileDelivered = false;
+    [HideInInspector] public bool mission1indication = false;
 
 	public float doorAmmount = 0;
 	public TextMeshPro recapText;
@@ -56,14 +68,85 @@ public class MissionManager : MonoBehaviour {
 	void Start ()
     {
         hideDigicode = false;
+        isInElevator = true;
+        isInHall = true;
+        enterInRoom = false;
 
 		player = GameObject.FindGameObjectWithTag ("Player");
-        StartCoroutine(startGame());
+        StartCoroutine(startIntroduction());
         recapText.text = "Ne bougez plus, votre bonheur est en danger. Nous venons vous chercher.";
 	}
 
 
-    public IEnumerator startGame()
+    public IEnumerator startIntroduction()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        Dialogue dialogue1 = new Dialogue();
+        dialogue1.sentences.Add("Dialogue 1 : 1");
+        dialogue1.sentences.Add("Dialogue 1 : 2");
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
+
+
+        yield return new WaitForSeconds(5f);
+
+        elevatorDoorAnim.SetBool("Open", true);
+
+        yield return new WaitForSeconds(1f);
+
+
+        while(!goToNextStep)
+        {
+            if(!isInElevator)
+            {
+                goToNextStep = true;
+            }
+            yield return null;
+        }
+
+        Dialogue dialogue2 = new Dialogue();
+        dialogue2.sentences.Add("Dialogue 2 : 1");
+        dialogue2.sentences.Add("Dialogue 2 : 2");
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue2);
+
+
+        yield return new WaitForSeconds(10f);
+
+        hallDoorAnim.SetBool("Open", true);
+
+        yield return new WaitForSeconds(1f);
+
+
+        while (goToNextStep)
+        {
+            if (!isInHall)
+            {
+                goToNextStep = false;
+            }
+            yield return null;
+        }
+
+        Dialogue dialogue3 = new Dialogue();
+        dialogue3.sentences.Add("Dialogue 3 : 1");
+        dialogue3.sentences.Add("Dialogue 3 : 2");
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue3);
+
+        yield return new WaitForSeconds(5f);
+
+        while (!goToNextStep)
+        {
+            if (enterInRoom)
+            {
+                goToNextStep = true;
+            }
+            yield return null;
+        }
+
+        StartCoroutine(startMission());
+    }
+
+
+    public IEnumerator startMission()
     {
 		Dialogue dialogue = new Dialogue ();
 		recapText.text = "";
@@ -337,7 +420,7 @@ public class MissionManager : MonoBehaviour {
         keyPadCorrect = false;
         finishedStep01 = false;
         finishedLevel = false;
-		fileDelivered = false;
+		//fileDelivered = false;
 		digiFinishPuzzle = false;
 	}
 
