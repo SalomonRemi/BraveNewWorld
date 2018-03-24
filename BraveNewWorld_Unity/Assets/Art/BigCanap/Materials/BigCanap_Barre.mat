@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Barres
+  m_Name: BigCanap_Barre
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 32a1924b16a95b94892678e52d52183d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9cef2b0a2b7ab4d4ebf88e37047d0e3f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -39,11 +39,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: d1fcdac2f385d6f4bab3433e8d7e24a1, type: 3}
+        m_Texture: {fileID: 2800000, guid: d5ce01eaf5bcf2d4990c69dffe4b5608, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: b9e8d0e845ae50a498a44a33da9922b4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6ff4affa648c2814eac13effe30a4b53, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
