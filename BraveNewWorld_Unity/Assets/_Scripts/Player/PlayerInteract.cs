@@ -69,6 +69,14 @@ public class PlayerInteract : MonoBehaviour {
                     {
                         hit.transform.gameObject.GetComponent<flipSwitch>().flip();
                     }
+                    if (hit.transform.gameObject.CompareTag("lockUp"))
+                    {
+                        hit.transform.gameObject.GetComponentInParent<LockerNum>().IncreaseNumber();
+                    }
+                    if (hit.transform.gameObject.CompareTag("lockDown"))
+                    {
+                        hit.transform.gameObject.GetComponentInParent<LockerNum>().DecreaseNumber();
+                    }
                 }
 			} 
 		}

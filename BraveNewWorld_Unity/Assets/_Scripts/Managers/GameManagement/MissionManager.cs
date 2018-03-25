@@ -29,7 +29,6 @@ public class MissionManager : MonoBehaviour {
     [HideInInspector] public bool finishedLevel = false;
     [HideInInspector] public bool finishedStep01 = false;
     [HideInInspector] public bool keyPadCorrect = false;
-    //public bool fileDelivered = false;
     [HideInInspector] public bool mission1indication = false;
     [HideInInspector] public float doorAmmount = 0;
 
@@ -43,10 +42,11 @@ public class MissionManager : MonoBehaviour {
 
 	[HideInInspector] public bool hideDigicode;
 
-    [HideInInspector]public int numberOfGoodDoor = 0;
+    [HideInInspector] public int numberOfGoodDoor = 0;
 
-    int alerts = 0;
-    int puzzleNum = 0;
+    private int alerts = 0;
+    private int puzzleNum = 0;
+    private string orderText;
 
     GameObject player;
 
@@ -77,6 +77,19 @@ public class MissionManager : MonoBehaviour {
         StartCoroutine(startIntroduction());
         recapText.text = "Ne bougez plus, votre bonheur est en danger. Nous venons vous chercher.";
 	}
+
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            StopAllCoroutines();
+
+            AudioManager.instance.StopMusic();
+
+            StartCoroutine(startMission());
+        }
+    }
 
 
     #region Introduction
@@ -184,24 +197,26 @@ public class MissionManager : MonoBehaviour {
 
     public IEnumerator startMission()
     {
-		Dialogue dialogue = new Dialogue ();
-		recapText.text = "";
+        Dialogue dialogue = new Dialogue ();
 
         yield return new WaitForSeconds(0.2f);
 
         //AudioManager.instance.PlayMusic("startDialogue");
 
 		dialogue.sentences.Add ("Bien, vous voilà installé, il est temps de rentrer dans le vif du sujet :");
-		dialogue.sentences.Add ("Des deltas sont bloqués dans la salle de décantation et \n ils ont besoin de se rendre dans le dépôt des embryons. ");
+		dialogue.sentences.Add ("Des deltas sont bloqués dans la salle de décantation et ils ont besoin de se rendre dans le dépôt des embryons. ");
 		dialogue.sentences.Add ("Vous voyez ces boutons devant vous ? Ils vous permettent d’ouvrir les portes.");
-		dialogue.sentences.Add ("N’oubliez pas de presser la touche “valider” une fois \n les bonnes portes sélectionnées.");
+		dialogue.sentences.Add ("N’oubliez pas de presser la touche “valider” une fois les bonnes portes sélectionnées.");
 
 		FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
-        
+
+        StartCoroutine(DisplayOrder(10f));
+        orderText = "Ouvrez les portes de la salle de décantation et du dépôt des embryons.";
+
         yield return new WaitForSeconds(1f);
+
         StartCoroutine(mission1());
-		yield return new WaitForSeconds(10f);
-		recapText.text = "Ouvrez les portes de la salle de décantation et du dépôt des embryons.";
+
         yield return null;
     }
 
@@ -226,7 +241,7 @@ public class MissionManager : MonoBehaviour {
 
         doorNums.Clear();
 
-        yield return new WaitForSeconds (2);
+        yield return new WaitForSeconds(2f);
 
 		StartCoroutine (mission2 ());
         resestMission();
@@ -238,13 +253,11 @@ public class MissionManager : MonoBehaviour {
 
 	public IEnumerator mission2()
 	{
-		puzzleNum = 2;
+        puzzleNum = 2;
 		doorNums.Add (1);
 		doorNums.Add (5);
 		numberOfGoodDoor = 2;
 		doorAmmount = 7;
-
-		recapText.text = "";
 
 		//StartCoroutine(randomTalk(puzzleNum));
 
@@ -255,11 +268,12 @@ public class MissionManager : MonoBehaviour {
 
 		FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
 
-		yield return new WaitForSeconds (2);
+        StartCoroutine(DisplayOrder(11f));
+        orderText = "Localisez les livres puis déverrouillez un accès pour se débarrasser de ce matériel défecteux.";
 
-		recapText.text = "Localisez les livres puis déverrouillez un accès pour se débarrasser de ce matériel défecteux";
+        yield return new WaitForSeconds(2f);
 
-		while (!finishedLevel)
+        while (!finishedLevel)
 		{
 			if (keyPadCorrect)
 			{
@@ -296,9 +310,10 @@ public class MissionManager : MonoBehaviour {
 
 		FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
 
-		yield return new WaitForSeconds(5f);
+        StartCoroutine(DisplayOrder(11f));
+        orderText = "Trouvez la facture arrivée il y a 5 jours. La livraison est arrivée en salle de fécondation, permettez lui l'accès jusqu'à la salle concernée.";
 
-		recapText.text = "Trouvez la facture arrivée il y a 5 jours. La livraison est arrivée en salle de fécondation, permettez lui l'accès jusqu'à la salle concernée";
+        yield return new WaitForSeconds(2f);
 
 		while (!finishedLevel)
 		{
@@ -339,11 +354,12 @@ public class MissionManager : MonoBehaviour {
         
 		FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
 
-        yield return new WaitForSeconds(5f);
+        StartCoroutine(DisplayOrder(10f));
+        orderText = "Trouvez le numéro de matricule de Jack, puis donnez lui accès au self. Son emploi du temps se trouve dans le manuel.";
+
+        yield return new WaitForSeconds(7f);
 
         commandPanel.SetBool("isDigicodeAvailable", true);
-
-        recapText.text = "Trouvez le numéro de matricule de Jack, puis donnez lui accès au self. Son emploi du temps se trouve dans le manuel.";
         
 		while (!finishedStep01)
         {
@@ -365,7 +381,9 @@ public class MissionManager : MonoBehaviour {
 
 		FindObjectOfType<DialogSystem>().StartDialogue(dialogue2);
 
-		while (!finishedLevel)
+        yield return new WaitForSeconds(1f);
+
+        while (!finishedLevel)
 		{
 			if (keyPadCorrect)
 			{
@@ -402,9 +420,10 @@ public class MissionManager : MonoBehaviour {
 
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
 
-		yield return new WaitForSeconds(5f);
-        
-		recapText.text = "Trouvez qui se trouve dans la salle tri et régler le problème";
+        StartCoroutine(DisplayOrder(10f));
+        orderText = "Trouvez qui se trouve dans la salle tri et régler le problème.";
+
+        yield return new WaitForSeconds(2f);
 
         while (!finishedStep01)
         {
@@ -442,7 +461,7 @@ public class MissionManager : MonoBehaviour {
         //AudioManager.instance.PlayMusic("5dialogue");
 
         Dialogue dialogue3 = new Dialogue();
-        dialogue3.sentences.Add("Parfait Wilson! Le conditionnement a parfaitement été réalisé.");
+        dialogue3.sentences.Add("Parfait Wilson! Nous lui trouverons rapidement un remplaçant.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue3);
 
 		AudioManager.instance.PlaySound("weirdSoundsTri");
@@ -456,7 +475,6 @@ public class MissionManager : MonoBehaviour {
         keyPadCorrect = false;
         finishedStep01 = false;
         finishedLevel = false;
-		//fileDelivered = false;
 		digiFinishPuzzle = false;
 	}
 
@@ -513,5 +531,14 @@ public class MissionManager : MonoBehaviour {
         }
         yield return null;
         StartCoroutine(randomTalk(missionLevel));
+    }
+
+    public IEnumerator DisplayOrder(float waitBeforDisplay)
+    {
+        recapText.text = "";
+
+        yield return new WaitForSeconds(waitBeforDisplay);
+
+        recapText.text = orderText;
     }
 }
