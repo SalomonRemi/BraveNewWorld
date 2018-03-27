@@ -8,10 +8,22 @@ public class Locker : MonoBehaviour {
 
     public List<GameObject> lockerNum;
 
+	public string objectAnimClipName;
+
+	private Animator objectAnim;
+
+
+	private void Start()
+	{
+		objectAnim = GetComponentInParent<Animator>();
+	}
+
+
     private void Update()
     {
         CheckIfGoodCode();
     }
+
 
     private void CheckIfGoodCode()
     {
@@ -26,6 +38,10 @@ public class Locker : MonoBehaviour {
         if(validateNumber == lockerNum.Count)
         {
             Debug.Log("open");
+
+			objectAnim.SetBool (objectAnimClipName, true);
+
+			isInteractible = false;
         }
     }
 }
