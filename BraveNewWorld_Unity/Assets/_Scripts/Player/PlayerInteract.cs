@@ -71,11 +71,11 @@ public class PlayerInteract : MonoBehaviour {
                     }
                     if (hit.transform.gameObject.CompareTag("lockUp"))
                     {
-                        hit.transform.gameObject.GetComponentInParent<LockerNum>().IncreaseNumber();
+						hit.transform.gameObject.GetComponentInParent<LockerNum>().IncreaseNumber();
                     }
                     if (hit.transform.gameObject.CompareTag("lockDown"))
                     {
-                        hit.transform.gameObject.GetComponentInParent<LockerNum>().DecreaseNumber();
+						hit.transform.gameObject.GetComponentInParent<LockerNum>().DecreaseNumber();
                     }
                 }
 			} 
