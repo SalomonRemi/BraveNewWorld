@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114318413846850284}
   - component: {fileID: 114966606078893446}
   - component: {fileID: 114578546708009304}
+  - component: {fileID: 114137936234438512}
   - component: {fileID: 114048530472489494}
   m_Layer: 0
   m_Name: FPSCamera
@@ -118,14 +119,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1888518149142282}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.004611492, y: 0.079, z: -33}
+  m_LocalRotation: {x: -0, y: -0.9265004, z: -0, w: -0.376294}
+  m_LocalPosition: {x: -0.25, y: 1.01, z: -18.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4135796875505390}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 495.79102, z: 0}
 --- !u!4 &4984360755460454
 Transform:
   m_ObjectHideFlags: 1
@@ -172,7 +173,7 @@ Camera:
   m_HDR: 1
   m_AllowMSAA: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
@@ -301,6 +302,17 @@ MonoBehaviour:
   BlurRadius: 2
   BlurPasses: 1
   BlurSharpness: 10
+--- !u!114 &114137936234438512
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1170176216071252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86bdf4ed50226274abd94cadc8d52ab9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114190325710347708
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -433,6 +445,7 @@ MonoBehaviour:
   documentVerb: Lire
   drawerVerb: Interagir
   doorVerb: Fermee
+  doorButtonVerb: Interagir
 --- !u!114 &114980862346534924
 MonoBehaviour:
   m_ObjectHideFlags: 1
