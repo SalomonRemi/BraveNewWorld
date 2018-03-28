@@ -10,16 +10,24 @@ public class MissionManager : MonoBehaviour {
 
     [Header("Introduction Settings")]
 
+    public float timeInElevator;
+
     public Animator elevatorDoorAnim;
     public Animator hallDoorAnim;
     public Animator doorRoomAnim;
     public GameObject tutoMoveObject;
+    public GameObject babiesPrefab;
+    public Transform instantiateTransform1;
+    public Transform instantiateTransform2;
 
     [HideInInspector] public bool goToNextStep;
     [HideInInspector] public bool isInElevator;
     [HideInInspector] public bool isInHall;
     [HideInInspector] public bool enterInRoom;
     [HideInInspector] public bool closeDoor;
+
+    private bool doScrolling;
+    private float counter;
 
     [Header("Missions Settings")]
 
@@ -75,6 +83,8 @@ public class MissionManager : MonoBehaviour {
 
 		player = GameObject.FindGameObjectWithTag ("Player");
         StartCoroutine(startIntroduction());
+        StartCoroutine(scrollingBabies());
+
         recapText.text = "Ne bougez plus, votre bonheur est en danger. Nous venons vous chercher.";
 	}
 
@@ -88,6 +98,18 @@ public class MissionManager : MonoBehaviour {
             AudioManager.instance.StopMusic();
 
             StartCoroutine(startMission());
+        }
+
+        if(doScrolling)
+        {
+            counter += Time.deltaTime;
+            if(counter >= 0.5f)
+            {
+                Instantiate(babiesPrefab, instantiateTransform1.position, Quaternion.identity);
+                Instantiate(babiesPrefab, instantiateTransform2.position, Quaternion.identity);
+
+                counter = 0;
+            }
         }
     }
 
@@ -105,7 +127,8 @@ public class MissionManager : MonoBehaviour {
         AudioManager.instance.PlayMusic("introDialog01");
 
 
-        yield return new WaitForSeconds(12f);
+        yield return new WaitForSeconds(timeInElevator);
+
 
         elevatorDoorAnim.SetBool("Open", true);
         AudioManager.instance.PlaySound("elevatorDoor");
@@ -540,5 +563,18 @@ public class MissionManager : MonoBehaviour {
         yield return new WaitForSeconds(waitBeforDisplay);
 
         recapText.text = orderText;
+    }
+
+    private IEnumerator scrollingBabies()
+    {
+        doScrolling = true;
+
+        yield return new WaitForSeconds(timeInElevator * 0.8f);
+
+        //Anim; 
+
+        yield return new WaitForSeconds(timeInElevator * 0.05f);
+
+        doScrolling = false;
     }
 }
