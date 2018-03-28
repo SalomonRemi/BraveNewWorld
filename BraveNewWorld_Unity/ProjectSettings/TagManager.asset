@@ -17,6 +17,8 @@ TagManager:
   - doorButton
   - lockUp
   - lockDown
+  - baby
+  - babyKiller
   layers:
   - Default
   - TransparentFX
