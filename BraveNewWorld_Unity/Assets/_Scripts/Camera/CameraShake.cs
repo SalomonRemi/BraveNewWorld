@@ -7,11 +7,8 @@ public class CameraShake : MonoBehaviour {
 	const float maxAngle = 10f;
 	IEnumerator currentShakeCoroutine;
 
-
-	public void StartShake(Properties properties)
-	{
-		if (currentShakeCoroutine != null)
-		{
+	public void StartShake(Properties properties) {
+		if (currentShakeCoroutine != null) {
 			StopCoroutine (currentShakeCoroutine);
 		}
 
@@ -19,9 +16,7 @@ public class CameraShake : MonoBehaviour {
 		StartCoroutine (currentShakeCoroutine);
 	}
 
-
-	IEnumerator Shake(Properties properties)
-	{
+	IEnumerator Shake(Properties properties) {
 		float completionPercent = 0;
 		float movePercent = 0;
 
@@ -29,14 +24,12 @@ public class CameraShake : MonoBehaviour {
 		Vector3 previousWaypoint = Vector3.zero;
 		Vector3 currentWaypoint = Vector3.zero;
 		float moveDistance = 0;
-		float speed = 0;
 
 		Quaternion targetRotation = Quaternion.identity;
 		Quaternion previousRotation = Quaternion.identity;
 
 		do {
-			if (movePercent >= 1 || completionPercent == 0)
-			{
+			if (movePercent >= 1 || completionPercent == 0) {
 				float dampingFactor = DampingCurve (completionPercent, properties.dampingPercent);
 				float noiseAngle = (Random.value - .5f) * Mathf.PI;
 				angle_radians += Mathf.PI + noiseAngle * properties.noisePercent;
@@ -47,25 +40,20 @@ public class CameraShake : MonoBehaviour {
 				targetRotation = Quaternion.Euler (new Vector3 (currentWaypoint.y, currentWaypoint.x).normalized * properties.rotationPercent * dampingFactor * maxAngle);
 				previousRotation = transform.localRotation;
 
-				speed = Mathf.Lerp(properties.minSpeed,properties.maxSpeed,dampingFactor);
-
 				movePercent = 0;
 			}
 
 			completionPercent += Time.deltaTime / properties.duration;
-			movePercent += Time.deltaTime / moveDistance * speed;
-
+			movePercent += Time.deltaTime / moveDistance * properties.speed;
 			transform.localPosition = Vector3.Lerp (previousWaypoint, currentWaypoint, movePercent);
 			transform.localRotation = Quaternion.Slerp (previousRotation, targetRotation, movePercent);
 
-			yield return null;
 
+			yield return null;
 		} while (moveDistance > 0);
 	}
 
-
-	float DampingCurve(float x, float dampingPercent)
-	{
+	float DampingCurve(float x, float dampingPercent) {
 		x = Mathf.Clamp01 (x);
 		float a = Mathf.Lerp (2, .25f, dampingPercent);
 		float b = 1 - Mathf.Pow (x, a);
@@ -74,16 +62,14 @@ public class CameraShake : MonoBehaviour {
 
 
 	[System.Serializable]
-	public class Properties
-	{
+	public class Properties {
 		public float angle;
 		public float strength;
-		public float maxSpeed;
-		public float minSpeed;
+		public float speed;
 		public float duration;
 		[Range(0,1)]
 		public float noisePercent;
-		[Range(0,1)]
+		[Range(-1,1)]
 		public float dampingPercent;
 		[Range(0,1)]
 		public float rotationPercent;
@@ -92,7 +78,7 @@ public class CameraShake : MonoBehaviour {
 		{
 			this.angle = angle;
 			this.strength = strength;
-			this.maxSpeed = speed;
+			this.speed = speed;
 			this.duration = duration;
 			this.noisePercent = Mathf.Clamp01(noisePercent);
 			this.dampingPercent = Mathf.Clamp01(dampingPercent);
