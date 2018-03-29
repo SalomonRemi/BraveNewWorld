@@ -16,19 +16,12 @@ public class ScreenshakeManager : MonoBehaviour {
     }
 
 
-    void Update ()
-    {
-        if (isInElevator) FindObjectOfType<CameraShake>().StartShake(elevatorLongShake);
-        else FindObjectOfType<CameraShake>().StartShake(elevatorEndShake);
-	}
-
-
     IEnumerator TimingCoroutine()
     {
-        isInElevator = true;
+		//FindObjectOfType<CameraShake>().StartShake (elevatorLongShake);
 
         yield return new WaitForSeconds(MissionManager.instance.timeInElevator);
 
-        isInElevator = false;
+		FindObjectOfType<CameraShake>().StartShake(elevatorEndShake);
     }
 }
