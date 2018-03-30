@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Locker : MonoBehaviour {
 
-    public bool isInteractible;
-
-    public List<GameObject> lockerNum;
+	public List<GameObject> lockerNum;
 
 	public string objectAnimClipName;
 
@@ -41,7 +39,15 @@ public class Locker : MonoBehaviour {
 
 			objectAnim.SetBool (objectAnimClipName, true);
 
-			isInteractible = false;
+			for (int i = 0; i < lockerNum.Count; i++)
+			{
+				Collider[] col = lockerNum [i].GetComponentsInChildren<Collider>(); 
+
+				foreach (Collider c in col)
+				{
+					c.enabled = false;
+				}
+			}
         }
     }
 }
