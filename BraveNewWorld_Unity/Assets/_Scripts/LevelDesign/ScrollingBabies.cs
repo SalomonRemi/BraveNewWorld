@@ -20,7 +20,6 @@ public class ScrollingBabies : MonoBehaviour {
 		
 	void OnTriggerEnter(Collider other)
 	{
-		Debug.Log ("wow");
 		if(other.gameObject.CompareTag("babyKiller"))
 		{
 			Destroy(gameObject);
