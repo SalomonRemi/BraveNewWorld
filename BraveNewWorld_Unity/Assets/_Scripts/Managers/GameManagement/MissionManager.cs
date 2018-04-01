@@ -126,7 +126,7 @@ public class MissionManager : MonoBehaviour {
         dialogue1.sentences.Add("Sachez que nous sommes les premiers producteurs de l'Etat dans notre domaine et nous avons par conséquent beaucoup de responsabilitées.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
 
-        AudioManager.instance.PlayMusic("introDialog01");
+        //AudioManager.instance.PlayMusic("introDialog01");
 
 
         yield return new WaitForSeconds(timeInElevator);
@@ -158,8 +158,8 @@ public class MissionManager : MonoBehaviour {
         dialogue2.sentences.Add("Avancez, je vous prie.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue2);
 
-        AudioManager.instance.StopMusic();
-        AudioManager.instance.PlayMusic("introDialog02");
+        //AudioManager.instance.StopMusic();
+        //AudioManager.instance.PlayMusic("introDialog02");
 
 
         yield return new WaitForSeconds(15f);
@@ -183,8 +183,8 @@ public class MissionManager : MonoBehaviour {
         dialogue3.sentences.Add("À vous de tout faire pour justifier votre présence ici.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue3);
 
-        AudioManager.instance.StopMusic();
-        AudioManager.instance.PlayMusic("introDialog03");
+        //AudioManager.instance.StopMusic();
+        //AudioManager.instance.PlayMusic("introDialog03");
 
         yield return new WaitForSeconds(5f);
 
