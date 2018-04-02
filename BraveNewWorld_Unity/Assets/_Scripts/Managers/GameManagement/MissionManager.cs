@@ -116,15 +116,16 @@ public class MissionManager : MonoBehaviour {
     }
 
 
-    #region Introduction
+#region Introduction
     public IEnumerator startIntroduction()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(5f);
 
         Dialogue dialogue1 = new Dialogue();
-        dialogue1.sentences.Add("Bienvenue Wilson, j'espère que vous vous sentez déjà chez vous ici.");
-        dialogue1.sentences.Add("Sachez que nous sommes les premiers producteurs de l'Etat dans notre domaine et nous avons par conséquent beaucoup de responsabilitées.");
-        FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
+		dialogue1.sentences.Add("Bonjour Wilson, je suis désolé de cette mutation imprévue");
+		dialogue1.sentences.Add("Oscar, votre prédécesseur a disparu et nous avions besoin d’un remplaçant capable et disponible, ce que vous êtes je n’en doute pas.");
+		dialogue1.sentences.Add("Vous êtes gradé désormais, chose assez rare pour quelqu’un de votre classe, soyez-en fier.");
+		FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
 
         //AudioManager.instance.PlayMusic("introDialog01");
 
@@ -149,20 +150,23 @@ public class MissionManager : MonoBehaviour {
         }
 
         Destroy(tutoMoveObject);
-        yield return new WaitForSeconds(.5f);
+
+        yield return new WaitForSeconds(3f);
 
         Dialogue dialogue2 = new Dialogue();
-        dialogue2.sentences.Add("Ne vous laissez pas impressionner par cette théâtralité, il n'y a pas plus proche du réel que votre fonction");
-        dialogue2.sentences.Add("Certains ici ne l'étaient pas ou n’avaient pas conscience de leur chance d’être parmi nous.");
-        dialogue2.sentences.Add("Nous étions responsable de leur bonheur et nous avons par conséquent décidé de régler ce problème.");
-        dialogue2.sentences.Add("Avancez, je vous prie.");
+		dialogue2.sentences.Add("Ne vous laissez pas impressionner par cette théâtralité, vous vous y habituerez vite.");
+		dialogue2.sentences.Add("Soyez le bienvenue Wilson, vous êtes ici chez vous.");
+
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue2);
 
         //AudioManager.instance.StopMusic();
         //AudioManager.instance.PlayMusic("introDialog02");
 
 
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(10f);
+
+		Dialogue dialogueOrdre = new Dialogue();
+		dialogueOrdre.sentences.Add("Allez y je vous prie.");
 
         hallDoorAnim.SetBool("Open", true);
 
@@ -179,8 +183,8 @@ public class MissionManager : MonoBehaviour {
         }
 
         Dialogue dialogue3 = new Dialogue();
-        dialogue3.sentences.Add("Ne vous inquiétez pas, je vous accompagnerai le temps de vous familiariser avec nos méthodes.");
-        dialogue3.sentences.Add("À vous de tout faire pour justifier votre présence ici.");
+		dialogue3.sentences.Add("Peut-être reste-t-il quelques affaires de votre prédécesseur, n’y prêtez pas attention, c’est à vous maintenant de prouver que vous êtes digne d’être ici.");
+		dialogue3.sentences.Add("Écoutez moi et tout ira pour le mieux !");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue3);
 
         //AudioManager.instance.StopMusic();
@@ -211,10 +215,12 @@ public class MissionManager : MonoBehaviour {
         yield return new WaitForSeconds(.5f);
 
         Dialogue dialogue4 = new Dialogue();
-        dialogue4.sentences.Add("Les récents incidents m'obligent à vérouiller la porte, vous m'en voyez désolé.");
+		dialogue4.sentences.Add("Suite à l’incident de ce matin, les portes restent fermées durant les heures de travail.");
+		dialogue4.sentences.Add("Ne vous en faites pas je vous accompagnerai le temps de vous apprendre le métier.");
+
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue4);
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(7f);
 
         StartCoroutine(startMission());
     }
@@ -571,11 +577,11 @@ public class MissionManager : MonoBehaviour {
     {
         doScrolling = true;
 
-        yield return new WaitForSeconds(timeInElevator * 0.60f);
+        yield return new WaitForSeconds(5f + timeInElevator * 0.60f);
 
 		blockView.SetBool ("goDown", true); 
 
-        yield return new WaitForSeconds(timeInElevator * 0.1f);
+        yield return new WaitForSeconds(5f + timeInElevator * 0.1f);
 
         doScrolling = false;
 		Destroy (elevator);

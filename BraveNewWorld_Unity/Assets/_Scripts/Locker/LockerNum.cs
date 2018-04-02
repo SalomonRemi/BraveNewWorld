@@ -9,7 +9,7 @@ public class LockerNum : MonoBehaviour {
 
     [HideInInspector] public bool isGoodNumber;
 
-    private int actualNumber;
+    private int actualNumber = 1;
     private TextMeshPro displayText;
 
 
@@ -32,14 +32,14 @@ public class LockerNum : MonoBehaviour {
     {
         if (actualNumber == 9)
         {
-            actualNumber = 0;
+            actualNumber = 1;
         }
         else actualNumber++;
     }
 
     public void DecreaseNumber()
     {
-        if (actualNumber == 0)
+        if (actualNumber == 1)
         {
             actualNumber = 9;
         }
