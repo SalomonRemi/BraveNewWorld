@@ -10,6 +10,8 @@ public class Locker : MonoBehaviour {
 
 	private Animator objectAnim;
 
+    [HideInInspector] public bool codeOk;
+
 
 	private void Start()
 	{
@@ -38,6 +40,8 @@ public class Locker : MonoBehaviour {
             Debug.Log("open");
 
 			objectAnim.SetBool (objectAnimClipName, true);
+
+            codeOk = true;
 
 			for (int i = 0; i < lockerNum.Count; i++)
 			{
