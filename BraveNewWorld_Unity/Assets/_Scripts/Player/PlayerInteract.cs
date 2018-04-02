@@ -72,10 +72,12 @@ public class PlayerInteract : MonoBehaviour {
                     if (hit.transform.gameObject.CompareTag("lockUp"))
                     {
 						hit.transform.gameObject.GetComponentInParent<LockerNum>().IncreaseNumber();
+                        AudioManager.instance.PlaySound("lockerButton");
                     }
                     if (hit.transform.gameObject.CompareTag("lockDown"))
                     {
 						hit.transform.gameObject.GetComponentInParent<LockerNum>().DecreaseNumber();
+                        AudioManager.instance.PlaySound("lockerButton");
                     }
                 }
 			} 

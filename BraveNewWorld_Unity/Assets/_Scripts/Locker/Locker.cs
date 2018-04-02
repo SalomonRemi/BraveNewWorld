@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DigitalRuby.SoundManagerNamespace;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,11 +8,13 @@ public class Locker : MonoBehaviour {
 	public List<GameObject> lockerNum;
 
 	public string objectAnimClipName;
+    public string soundPlay;
 
 	private Animator objectAnim;
 
     [HideInInspector] public bool codeOk;
 
+    private bool feedbackDone;
 
 	private void Start()
 	{
@@ -39,9 +42,9 @@ public class Locker : MonoBehaviour {
         {
             Debug.Log("open");
 
-			objectAnim.SetBool (objectAnimClipName, true);
-
             codeOk = true;
+
+            if(!feedbackDone) StartCoroutine(Feedback());
 
 			for (int i = 0; i < lockerNum.Count; i++)
 			{
@@ -53,5 +56,15 @@ public class Locker : MonoBehaviour {
 				}
 			}
         }
+    }
+
+    public IEnumerator Feedback()
+    {
+        objectAnim.SetBool(objectAnimClipName, true);
+        AudioManager.instance.PlaySound(soundPlay);
+
+        yield return null;
+
+        feedbackDone = true;
     }
 }

@@ -63,7 +63,18 @@ namespace DigitalRuby.SoundManagerNamespace
 			}
 		}
 
-		private void PlaySound(int index)
+        public void StopSound(string Clip)
+        {
+            for (int i = 0; i < SoundAudioSources.Length; i++)
+            {
+                if (Clip == SoundAudioSources[i].name)
+                {
+
+                }
+            }
+        }
+
+        private void PlaySound(int index)
 		{
 			SoundAudioSources[index].PlayOneShotSoundManaged(SoundAudioSources[index].clip);
 		}

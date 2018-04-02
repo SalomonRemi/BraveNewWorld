@@ -19,6 +19,7 @@ public class MissionManager : MonoBehaviour {
     public GameObject tutoMoveObject;
     public GameObject babiesPrefab;
 	public GameObject elevator;
+    public GameObject liftLoopObj;
     public Transform instantiateTransform1;
     public Transform instantiateTransform2;
 
@@ -129,8 +130,16 @@ public class MissionManager : MonoBehaviour {
 
         //AudioManager.instance.PlayMusic("introDialog01");
 
+        yield return new WaitForSeconds(timeInElevator - 3f);
 
-        yield return new WaitForSeconds(timeInElevator);
+
+        AudioManager.instance.PlaySound("liftEnd");
+
+        AudioSource sound = liftLoopObj.GetComponent<AudioSource>();
+        sound.volume = 0;
+
+
+        yield return new WaitForSeconds(3f);
 
 
         elevatorDoorAnim.SetBool("Open", true);

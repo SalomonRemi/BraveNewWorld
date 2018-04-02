@@ -9,7 +9,7 @@ public class Fade : MonoBehaviour {
 	public float fadeSpeed;
 
 	private Color actualColor;
-	private bool doFadingOut = false;
+	[HideInInspector] public bool doFadingOut = false;
 	private Image fadeImage;
 
 	void Start ()
@@ -28,6 +28,12 @@ public class Fade : MonoBehaviour {
 		if (doFadingOut) 
 		{
 			actualColor.a -= fadeSpeed;
+            if (actualColor.a < 0) actualColor.a = 0;
 		}
-	}
+        else
+        {
+            actualColor.a += fadeSpeed * 4;
+            if (actualColor.a > 1) actualColor.a = 1;
+        }
+    }
 }

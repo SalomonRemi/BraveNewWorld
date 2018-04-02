@@ -18,7 +18,7 @@ public class walkSound : MonoBehaviour {
     {
 		if ( cc.isGrounded && cc.velocity.magnitude > 2f && GetComponent<AudioSource>().isPlaying == false)
         {
-			GetComponent<AudioSource> ().volume = Random.Range (0.15f, 0.2f);
+			GetComponent<AudioSource> ().volume = Random.Range (0.3f, 0.4f);
 			GetComponent<AudioSource> ().pitch = Random.Range (0.95f, 1f);
             GetComponent<AudioSource> ().Play();
         }
