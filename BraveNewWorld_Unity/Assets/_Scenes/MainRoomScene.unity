@@ -42759,6 +42759,7 @@ MonoBehaviour:
   closeDoor: 0
   levier: {fileID: 1779029867}
   commandPanel: {fileID: 205229682}
+  digicode: {fileID: 67783387}
   finishedLevel: 0
   finishedStep01: 0
   keyPadCorrect: 0

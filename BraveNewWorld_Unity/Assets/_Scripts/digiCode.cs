@@ -15,7 +15,7 @@ public class digiCode : MonoBehaviour {
 
 	private Animator levierAnim;
 
-    // Use this for initialization
+
     void Start()
     {
 		levierAnim = MissionManager.instance.levier;
@@ -25,7 +25,7 @@ public class digiCode : MonoBehaviour {
 		keycode = 0f;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         MissionManager.instance.digiTxt.text = "" + keycode;
@@ -66,11 +66,11 @@ public class digiCode : MonoBehaviour {
             }
             if (GameManager.instance.flashKeypad)
             {
-                StartCoroutine(flashKeys(Color.green, true));
+                //StartCoroutine(flashKeys(Color.green, true));
             }
             else
             {
-                StartCoroutine(flashKeys(Color.green, false));
+                //StartCoroutine(flashKeys(Color.green, false));
             }
         }
         else
@@ -93,21 +93,11 @@ public class digiCode : MonoBehaviour {
 
             MissionManager.instance.inLastPuzzle = false;
 
-            return true;
-        }
-        else if (keycode == 5811 && !code1Used)
-        {
-            code1Used = true;
-            tiroir.SetTrigger("open");
-            AudioManager.instance.PlaySound("openDesks");
-            AudioManager.instance.PlaySound("digiOkSound");
-            return true;
-        }
-        else if (keycode == 2526 && code1Used)
-        {
-            door.SetTrigger("open");
-            AudioManager.instance.PlaySound("digiOkSound");
-            GameManager.instance.doorOpen = true;
+			foreach (GameObject btn in keyButtons)
+			{
+				btn.GetComponent<Renderer>().material.color = Color.green;
+			}
+
             return true;
         }
 		else if (keycode == 1211 && MissionManager.instance.hideDigicode && MissionManager.instance.searchJack)
@@ -116,6 +106,11 @@ public class digiCode : MonoBehaviour {
 			MissionManager.instance.searchJack = false;
 
 			GameManager.instance.flashKeypad = true;
+
+			foreach (GameObject btn in keyButtons)
+			{
+				btn.GetComponent<Renderer>().material.color = Color.green;
+			}
 			//AudioManager.instance.PlaySound("digiOkSound");
 			return true;
 		}

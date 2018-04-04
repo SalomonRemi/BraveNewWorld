@@ -37,6 +37,8 @@ public class MissionManager : MonoBehaviour {
     public Animator levier;
     public Animator commandPanel;
 
+	public digiCode digicode;
+
     [HideInInspector] public bool finishedLevel = false;
     [HideInInspector] public bool finishedStep01 = false;
     [HideInInspector] public bool keyPadCorrect = false;
@@ -395,7 +397,7 @@ public class MissionManager : MonoBehaviour {
 		FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
 
         StartCoroutine(DisplayOrder(10f));
-        orderText = "Trouvez le numéro de matricule de Jack, et rentrez le dans sur le digicode";
+        orderText = "Trouvez le numéro de matricule de Jack, et rentrez le dans sur le digicode.";
 
         yield return new WaitForSeconds(9f);
 
@@ -420,7 +422,7 @@ public class MissionManager : MonoBehaviour {
 		orderText = "Localisez Jack et ouvrez lui un accès au self. Son emploi du temps se trouve dans le manuel.";
 
 		Dialogue dialogue2 = new Dialogue();
-		dialogue2.sentences.Add("Bien vous l'avez localisé, ouvrez lui les portes vers le self");
+		dialogue2.sentences.Add("Bien vous l'avez localisé, ouvrez lui les portes vers le self.");
 
 		FindObjectOfType<DialogSystem>().StartDialogue(dialogue2);
 
@@ -519,6 +521,14 @@ public class MissionManager : MonoBehaviour {
         finishedStep01 = false;
         finishedLevel = false;
 		digiFinishPuzzle = false;
+
+		foreach (GameObject btn in digicode.keyButtons)
+		{
+			btn.GetComponent<Renderer>().material.color = Color.grey;
+		}
+
+		digicode.keycode = 0;
+		digicode.enabledAmmount = 0;
 	}
 
 
