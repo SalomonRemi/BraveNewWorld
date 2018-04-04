@@ -395,9 +395,9 @@ public class MissionManager : MonoBehaviour {
 		FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
 
         StartCoroutine(DisplayOrder(10f));
-        orderText = "Trouvez le numéro de matricule de Jack, puis donnez lui accès au self. Son emploi du temps se trouve dans le manuel.";
+        orderText = "Trouvez le numéro de matricule de Jack, et rentrez le dans sur le digicode";
 
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(9f);
 
         commandPanel.SetBool("isDigicodeAvailable", true);
         
@@ -415,6 +415,9 @@ public class MissionManager : MonoBehaviour {
 		doorNums.Add(7);
 		numberOfGoodDoor = 3;
 		doorAmmount = 7;
+
+		StartCoroutine(DisplayOrder(1f));
+		orderText = "Localisez Jack et ouvrez lui un accès au self. Son emploi du temps se trouve dans le manuel.";
 
 		Dialogue dialogue2 = new Dialogue();
 		dialogue2.sentences.Add("Bien vous l'avez localisé, ouvrez lui les portes vers le self");
@@ -461,7 +464,7 @@ public class MissionManager : MonoBehaviour {
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
 
         StartCoroutine(DisplayOrder(12f));
-        orderText = "Trouvez qui se trouve dans la salle tri à l'aide du relevé d'incidents puis entrez son idifiant sur le digicode.";
+        orderText = "Trouvez qui se trouve dans la salle tri à l'aide du relevé d'incidents puis entrez son identifiant sur le digicode.";
 
         yield return new WaitForSeconds(2f);
 
