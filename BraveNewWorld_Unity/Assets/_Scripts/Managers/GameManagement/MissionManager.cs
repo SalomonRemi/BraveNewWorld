@@ -224,7 +224,7 @@ public class MissionManager : MonoBehaviour {
         yield return new WaitForSeconds(.5f);
 
         Dialogue dialogue4 = new Dialogue();
-		dialogue4.sentences.Add("Suite à l’incident de ce matin, les portes restent fermées durant les heures de travail.");
+		dialogue4.sentences.Add("Suite à l’incident de ce matin, les portes restent fermées durant les heures de travail. Il ne faudrait d'autres disparaissent aha");
 		dialogue4.sentences.Add("Ne vous en faites pas je vous accompagnerai le temps de vous apprendre le métier.");
 
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue4);
@@ -244,7 +244,7 @@ public class MissionManager : MonoBehaviour {
         //AudioManager.instance.PlayMusic("startDialogue");
 
 		dialogue.sentences.Add ("Bien, vous voilà installé, il est temps de rentrer dans le vif du sujet :");
-		dialogue.sentences.Add ("Des deltas sont bloqués dans la salle de décantation et ils ont besoin de se rendre dans le dépôt des embryons. ");
+		dialogue.sentences.Add ("Des deltas sont bloqués dans la salle de décantation et ils ont besoin de se rendre dans le dépôt des embryons.");
 		dialogue.sentences.Add ("Vous voyez ces boutons devant vous ? Ils vous permettent d’ouvrir les portes.");
 		dialogue.sentences.Add ("N’oubliez pas de presser la touche “valider” une fois les bonnes portes sélectionnées.");
 
@@ -309,7 +309,7 @@ public class MissionManager : MonoBehaviour {
 		FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
 
         StartCoroutine(DisplayOrder(11f));
-        orderText = "Localisez les livres puis déverrouillez un accès pour se débarrasser de ce matériel défecteux.";
+        orderText = "Localisez les livres dans le manuel puis déverrouillez un accès pour se débarrasser de ce matériel défecteux.";
 
         yield return new WaitForSeconds(2f);
 
@@ -346,7 +346,7 @@ public class MissionManager : MonoBehaviour {
         Dialogue dialogue = new Dialogue ();
 		dialogue.sentences.Add ("Très bien Wilson, je sens que vous avez compris ce que l’entreprise attend de vous.\n Vous n’êtes pas comme votre prédécesseur.");
 		dialogue.sentences.Add ("Bref, on vient de me faire parvenir qu’une livraison à été facturée \n et stockée en salle de fécondation, il y a 5 jours.");
-		dialogue.sentences.Add (" Avec tout ça, personne n’a eu le temps de s’en occuper. \n Trouvez sa destination et assurez son transfert.");
+		dialogue.sentences.Add ("Avec tout ça, personne n’a eu le temps de s’en occuper. \n Trouvez sa destination et assurez son transfert.");
 
 		FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
 
@@ -388,7 +388,7 @@ public class MissionManager : MonoBehaviour {
 
         Dialogue dialogue = new Dialogue();
 		dialogue.sentences.Add("Bien joué Wilson, je ne vais pas vous mentir, votre journée commence fort. Tenez, j’ai une tâche plus légère à vous confier.");
-		dialogue.sentences.Add("Un de nos ouvriers, Jack, fête ses 30 ans au sein du centre, cela se fête n’est ce pas ?");
+		dialogue.sentences.Add("Un de nos ouvriers, Jack, fête ses 30 ans au sein du centre, cela se fête n’est-ce pas ?");
 		dialogue.sentences.Add("Ses collègues, avec notre accord, lui ont réservé une surprise dans le self.");
 		dialogue.sentences.Add("Je vous donne accès au digicode, identifiez le puis ouvrez lui les portes. Je ne sais plus où il se trouve, référez vous à son emploi du temps.");
         
@@ -454,14 +454,14 @@ public class MissionManager : MonoBehaviour {
 
         Dialogue dialogue = new Dialogue();
         dialogue.sentences.Add("Vous savez Wilson, c’est en travaillant comme vous le faites \n que les employés se voient attribués une promotion et…");
-        dialogue.sentences.Add("Attendez, la salle de tri est ouverte, c’est étrange… \n Personne n’est sensé y avoir accès à cette heure-ci.");
+        dialogue.sentences.Add("Attendez, la salle de tri est ouverte, c’est étrange… \n Personne n’est censé y avoir accès à cette heure-ci.");
         dialogue.sentences.Add("Je vais essayer de me renseigner si aucune fraude ou détérioration n’a eu lieu…");
-        dialogue.sentences.Add("Essayez de trouver qui s’y trouve, vous devriez commencer \n par consulter la fiche des incidents.");
+        dialogue.sentences.Add("Essayez de trouver qui s’y trouve, vous devriez commencer \n par consulter le relevé d'incidents.");
 
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
 
         StartCoroutine(DisplayOrder(10f));
-        orderText = "Trouvez qui se trouve dans la salle tri et régler le problème.";
+        orderText = "Trouvez qui se trouve dans la salle tri à l'aide du relevé d'incidents puis entrez son idifiant sur le digicode.";
 
         yield return new WaitForSeconds(2f);
 
@@ -475,7 +475,7 @@ public class MissionManager : MonoBehaviour {
         }
 
         Dialogue dialogue2 = new Dialogue();
-        dialogue2.sentences.Add("Mhhh je vois. Mademoiselle Fanny Crown donc.\nElle a posé beaucoup de problème à l’entreprise auparavant.");
+        dialogue2.sentences.Add("Mhhh je vois. Mademoiselle Fanny Crowne donc.\nElle a posé beaucoup de problème à l’entreprise auparavant.");
         dialogue2.sentences.Add("Il est temps de régler définitivement le problème.\n Je vous donne accès au levier pour activer la salle de tri.");
         dialogue2.sentences.Add("Vous savez ce qu’il vous reste à faire.");
 

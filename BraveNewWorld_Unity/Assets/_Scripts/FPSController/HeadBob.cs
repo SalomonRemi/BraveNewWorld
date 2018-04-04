@@ -75,7 +75,7 @@ public class HeadBob : MonoBehaviour {
 
 		if ((fpsController.GetIsMovingForward() == true && cc.isGrounded || fpsController.GetIsMovingBackward() == true && cc.isGrounded
 			|| fpsController.GetIsMovingLeft() == true && cc.isGrounded || fpsController.GetIsMovingRight() == true && cc.isGrounded)
-			&& !GameManager.instance.documentOpen)
+			&& !GameManager.instance.documentOpen && !GameManager.instance.manualVisible)
         {
             //MOVING FORWARD
             camPauseCounter += Time.deltaTime;
@@ -100,7 +100,7 @@ public class HeadBob : MonoBehaviour {
 
         if ((fpsController.GetIsSprinting() == false && fpsController.GetIsMovingForward() == false && fpsController.GetIsMovingBackward() == false
             && fpsController.GetIsMovingLeft() == false && fpsController.GetIsMovingRight() == false
-			&& fpsController.GetIsFalling() == false && fpsController.GetIsJumping() == false) || GameManager.instance.documentOpen)
+			&& fpsController.GetIsFalling() == false && fpsController.GetIsJumping() == false) || GameManager.instance.documentOpen || GameManager.instance.manualVisible)
         {
             //IDLE
             pauseCounter += Time.deltaTime;
