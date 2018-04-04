@@ -460,7 +460,7 @@ public class MissionManager : MonoBehaviour {
 
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
 
-        StartCoroutine(DisplayOrder(10f));
+        StartCoroutine(DisplayOrder(12f));
         orderText = "Trouvez qui se trouve dans la salle tri à l'aide du relevé d'incidents puis entrez son idifiant sur le digicode.";
 
         yield return new WaitForSeconds(2f);
