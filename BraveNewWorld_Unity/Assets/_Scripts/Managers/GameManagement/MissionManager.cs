@@ -316,7 +316,8 @@ public class MissionManager : MonoBehaviour {
 		//StartCoroutine(randomTalk(puzzleNum));
 
 		Dialogue dialogue = new Dialogue ();
-		dialogue.sentences.Add ("Vous semblez apprendre vite, Wilson. J’ai déjà une autre tâche pour vous.");
+		dialogue.sentences.Add ("Hum, Oscar reste introuvable, nos recherches nous ont permis de conclure qu'il était en liaison avec un individu particulier. Restez sur vos gardes.");
+		dialogue.sentences.Add ("Bien ! Vous semblez apprendre vite, Wilson, continuons sur notre lancée.");
 		dialogue.sentences.Add ("Mr. Jay vient de se rendre compte que les livres éducatifs \n ont plus de 3 ans, vous rendez-vous compte ?");
 		dialogue.sentences.Add ("Localisez ce matériel défectueux, puis ouvrez l’accès,\n j’enverrais des employés s’en débarrasser.");
 
@@ -401,7 +402,10 @@ public class MissionManager : MonoBehaviour {
         //AudioManager.instance.PlayMusic("3dialogue");
 
         Dialogue dialogue = new Dialogue();
-		dialogue.sentences.Add("Bien joué Wilson, je ne vais pas vous mentir, votre journée commence fort. Tenez, j’ai une tâche plus légère à vous confier.");
+		dialogue.sentences.Add("Oscar n'a jamais quitté l'usine, les caméras ne mentent pas. Ses comportements douteux laissent à penser qu'il prépare quelque chose.");
+		dialogue.sentences.Add("Je doute qu'une information pareille soit dissimulée ici mais si jamais vous trouvez dans vos documents l'identifiant");
+		dialogue.sentences.Add("de la personne qui tire les ficelles de cette affaire, transmettez les moi.");
+		dialogue.sentences.Add("Revenons à un réel un peu plus radieux si vous le voulez bien !");
 		dialogue.sentences.Add("Un de nos ouvriers, Jack, fête ses 30 ans au sein du centre, cela se fête n’est-ce pas ?");
 		dialogue.sentences.Add("Ses collègues, avec notre accord, lui ont réservé une surprise dans le self.");
 		dialogue.sentences.Add("Je vous donne accès au digicode, identifiez le puis ouvrez lui les portes. Je ne sais plus où il se trouve, référez vous à son emploi du temps.");
