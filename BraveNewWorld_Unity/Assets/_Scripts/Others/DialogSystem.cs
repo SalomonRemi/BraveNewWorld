@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 [SerializeField]
 public class DialogSystem : MonoBehaviour {
 
 	public Queue<string> sentences = new Queue<string> ();
-	public TextMeshProUGUI dialogueText;
+	//public TextMeshProUGUI dialogueText;
+	public Text dialogueText;
 
 	void Start ()
     {
