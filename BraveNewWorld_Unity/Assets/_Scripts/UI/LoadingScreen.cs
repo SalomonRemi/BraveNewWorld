@@ -5,13 +5,13 @@ using TMPro;
 
 public class LoadingScreen : MonoBehaviour {
 
-    private TextMeshPro displayText;
+	private TextMeshProUGUI displayText;
     private float counter;
     private int state;
 
 	void Start ()
     {
-        displayText = GetComponent<TextMeshPro>();
+		displayText = this.GetComponent<TextMeshProUGUI>();
 
         state = 0;
     }
@@ -29,7 +29,7 @@ public class LoadingScreen : MonoBehaviour {
             counter = 0;
         }
 
-        if (state == 0) displayText.text = "CHARGEMENT";
+		if (state == 0) displayText.text = "CHARGEMENT";	
         else if (state == 1) displayText.text = "CHARGEMENT .";
         else if (state == 2) displayText.text = "CHARGEMENT ..";
         else if (state == 3) displayText.text = "CHARGEMENT ...";
