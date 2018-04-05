@@ -308,8 +308,9 @@ public class MissionManager : MonoBehaviour {
 	{
         puzzleNum = 2;
 		doorNums.Add (1);
+		doorNums.Add (3);
 		doorNums.Add (5);
-		numberOfGoodDoor = 2;
+		numberOfGoodDoor = 3;
 		doorAmmount = 7;
 
 		//StartCoroutine(randomTalk(puzzleNum));
@@ -427,8 +428,9 @@ public class MissionManager : MonoBehaviour {
 
 		doorNums.Add(2);
 		doorNums.Add(4);
+		doorNums.Add(6);
 		doorNums.Add(7);
-		numberOfGoodDoor = 3;
+		numberOfGoodDoor = 4;
 		doorAmmount = 7;
 
 		StartCoroutine(DisplayOrder(1f));
