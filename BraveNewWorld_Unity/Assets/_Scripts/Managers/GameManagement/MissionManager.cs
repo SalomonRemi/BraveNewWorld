@@ -47,8 +47,13 @@ public class MissionManager : MonoBehaviour {
     [HideInInspector] public float doorAmmount = 0;
 
 	public TextMeshPro recapText;
+	public TextMeshPro oscarOrderText;
     public flipSwitch flipper;
     public TextMeshPro digiTxt;
+
+	[Header("Other Settings")]
+
+	public Transform debugTransform;
 
 	[HideInInspector] public bool digiFinishPuzzle = false;
 	[HideInInspector] public bool inLastPuzzle;
@@ -61,6 +66,8 @@ public class MissionManager : MonoBehaviour {
     private int alerts = 0;
     private int puzzleNum = 0;
     private string orderText;
+
+	private MenuManager mm;
 
     GameObject player;
 
@@ -87,6 +94,7 @@ public class MissionManager : MonoBehaviour {
         enterInRoom = false;
         closeDoor = false;
 
+		mm = FindObjectOfType<MenuManager>();
 		player = GameObject.FindGameObjectWithTag ("Player");
         StartCoroutine(startIntroduction());
         StartCoroutine(scrollingBabies());
@@ -104,6 +112,8 @@ public class MissionManager : MonoBehaviour {
             AudioManager.instance.StopMusic();
 
             StartCoroutine(startMission());
+
+			player.transform.position = debugTransform.position;
         }
 
         if(doScrolling)
@@ -248,7 +258,7 @@ public class MissionManager : MonoBehaviour {
 
 		dialogue.sentences.Add ("Bien, vous voilà installé, il est temps de rentrer dans le vif du sujet :");
 		dialogue.sentences.Add ("Des deltas sont bloqués dans la salle de décantation et ils ont besoin de se rendre dans le dépôt des embryons.");
-		dialogue.sentences.Add ("Vous voyez ces boutons devant vous ? Ils vous permettent d’ouvrir les portes.");
+		dialogue.sentences.Add ("Vous voyez ces boutons au fond de la salle ? Ils vous permettent d’ouvrir les portes.");
 		dialogue.sentences.Add ("N’oubliez pas de presser la touche “valider” une fois les bonnes portes sélectionnées.");
 
 		FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
@@ -403,6 +413,8 @@ public class MissionManager : MonoBehaviour {
         yield return new WaitForSeconds(9f);
 
         commandPanel.SetBool("isDigicodeAvailable", true);
+
+		oscarOrderText.text = "Trouvez l'identifiant du responsable de la disparition d'Oscar.";
         
 		while (!finishedStep01)
         {
@@ -513,6 +525,10 @@ public class MissionManager : MonoBehaviour {
 		AudioManager.instance.PlaySound("weirdSoundsTri");
         doorNums.Clear();
         resestMission();
+
+		yield return new WaitForSeconds(5f);
+
+		mm.LoadSmallLevel("EndSceneInProgress");
     }
 
 

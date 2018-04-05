@@ -9,9 +9,13 @@ public class EndGameTrigger : MonoBehaviour {
 
     private Fade fade;
 
+	private MenuManager mm;
+
     private void Start()
     {
         fade = fadeImage.gameObject.GetComponent<Fade>();
+
+		mm = FindObjectOfType<MenuManager> ();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -19,6 +23,16 @@ public class EndGameTrigger : MonoBehaviour {
         if(other.gameObject.CompareTag("Player"))
         {
             fade.doFadingOut = false;
+			StartCoroutine (EndCoroutine ());
         }
     }
+
+	IEnumerator EndCoroutine()
+	{
+		yield return new WaitForSeconds (2f);
+
+		mm.LoadSmallLevel ("EndSceneInProgress");
+
+		yield return null;
+	}
 }

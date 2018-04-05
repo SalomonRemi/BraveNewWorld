@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class Baby_BillBoard : MonoBehaviour {
     
-    public Camera m_Camera;
+	private GameObject camera;
+	private Camera cam;
+
+	void Start()
+	{
+		camera = GameObject.FindGameObjectWithTag ("MainCamera");
+		cam = camera.GetComponent<Camera>();
+	}
 
     void Update()
     {
-        transform.LookAt(transform.position + m_Camera.transform.rotation * Vector3.forward,
-            m_Camera.transform.rotation * Vector3.up);
+        transform.LookAt(transform.position + cam.transform.rotation * Vector3.forward,
+			cam.transform.rotation * Vector3.up);
     }
 }

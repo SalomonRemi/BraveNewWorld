@@ -51,15 +51,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bedd182ef1ea9ed4e90d5f9a79617b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finishedLevel: 0
+  timeInElevator: 0
+  fadeTime: 0
+  elevatorDoorAnim: {fileID: 0}
+  hallDoorAnim: {fileID: 0}
+  doorRoomAnim: {fileID: 0}
+  blockView: {fileID: 0}
+  tutoMoveObject: {fileID: 0}
+  babiesPrefab: {fileID: 0}
+  elevator: {fileID: 0}
+  liftLoopObj: {fileID: 0}
+  instantiateTransform1: {fileID: 0}
+  instantiateTransform2: {fileID: 0}
+  goToNextStep: 0
+  isInElevator: 0
+  isInHall: 0
+  enterInRoom: 0
+  closeDoor: 0
   levier: {fileID: 0}
+  commandPanel: {fileID: 0}
+  digicode: {fileID: 0}
+  finishedLevel: 0
+  finishedStep01: 0
   keyPadCorrect: 0
-  fileDelivered: 0
-  canExitChair: 0
   mission1indication: 0
   doorAmmount: 0
   recapText: {fileID: 0}
-  light1: {fileID: 0}
-  light2: {fileID: 0}
-  light3: {fileID: 0}
+  oscarOrderText: {fileID: 0}
+  flipper: {fileID: 0}
   digiTxt: {fileID: 0}
+  debugTransform: {fileID: 0}
+  digiFinishPuzzle: 0
+  inLastPuzzle: 0
+  searchJack: 0
+  hideDigicode: 0
+  numberOfGoodDoor: 0

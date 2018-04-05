@@ -6,9 +6,15 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour {
 
+	[Header("Menu and loading")]
     public GameObject loadingScreen;
     public GameObject uiMenu;
     public Slider slider;
+
+	public void LoadSmallLevel(string name)
+	{
+		SceneManager.LoadScene(name);
+	}
 
 	public void LoadLevel(string name)
     {

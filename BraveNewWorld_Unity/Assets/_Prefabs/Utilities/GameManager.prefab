@@ -52,10 +52,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manualUi: {fileID: 0}
+  closeDocs: 0
   manualVisible: 0
   documentOpen: 0
   pagesSprites: []
-  flashKeypad: 1
-  doorOpen: 0
+  quitPause: 0
   isPaused: 0
   menuScreen: {fileID: 0}
+  canLOS: 0
+  chariotCol: {fileID: 0}
+  chariotLine: 
+  flashKeypad: 1
+  doorOpen: 0

@@ -24128,6 +24128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeInElevator: 12
+  fadeTime: 0
   elevatorDoorAnim: {fileID: 95457209496680446}
   hallDoorAnim: {fileID: 95865362147509008}
   doorRoomAnim: {fileID: 95367705730817526}
@@ -24136,6 +24137,7 @@ MonoBehaviour:
   babiesPrefab: {fileID: 1501292668027862, guid: 6d6ae9c2c79975e4986b721887175809,
     type: 2}
   elevator: {fileID: 1599161957889534}
+  liftLoopObj: {fileID: 0}
   instantiateTransform1: {fileID: 4057158510257192}
   instantiateTransform2: {fileID: 4524667079043210}
   goToNextStep: 0
@@ -24145,14 +24147,17 @@ MonoBehaviour:
   closeDoor: 0
   levier: {fileID: 0}
   commandPanel: {fileID: 0}
+  digicode: {fileID: 0}
   finishedLevel: 0
   finishedStep01: 0
   keyPadCorrect: 0
   mission1indication: 0
   doorAmmount: 0
   recapText: {fileID: 0}
+  oscarOrderText: {fileID: 0}
   flipper: {fileID: 0}
   digiTxt: {fileID: 0}
+  debugTransform: {fileID: 0}
   digiFinishPuzzle: 0
   inLastPuzzle: 0
   searchJack: 0
