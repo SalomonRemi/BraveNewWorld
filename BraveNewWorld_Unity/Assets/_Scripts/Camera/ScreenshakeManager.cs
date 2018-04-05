@@ -20,7 +20,7 @@ public class ScreenshakeManager : MonoBehaviour {
     {
 		//FindObjectOfType<CameraShake>().StartShake (elevatorLongShake);
 
-        yield return new WaitForSeconds(MissionManager.instance.timeInElevator + 5f);
+		yield return new WaitForSeconds(MissionManager.instance.timeInElevator + MissionManager.instance.fadeTime);
 
 		FindObjectOfType<CameraShake>().StartShake(elevatorEndShake);
     }

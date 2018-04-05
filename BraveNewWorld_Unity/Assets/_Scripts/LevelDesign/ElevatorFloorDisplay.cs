@@ -16,7 +16,7 @@ public class ElevatorFloorDisplay : MonoBehaviour {
 	{
 		floor = 7;
 
-		time = 5f + MissionManager.instance.timeInElevator;
+		time = MissionManager.instance.fadeTime + MissionManager.instance.timeInElevator;
 
 		text = GetComponent<TextMeshPro>();
 

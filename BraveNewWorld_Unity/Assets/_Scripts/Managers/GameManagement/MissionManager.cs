@@ -11,6 +11,7 @@ public class MissionManager : MonoBehaviour {
     [Header("Introduction Settings")]
 
     public float timeInElevator;
+	public float fadeTime;
 
     public Animator elevatorDoorAnim;
     public Animator hallDoorAnim;
@@ -122,12 +123,12 @@ public class MissionManager : MonoBehaviour {
 #region Introduction
     public IEnumerator startIntroduction()
     {
-        yield return new WaitForSeconds(5f);
-
+        yield return new WaitForSeconds(fadeTime);
         Dialogue dialogue1 = new Dialogue();
-		dialogue1.sentences.Add("Bonjour Wilson, je suis désolé de cette mutation imprévue");
-		dialogue1.sentences.Add("Oscar, votre prédécesseur a disparu et nous avions besoin d’un remplaçant capable et disponible, ce que vous êtes je n’en doute pas.");
-		dialogue1.sentences.Add("Vous êtes gradé désormais, chose assez rare pour quelqu’un de votre classe, soyez-en fier.");
+		dialogue1.sentences.Add("Bonjour Wilson, je suis désolé de cette mutation imprévue. Nous avions besoin d'un remplaçant capable et disponible, ce que vous êtes je n'en doute pas.");
+		dialogue1.sentences.Add("Oscar Sostiene, votre prédécesseur, a disparu ce matin et nous sommes actuellement à sa recherche. Nous craignons que certaines personnes en aient voulu à son bonheur.");
+		dialogue1.sentences.Add("La plupart de ses affaires sont toujours dans le bureau, n'en soyez pas dérangé une équipe passera d'ici peu.");
+		dialogue1.sentences.Add("Enfin, ce n'est pas votre problème, vous êtes gradé désormais, chose assez rare pour quelqu'un de votre classe, soyez-en fier !");
 		FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
 
         //AudioManager.instance.PlayMusic("introDialog01");
@@ -194,8 +195,8 @@ public class MissionManager : MonoBehaviour {
         }
 
         Dialogue dialogue3 = new Dialogue();
-		dialogue3.sentences.Add("Peut-être reste-t-il quelques affaires de votre prédécesseur, n’y prêtez pas attention, c’est à vous maintenant de prouver que vous êtes digne d’être ici.");
-		dialogue3.sentences.Add("Écoutez moi et tout ira pour le mieux !");
+		dialogue3.sentences.Add("Vous êtes des nôtres désormais Wilson, dans une relation de confiance. Si jamais vous trouvez des informations sur Oscar, faites m'en part,");
+		dialogue3.sentences.Add("il est sûrement en danger. Écoutez moi et tout ira pour le mieux !");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue3);
 
         //AudioManager.instance.StopMusic();
@@ -226,7 +227,7 @@ public class MissionManager : MonoBehaviour {
         yield return new WaitForSeconds(.5f);
 
         Dialogue dialogue4 = new Dialogue();
-		dialogue4.sentences.Add("Suite à l’incident de ce matin, les portes restent fermées durant les heures de travail. Il ne faudrait d'autres disparaissent aha");
+		dialogue4.sentences.Add("Suite à l’incident de ce matin, les portes restent fermées durant les heures de travail.");
 		dialogue4.sentences.Add("Ne vous en faites pas je vous accompagnerai le temps de vous apprendre le métier.");
 
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue4);
