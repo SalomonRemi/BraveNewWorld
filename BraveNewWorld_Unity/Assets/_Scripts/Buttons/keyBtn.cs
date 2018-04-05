@@ -14,13 +14,14 @@ public class keyBtn : MonoBehaviour {
 
     private Animator doorAnimator;
     private Material originalMat;
+    private MapDoor likedDoor;
 
     private void Start()
     {
         parent = gameObject.GetComponentInParent<Keypad>();
         originalMat = gameObject.GetComponent<MeshRenderer>().material;
 
-        if(doorRelation != null) doorAnimator = doorRelation.GetComponent<Animator>();
+        if (doorRelation != null) likedDoor = doorRelation.GetComponent<MapDoor>();
     }
 
 
@@ -30,11 +31,11 @@ public class keyBtn : MonoBehaviour {
         {
             if (clicked)
             {
-                doorAnimator.SetBool("Open", true);
+                likedDoor.activateFeedback = true;
             }
             else
             {
-                doorAnimator.SetBool("Open", false);
+                likedDoor.activateFeedback = false;
             }
         }
     }
