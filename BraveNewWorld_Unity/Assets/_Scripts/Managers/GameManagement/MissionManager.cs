@@ -328,13 +328,13 @@ public class MissionManager : MonoBehaviour {
 		Dialogue dialogue = new Dialogue ();
 		dialogue.sentences.Add ("Hum, Oscar reste introuvable, nos recherches nous ont permis de conclure qu'il était en liaison avec un individu particulier. Restez sur vos gardes.");
 		dialogue.sentences.Add ("Bien ! Vous semblez apprendre vite, Wilson, continuons sur notre lancée.");
-		dialogue.sentences.Add ("Mr. Jay vient de se rendre compte que les livres éducatifs \n ont plus de 3 ans, vous rendez-vous compte ?");
-		dialogue.sentences.Add ("Localisez ce matériel défectueux, puis ouvrez l’accès,\n j’enverrais des employés s’en débarrasser.");
+		dialogue.sentences.Add ("Mr. Jay vient de se rendre compte que les batteries sont usées, vous rendez-vous compte ?");
+		dialogue.sentences.Add ("Localisez ce matériel défectueux, puis ouvrez l’accès, j’enverrais des employés s’en débarrasser.");
 
 		FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
 
         StartCoroutine(DisplayOrder(11f));
-        orderText = "Localisez les livres dans le manuel puis déverrouillez un accès pour se débarrasser de ce matériel défecteux.";
+        orderText = "Localisez les batteries dans le manuel puis déverrouillez un accès pour se débarrasser de ce matériel défecteux.";
 
         yield return new WaitForSeconds(2f);
 

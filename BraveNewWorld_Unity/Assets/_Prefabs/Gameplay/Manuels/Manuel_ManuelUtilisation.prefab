@@ -65,14 +65,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1430908056524842}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.39327708, y: -0.5876502, z: 0.5876511, w: 0.3932768}
+  m_LocalPosition: {x: 7.732, y: 1.8832, z: 3.9570007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4249250896043184}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 112.41601}
 --- !u!23 &23042764450109550
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -137,15 +137,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bookPagesSprites:
-  - {fileID: 21300000, guid: b1bac3987b1ad064a80f72496ee46425, type: 3}
-  - {fileID: 21300000, guid: 9f1ddd79b2fa5444b9f0150b809a8dd0, type: 3}
-  - {fileID: 21300000, guid: fca57dd61c151c649adcbc7ba39e71bb, type: 3}
-  - {fileID: 21300000, guid: b85050c83db242e4eafba8f57eb350d9, type: 3}
-  - {fileID: 21300000, guid: b0c18c676ab4d4343adc234472e1d618, type: 3}
-  - {fileID: 21300000, guid: 86cccff4f962a034c841b8a741b9d50b, type: 3}
-  - {fileID: 21300000, guid: f1daba12d1620314bbc440ac976332b2, type: 3}
-  - {fileID: 21300000, guid: a8371807677c9624f95debc13138fe33, type: 3}
-  displayName: Manuel d'utilisation
+  - {fileID: 21300000, guid: 41bad23ab7df0ba4490ba44b1f6f0bb7, type: 3}
+  - {fileID: 21300000, guid: 3eea8c66547aeeb45b10d1f1291b38dd, type: 3}
+  - {fileID: 21300000, guid: 2c2ea17baee164c46864cf38ca845b25, type: 3}
+  - {fileID: 21300000, guid: 64cd684826ac4f44eb8ba8a1b9d715f3, type: 3}
+  - {fileID: 21300000, guid: 1ec5f83996811b24d98eb770d4f3db1c, type: 3}
+  - {fileID: 21300000, guid: 9e0e1cccb68cb8e459c5b99467956067, type: 3}
+  - {fileID: 21300000, guid: 9837f6741a715a4439f77091a1a02243, type: 3}
+  - {fileID: 21300000, guid: b38f1555bc2bc5246a7c1a87e231e51c, type: 3}
+  displayName: Manuel
 --- !u!114 &114652558009585882
 MonoBehaviour:
   m_ObjectHideFlags: 1
