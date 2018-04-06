@@ -29,6 +29,7 @@ public class MissionManager : MonoBehaviour {
     [HideInInspector] public bool isInHall;
     [HideInInspector] public bool enterInRoom;
     [HideInInspector] public bool closeDoor;
+	[HideInInspector] public bool isAtDesk;
 
     private bool doScrolling;
     private float counter;
@@ -244,9 +245,19 @@ public class MissionManager : MonoBehaviour {
 
         yield return new WaitForSeconds(7f);
 
+		while (!goToNextStep)
+		{
+			if (isAtDesk)
+			{
+				goToNextStep = true;
+			}
+			yield return null;
+		}
+
         StartCoroutine(startMission());
     }
 #endregion 
+
 
     public IEnumerator startMission()
     {
@@ -256,10 +267,9 @@ public class MissionManager : MonoBehaviour {
 
         //AudioManager.instance.PlayMusic("startDialogue");
 
-		dialogue.sentences.Add ("Bien, vous voilà installé, il est temps de rentrer dans le vif du sujet :");
-		dialogue.sentences.Add ("Des deltas sont bloqués dans la salle de décantation et ils ont besoin de se rendre dans le dépôt des embryons.");
-		dialogue.sentences.Add ("Vous voyez ces boutons au fond de la salle ? Ils vous permettent d’ouvrir les portes.");
-		dialogue.sentences.Add ("N’oubliez pas de presser la touche “valider” une fois les bonnes portes sélectionnées.");
+		dialogue.sentences.Add ("Bien, vous voilà installé. Devant vous se trouvent le manuel d’utilisation et le tableau de bord, ils seront vos meilleurs amis aujourd’hui.");
+		dialogue.sentences.Add ("Il est temps de rentrer dans le vif du sujet :");
+		dialogue.sentences.Add ("Des deltas sont bloqués dans la salle de décantation et ils ont besoin de se rendre dans le dépôt des embryons. Ouvrez leur les portes !");
 
 		FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
 
@@ -408,7 +418,7 @@ public class MissionManager : MonoBehaviour {
 		dialogue.sentences.Add("Revenons à un réel un peu plus radieux si vous le voulez bien !");
 		dialogue.sentences.Add("Un de nos ouvriers, Jack, fête ses 30 ans au sein du centre, cela se fête n’est-ce pas ?");
 		dialogue.sentences.Add("Ses collègues, avec notre accord, lui ont réservé une surprise dans le self.");
-		dialogue.sentences.Add("Je vous donne accès au digicode, identifiez le puis ouvrez lui les portes. Je ne sais plus où il se trouve, référez vous à son emploi du temps.");
+		dialogue.sentences.Add("Je vous donne accès au digicode, identifiez le puis ouvrez lui les portes. Je ne sais plus où il se trouve, référez vous à son planning.");
         
 		FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
 
@@ -438,7 +448,7 @@ public class MissionManager : MonoBehaviour {
 		doorAmmount = 7;
 
 		StartCoroutine(DisplayOrder(1f));
-		orderText = "Localisez Jack et ouvrez lui un accès au self. Son emploi du temps se trouve dans le manuel.";
+		orderText = "Localisez Jack et ouvrez lui un accès au self. Son planning se trouve dans le manuel.";
 
 		Dialogue dialogue2 = new Dialogue();
 		dialogue2.sentences.Add("Bien vous l'avez localisé, ouvrez lui les portes vers le self.");
