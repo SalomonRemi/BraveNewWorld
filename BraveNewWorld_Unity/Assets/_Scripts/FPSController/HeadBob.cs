@@ -62,9 +62,12 @@ public class HeadBob : MonoBehaviour {
 
     void Update()
     {
-		HeadBobIDLE();
-		HeadBobVertical();
-		HeadBobSideMovement();
+        if(cc.velocity.magnitude > 2f)
+        {
+            HeadBobVertical();
+        }
+        HeadBobIDLE();
+        HeadBobSideMovement();
         //HeadBobHitGround();
     }
 
