@@ -135,6 +135,7 @@ public class MissionManager : MonoBehaviour {
     public IEnumerator startIntroduction()
     {
         yield return new WaitForSeconds(fadeTime);
+		//intro1
         Dialogue dialogue1 = new Dialogue();
 		dialogue1.sentences.Add("Bonjour Wilson, je suis désolé de cette mutation imprévue. Nous avions besoin d'un remplaçant capable et disponible, ce que vous êtes je n'en doute pas.");
 		dialogue1.sentences.Add("Oscar Sostiene, votre prédécesseur, a disparu ce matin et nous sommes actuellement à sa recherche. Nous craignons que certaines personnes en aient voulu à son bonheur.");
@@ -176,7 +177,8 @@ public class MissionManager : MonoBehaviour {
 
         yield return new WaitForSeconds(3f);
 
-        Dialogue dialogue2 = new Dialogue();
+		//intro2
+		Dialogue dialogue2 = new Dialogue();
 		dialogue2.sentences.Add("Ne vous laissez pas impressionner par cette théâtralité, vous vous y habituerez vite.");
 		dialogue2.sentences.Add("Soyez le bienvenue Wilson, vous êtes ici chez vous.");
 
@@ -205,7 +207,8 @@ public class MissionManager : MonoBehaviour {
             yield return null;
         }
 
-        Dialogue dialogue3 = new Dialogue();
+		//intro3
+		Dialogue dialogue3 = new Dialogue();
 		dialogue3.sentences.Add("Vous êtes des nôtres désormais Wilson, dans une relation de confiance. Si jamais vous trouvez des informations sur Oscar, faites m'en part,");
 		dialogue3.sentences.Add("il est sûrement en danger. Écoutez moi et tout ira pour le mieux !");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue3);
@@ -237,7 +240,8 @@ public class MissionManager : MonoBehaviour {
 
         yield return new WaitForSeconds(.5f);
 
-        Dialogue dialogue4 = new Dialogue();
+		//intro4
+		Dialogue dialogue4 = new Dialogue();
 		dialogue4.sentences.Add("Suite à l’incident de ce matin, les portes restent fermées durant les heures de travail.");
 		dialogue4.sentences.Add("Ne vous en faites pas je vous accompagnerai le temps de vous apprendre le métier.");
 
@@ -509,7 +513,7 @@ public class MissionManager : MonoBehaviour {
         }
 
         Dialogue dialogue2 = new Dialogue();
-        dialogue2.sentences.Add("Mhhh je vois. Mademoiselle Fanny Crowne donc.\nElle a posé beaucoup de problème à l’entreprise auparavant.");
+        dialogue2.sentences.Add("Mhhh je vois. Mademoiselle Fanny Woods donc.\nElle a posé beaucoup de problème à l’entreprise auparavant.");
         dialogue2.sentences.Add("Il est temps de régler définitivement le problème.\n Je vous donne accès au levier pour activer la salle de tri.");
         dialogue2.sentences.Add("Vous savez ce qu’il vous reste à faire.");
 
