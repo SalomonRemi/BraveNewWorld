@@ -9,12 +9,14 @@ public class Keypad : MonoBehaviour {
 	public GameObject validate;
     public int enabledAmmount;
     public float keycode;
+    [HideInInspector] public bool canUse;
 
 	public List<int> keyPressed = new List<int>();
 
 	void Start ()
     {
         enabledAmmount = 0;
+        canUse = true;
 	}
 	
 	void Update ()
@@ -98,6 +100,8 @@ public class Keypad : MonoBehaviour {
     {
         if (flash)
         {
+            canUse = false;
+
             foreach (GameObject btn in keyButtons)
             {
                 btn.GetComponent<Renderer>().material.color = col;
@@ -127,6 +131,8 @@ public class Keypad : MonoBehaviour {
             {
                 btn.GetComponent<Renderer>().material.color = Color.grey;
             }
+
+            canUse = true;
         }
         foreach (GameObject btn in keyButtons)
         {

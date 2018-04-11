@@ -59,7 +59,10 @@ public class PlayerInteract : MonoBehaviour {
                 {
 					if (hit.transform.gameObject.CompareTag ("keyBtn")) 
 					{
-						hit.transform.gameObject.GetComponent<keyBtn> ().enableButton ();
+                        if(hit.transform.gameObject.GetComponentInParent<Keypad>().canUse)
+                        {
+                            hit.transform.gameObject.GetComponent<keyBtn>().enableButton();
+                        }
 					}
                     if (hit.transform.gameObject.CompareTag("digiBtn"))
                     {

@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour {
     public bool manualVisible = false;
     public bool documentOpen = false;
     public Sprite[] pagesSprites;
+    public Image turnLeftSign;
+    public Image turnRightSign; 
 
     [Header("Pause Settings")]
     public bool quitPause = false;
@@ -56,8 +58,8 @@ public class GameManager : MonoBehaviour {
 	}
 	
 
-	void Update () {
-
+	void Update ()
+    {
 		if ((Input.GetKeyDown (KeyCode.Escape) || quitPause) && !documentOpen && !manualVisible)
         {
 			if (isPaused) // Si le jeu est en pause, je reprend
@@ -118,6 +120,17 @@ public class GameManager : MonoBehaviour {
                 {
                     manualUi.GetComponent<AutoFlip>().FlipRightPage();
                 }
+
+                if (manualUi.GetComponent<AutoFlip>().ControledBook.currentPage >= manualUi.GetComponent<AutoFlip>().ControledBook.TotalPageCount)
+                {
+                    turnRightSign.enabled = false;
+                }
+                else turnRightSign.enabled = true;
+                if (manualUi.GetComponent<AutoFlip>().ControledBook.currentPage <= 0)
+                {
+                    turnLeftSign.enabled = false;
+                }
+                else turnLeftSign.enabled = true;
             }
             else
             {
