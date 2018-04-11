@@ -18,6 +18,7 @@ public class MissionManager : MonoBehaviour {
     public Animator doorRoomAnim;
 	public Animator blockView;
     public GameObject tutoMoveObject;
+	public GameObject tutoRotateObject;
     public GameObject babiesPrefab;
 	public GameObject elevator;
     public GameObject liftLoopObj;
@@ -135,7 +136,7 @@ public class MissionManager : MonoBehaviour {
     public IEnumerator startIntroduction()
     {
         yield return new WaitForSeconds(fadeTime);
-		//intro1
+
         Dialogue dialogue1 = new Dialogue();
 		dialogue1.sentences.Add("Bonjour Wilson, je suis désolé de cette mutation imprévue. Nous avions besoin d'un remplaçant capable et disponible, ce que vous êtes je n'en doute pas.");
 		dialogue1.sentences.Add("Oscar Sostiene, votre prédécesseur, a disparu ce matin et nous sommes actuellement à sa recherche. Nous craignons que certaines personnes en aient voulu à son bonheur.");
@@ -153,6 +154,7 @@ public class MissionManager : MonoBehaviour {
         AudioSource sound = liftLoopObj.GetComponent<AudioSource>();
         sound.volume = 0;
 
+		Destroy(tutoRotateObject);
 
         yield return new WaitForSeconds(3f);
 
@@ -177,7 +179,6 @@ public class MissionManager : MonoBehaviour {
 
         yield return new WaitForSeconds(3f);
 
-		//intro2
 		Dialogue dialogue2 = new Dialogue();
 		dialogue2.sentences.Add("Ne vous laissez pas impressionner par cette théâtralité, vous vous y habituerez vite.");
 		dialogue2.sentences.Add("Soyez le bienvenue Wilson, vous êtes ici chez vous.");
@@ -636,11 +637,12 @@ public class MissionManager : MonoBehaviour {
     {
         doScrolling = true;
 
-        yield return new WaitForSeconds(5f + timeInElevator * 0.60f);
+		yield return new WaitForSeconds(fadeTime + (timeInElevator * 0.60f));
 
 		blockView.SetBool ("goDown", true); 
+		tutoRotateObject.SetActive(true);
 
-        yield return new WaitForSeconds(5f + timeInElevator * 0.1f);
+		yield return new WaitForSeconds(fadeTime + timeInElevator * 0.1f);
 
         doScrolling = false;
 		Destroy (elevator);
