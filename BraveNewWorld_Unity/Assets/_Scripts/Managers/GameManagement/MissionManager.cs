@@ -41,6 +41,7 @@ public class MissionManager : MonoBehaviour {
     public Animator commandPanel;
 
 	public digiCode digicode;
+	public Keypad keypad;
 
     [HideInInspector] public bool finishedLevel = false;
     [HideInInspector] public bool finishedStep01 = false;

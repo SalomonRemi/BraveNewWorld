@@ -12,9 +12,11 @@ public class keyBtn : MonoBehaviour {
     public Keypad parent;
 	public GameObject doorRelation;
 
-    private Animator doorAnimator;
     private Material originalMat;
     private MapDoor likedDoor;
+
+	[HideInInspector] public Animator doorAnimator;
+	[HideInInspector] public GameObject support;
 
     private void Start()
     {
@@ -22,6 +24,8 @@ public class keyBtn : MonoBehaviour {
         originalMat = gameObject.GetComponent<MeshRenderer>().material;
 
         if (doorRelation != null) likedDoor = doorRelation.GetComponent<MapDoor>();
+
+		if (!validate) support = transform.GetChild(0).gameObject;
     }
 
 
@@ -43,13 +47,13 @@ public class keyBtn : MonoBehaviour {
 
     public void enableButton() //APPELLER QUAND ON CLICK, DANS PLAYER INTERACT
     {
-		if (validate && parent.keyPressed.Count > 0)
+		if (validate && parent.keyPressed.Count > 0) // VALIDER
 		{ 
 			parent.ComfirmInput ();
 		} 
 		else if(validate && parent.keyPressed.Count == 0) AudioManager.instance.PlaySound("buttonFalse");
 
-		if (parent.enabledAmmount < MissionManager.instance.doorAmmount && !clicked && !validate) 
+		if (parent.enabledAmmount < MissionManager.instance.doorAmmount && !clicked && !validate)// ACTIVER UN BOUTON
 		{ 
 			parent.keyPressed.Add(buttonIntValue);
 			parent.enabledAmmount++;
@@ -57,7 +61,7 @@ public class keyBtn : MonoBehaviour {
 
 			AudioManager.instance.PlaySound ("clickBtn");
 		}
-		else if (clicked) 
+		else if (clicked) // DESACTIVER UN BOUTON
 		{
 			for (int i = 0; i < parent.keyPressed.Count; i++) 
 			{
@@ -72,4 +76,10 @@ public class keyBtn : MonoBehaviour {
 			}
 		}
     }
+
+	public void SetSupportColor()
+	{
+		if (clicked) support.GetComponent<MeshRenderer> ().material.color = Color.green;
+		else support.GetComponent<MeshRenderer> ().material.color = Color.black;
+	}
 }

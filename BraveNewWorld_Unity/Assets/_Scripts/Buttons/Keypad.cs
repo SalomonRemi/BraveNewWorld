@@ -28,10 +28,20 @@ public class Keypad : MonoBehaviour {
 
 		foreach(GameObject btn in keyButtons)
         {
-            if (btn.GetComponent<keyBtn>().clicked)
-            {
-                btn.GetComponent<Renderer>().material.color = Color.green;
-            }
+			Vector3 newScale = new Vector3(btn.transform.localScale.x,btn.transform.localScale.y,btn.transform.localScale.z);
+
+			if (btn.GetComponent<keyBtn> ().clicked)
+			{
+				newScale.y = 1.3f;
+				btn.GetComponent<keyBtn>().support.GetComponent<MeshRenderer> ().material.color = Color.green;
+			} 
+			else
+			{
+				newScale.y = 3.3f;
+				btn.GetComponent<keyBtn>().support.GetComponent<MeshRenderer> ().material.color = Color.black;
+			}
+
+			btn.transform.localScale = newScale;
 
             if (GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<PlayerInteract>().isSitting)
             {
