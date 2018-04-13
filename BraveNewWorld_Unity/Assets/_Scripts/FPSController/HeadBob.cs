@@ -62,10 +62,7 @@ public class HeadBob : MonoBehaviour {
 
     void Update()
     {
-        if(cc.velocity.magnitude > 2f)
-        {
-            HeadBobVertical();
-        }
+        HeadBobVertical();
         HeadBobIDLE();
         HeadBobSideMovement();
         //HeadBobHitGround();
@@ -76,24 +73,26 @@ public class HeadBob : MonoBehaviour {
     {
         affectedCamLocalY = camera.transform.localPosition.y;
 
-		if ((fpsController.GetIsMovingForward() == true && cc.isGrounded || fpsController.GetIsMovingBackward() == true && cc.isGrounded
-			|| fpsController.GetIsMovingLeft() == true && cc.isGrounded || fpsController.GetIsMovingRight() == true && cc.isGrounded)
-			&& !GameManager.instance.documentOpen && !GameManager.instance.manualVisible)
-        {
-            //MOVING FORWARD
-            camPauseCounter += Time.deltaTime;
-            if (camPauseCounter > 0.17) // time before start
-            {
-                camera.transform.localPosition = new Vector3(camera.transform.localPosition.x,
-                affectedCamLocalY + ((float)Mathf.Sin(Time.time * verticalBobSpeed) * (verticalFloatStrength)),
-                camera.transform.localPosition.z);
-            }
-        }
-        else if(camera.transform.localPosition.y != originalCamLocalY)
-        {
-            camPauseCounter = 0;
-            LeanTween.moveLocalY(cam.gameObject, originalCamLocalY, .5f);
-        }
+		if (!GameManager.instance.documentOpen && !GameManager.instance.manualVisible) 
+		{
+			if (cc.velocity.magnitude > 2f)
+			{
+				camPauseCounter += Time.deltaTime;
+
+				if (camPauseCounter > 0.17) // time before start
+				{
+					camera.transform.localPosition = new Vector3(camera.transform.localPosition.x,
+					affectedCamLocalY + ((float)Mathf.Sin(Time.time * verticalBobSpeed) * (verticalFloatStrength)),
+					camera.transform.localPosition.z);
+				}
+			}
+			else if(camera.transform.localPosition.y != originalCamLocalY)
+			{
+				camPauseCounter = 0;
+				Debug.Log ("return original pos");
+				LeanTween.moveLocalY(cam.gameObject, originalCamLocalY, .5f);
+			}
+		}
     }
 
 

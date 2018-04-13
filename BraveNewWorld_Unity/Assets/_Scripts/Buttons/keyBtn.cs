@@ -23,7 +23,11 @@ public class keyBtn : MonoBehaviour {
         parent = gameObject.GetComponentInParent<Keypad>();
         originalMat = gameObject.GetComponent<MeshRenderer>().material;
 
-        if (doorRelation != null) likedDoor = doorRelation.GetComponent<MapDoor>();
+		if (doorRelation != null)
+		{
+			likedDoor = doorRelation.GetComponent<MapDoor>();
+			doorAnimator = doorRelation.GetComponent<Animator>();
+		}
 
 		if (!validate) support = transform.GetChild(0).gameObject;
     }

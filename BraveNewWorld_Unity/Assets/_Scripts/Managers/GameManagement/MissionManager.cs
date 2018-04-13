@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using TMPro;
 using DigitalRuby.SoundManagerNamespace;
 
@@ -57,6 +58,7 @@ public class MissionManager : MonoBehaviour {
 	[Header("Other Settings")]
 
 	public Transform debugTransform;
+	public GameObject agent;
 
 	[HideInInspector] public bool digiFinishPuzzle = false;
 	[HideInInspector] public bool inLastPuzzle;
@@ -69,6 +71,7 @@ public class MissionManager : MonoBehaviour {
     private int alerts = 0;
     private int puzzleNum = 0;
     private string orderText;
+	private bool doorFeedbackState;
 
 	private MenuManager mm;
 
@@ -101,6 +104,8 @@ public class MissionManager : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player");
         StartCoroutine(startIntroduction());
         StartCoroutine(scrollingBabies());
+
+		agent.SetActive (false);
 
         recapText.text = "Ne bougez plus, votre bonheur est en danger. Nous venons vous chercher.";
 	}
@@ -308,6 +313,13 @@ public class MissionManager : MonoBehaviour {
             yield return null;
         }
 
+		StartCoroutine (MapFeedback (3,6));
+
+		while (!doorFeedbackState)
+		{
+			yield return null;
+		}
+
         doorNums.Clear();
 
         yield return new WaitForSeconds(2f);
@@ -353,6 +365,13 @@ public class MissionManager : MonoBehaviour {
 			yield return null;
 		}
 
+		StartCoroutine (MapFeedback (1,5));
+
+		while (!doorFeedbackState)
+		{
+			yield return null;
+		}
+
 		//StopCoroutine("randomTalk");
 		doorNums.Clear();
 		StartCoroutine(mission3());
@@ -393,6 +412,13 @@ public class MissionManager : MonoBehaviour {
 				finishedLevel = true;
             }
             yield return null;
+		}
+
+		StartCoroutine (MapFeedback (2,6));
+
+		while (!doorFeedbackState)
+		{
+			yield return null;
 		}
 
         //StopCoroutine("randomTalk");
@@ -469,6 +495,13 @@ public class MissionManager : MonoBehaviour {
 			{
 				finishedLevel = true;
 			}
+			yield return null;
+		}
+
+		StartCoroutine (MapFeedback (4,7));
+
+		while (!doorFeedbackState)
+		{
 			yield return null;
 		}
 
@@ -560,6 +593,7 @@ public class MissionManager : MonoBehaviour {
         finishedStep01 = false;
         finishedLevel = false;
 		digiFinishPuzzle = false;
+		doorFeedbackState = false;
 
 		foreach (GameObject btn in digicode.keyButtons)
 		{
@@ -596,6 +630,55 @@ public class MissionManager : MonoBehaviour {
 		else return false;
 	}
 
+
+	private void DoGoodDoorAnim(List<int> puzzleDoorNumber, bool doorState)
+	{
+		for (int i = 0; i < puzzleDoorNumber.Count; i++)
+		{
+			int door = puzzleDoorNumber[i] - 1;
+			keypad.keyButtons [door].GetComponent<keyBtn> ().doorAnimator.SetBool ("Open", doorState);
+		}
+	}
+
+
+	public IEnumerator MapFeedback(int startRoom, int endRoom)
+	{
+		bool done = false;
+		bool state = true;
+		DoGoodDoorAnim (doorNums, state);
+
+		agent.transform.position = agent.GetComponent<AgentRegisteredPos>().pos[startRoom - 1].position;
+		agent.SetActive (true);
+
+		Transform finalLocation = agent.GetComponent<AgentRegisteredPos>().pos[endRoom - 1]; 
+
+		NavMeshAgent mNavMeshAgent = agent.GetComponent<NavMeshAgent> ();
+
+		mNavMeshAgent.SetDestination (finalLocation.position);
+
+
+		while (!done) //TANT QUE LE AGENT N'A PAS ATTEINT DESTINATION
+		{
+			if (!mNavMeshAgent.pathPending)
+			{
+				if (mNavMeshAgent.remainingDistance <= mNavMeshAgent.stoppingDistance)
+				{
+					if (!mNavMeshAgent.hasPath || mNavMeshAgent.velocity.sqrMagnitude == 0f)
+					{
+						done = true;
+					}
+				}
+			}
+			yield return null;
+		}
+			
+		agent.SetActive (false);
+		state = false;
+		DoGoodDoorAnim (doorNums, state);
+		doorFeedbackState = true;
+	}
+
+
     public IEnumerator randomTalk(int missionLevel)
     {
         int i = Random.Range(1, 6);
@@ -625,6 +708,7 @@ public class MissionManager : MonoBehaviour {
         StartCoroutine(randomTalk(missionLevel));
     }
 
+
     public IEnumerator DisplayOrder(float waitBeforDisplay)
     {
         recapText.text = "";
@@ -633,6 +717,7 @@ public class MissionManager : MonoBehaviour {
 
         recapText.text = orderText;
     }
+
 
     private IEnumerator scrollingBabies()
     {
