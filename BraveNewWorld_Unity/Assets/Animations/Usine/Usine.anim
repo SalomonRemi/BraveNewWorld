@@ -222,14 +222,20 @@ AnimationClip:
       - serializedVersion: 2
         time: 7.8
         value: {x: 8.454, y: 19.455002, z: -169.742}
-        inSlope: {x: 0, y: -6.9457717, z: 0}
-        outSlope: {x: 0, y: -6.9457717, z: 0}
+        inSlope: {x: 0, y: -12.525415, z: 0}
+        outSlope: {x: 0, y: -12.525415, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 10.4
-        value: {x: 8.454, y: 1.396, z: -169.742}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
+        value: {x: 8.454, y: -19.098522, z: -169.742}
+        inSlope: {x: 0, y: -11.292564, z: 0}
+        outSlope: {x: 0, y: -11.292564, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 12.25
+        value: {x: 8.454, y: -22.181332, z: -169.742}
+        inSlope: {x: 0, y: 10.915798, z: 0}
+        outSlope: {x: 0, y: 10.915798, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -2060,15 +2066,15 @@ AnimationClip:
       - serializedVersion: 2
         time: 7.8
         value: 19.455002
-        inSlope: -6.9457717
-        outSlope: -6.9457717
+        inSlope: -12.525415
+        outSlope: -12.525415
         tangentMode: 136
       - serializedVersion: 2
-        time: 10.4
-        value: 1.396
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        time: 12.25
+        value: -22.181332
+        inSlope: 10.915798
+        outSlope: 10.915798
+        tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -2286,7 +2292,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: GameObject (4)/2AxisTarget (1)
+    path: Capsule_3
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2296,7 +2302,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: GameObject (4)/2AxisTarget (1)
+    path: Capsule_3
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2306,7 +2312,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: GameObject (4)/2AxisTarget (1)
+    path: Capsule_3
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2436,7 +2442,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Capsule_3
+    path: GameObject (4)/2AxisTarget (1)
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2446,7 +2452,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Capsule_3
+    path: GameObject (4)/2AxisTarget (1)
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -2456,7 +2462,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Capsule_3
+    path: GameObject (4)/2AxisTarget (1)
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
