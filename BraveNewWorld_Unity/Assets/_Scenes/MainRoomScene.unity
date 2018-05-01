@@ -2269,6 +2269,7 @@ MonoBehaviour:
   validate: {fileID: 348495925}
   enabledAmmount: 0
   keycode: 0
+  ep: {fileID: 1255045537}
   canUse: 0
   keyPressed: 
 --- !u!1 &70713802
@@ -42962,6 +42963,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1255045535}
   - component: {fileID: 1255045536}
+  - component: {fileID: 1255045537}
   m_Layer: 0
   m_Name: MissionManager
   m_TagString: Untagged
@@ -43024,6 +43026,7 @@ MonoBehaviour:
   keyPadCorrect: 0
   mission1indication: 0
   doorAmmount: 0
+  inExePuzzle: 0
   recapText: {fileID: 1514590216}
   oscarOrderText: {fileID: 1704805451}
   flipper: {fileID: 110168445}
@@ -43035,6 +43038,22 @@ MonoBehaviour:
   searchJack: 0
   hideDigicode: 0
   numberOfGoodDoor: 0
+--- !u!114 &1255045537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1255045534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c267e4aadb76c4a4c83c3ddc18a48a88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  digicode: {fileID: 67783387}
+  keypad: {fileID: 67783388}
+  puzzleDone: 0
+  puzzleOk: 0
+  nextStep: 0
 --- !u!1 &1257326017
 GameObject:
   m_ObjectHideFlags: 0

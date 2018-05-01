@@ -9,6 +9,7 @@ public class Keypad : MonoBehaviour {
 	public GameObject validate;
     public int enabledAmmount;
     public float keycode;
+    public ExePuzzle ep;
     [HideInInspector] public bool canUse;
 
 	public List<int> keyPressed = new List<int>();
@@ -59,36 +60,90 @@ public class Keypad : MonoBehaviour {
 
 	public void ComfirmInput()
 	{
-		if (MissionManager.instance.ValidateKeypadCode (keyPressed) == true) 
-		{
-			Debug.Log ("validate");
+        if (!MissionManager.instance.inExePuzzle)
+        {
+            if (MissionManager.instance.ValidateKeypadCode(keyPressed) == true)
+            {
+                Debug.Log("validate");
 
-			foreach (GameObject btn in keyButtons)
-			{
-				btn.GetComponent<keyBtn>().clicked = false;
-			}
-			if (GameManager.instance.flashKeypad)
-			{
-				StartCoroutine(flashKeys(Color.green, true));
-			}
-			else
-			{
-				StartCoroutine(flashKeys(Color.green, false));
-			}
-			AudioManager.instance.PlaySound("digiOkSound");
-			MissionManager.instance.keyPadCorrect = true;
-		} 
-		else
-		{
-			Debug.Log ("not validate");
+                foreach (GameObject btn in keyButtons)
+                {
+                    btn.GetComponent<keyBtn>().clicked = false;
+                }
+                if (GameManager.instance.flashKeypad)
+                {
+                    StartCoroutine(flashKeys(Color.green, true));
+                }
+                else
+                {
+                    StartCoroutine(flashKeys(Color.green, false));
+                }
+                AudioManager.instance.PlaySound("digiOkSound");
+                MissionManager.instance.keyPadCorrect = true;
+            }
+            else
+            {
+                Debug.Log("not validate");
 
-			foreach (GameObject btn in keyButtons)
-			{
-				btn.GetComponent<keyBtn>().clicked = false;
-			}
-			StartCoroutine(flashKeys(Color.red, true));
-			AudioManager.instance.PlaySound("digiError");
-		}
+                foreach (GameObject btn in keyButtons)
+                {
+                    btn.GetComponent<keyBtn>().clicked = false;
+                }
+                StartCoroutine(flashKeys(Color.red, true));
+                AudioManager.instance.PlaySound("digiError");
+            }
+        }
+        else
+        {
+            if(ep.puzzleOk)
+            {
+                Debug.Log("validate exe");
+
+                foreach (GameObject btn in keyButtons)
+                {
+                    btn.GetComponent<keyBtn>().clicked = false;
+                }
+                if (GameManager.instance.flashKeypad)
+                {
+                    StartCoroutine(lightFlashKeys(Color.green, true));
+                }
+                else
+                {
+                    StartCoroutine(flashKeys(Color.green, false));
+                }
+
+                ep.nextStep = true;
+            }
+            else if(ep.puzzleDone)
+            {
+                foreach (GameObject btn in keyButtons)
+                {
+                    btn.GetComponent<keyBtn>().clicked = false;
+                }
+                if (GameManager.instance.flashKeypad)
+                {
+                    StartCoroutine(flashKeys(Color.green, true));
+                }
+                else
+                {
+                    StartCoroutine(flashKeys(Color.green, false));
+                }
+                AudioManager.instance.PlaySound("digiOkSound");
+                MissionManager.instance.keyPadCorrect = true;
+            }
+            else
+            {
+                Debug.Log("not validate exe");
+
+                foreach (GameObject btn in keyButtons)
+                {
+                    btn.GetComponent<keyBtn>().clicked = false;
+                }
+                StartCoroutine(lightFlashKeys(Color.red, true));
+
+                ep.StopPuzzle();
+            }
+        }
 	}
 
 
@@ -141,6 +196,33 @@ public class Keypad : MonoBehaviour {
             {
                 btn.GetComponent<Renderer>().material.color = Color.grey;
             }
+
+            canUse = true;
+        }
+        foreach (GameObject btn in keyButtons)
+        {
+            btn.GetComponent<Renderer>().material.color = Color.grey;
+        }
+        resetKeypad();
+        yield return null;
+    }
+
+    public IEnumerator lightFlashKeys(Color col, bool flash)
+    {
+        if (flash)
+        {
+            canUse = false;
+
+            foreach (GameObject btn in keyButtons)
+            {
+                btn.GetComponent<Renderer>().material.color = col;
+            }
+            yield return new WaitForSeconds(0.4f);
+            foreach (GameObject btn in keyButtons)
+            {
+                btn.GetComponent<Renderer>().material.color = Color.grey;
+            }
+            yield return new WaitForSeconds(0.2f);
 
             canUse = true;
         }

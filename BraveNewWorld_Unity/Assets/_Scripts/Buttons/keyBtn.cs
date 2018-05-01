@@ -53,7 +53,7 @@ public class keyBtn : MonoBehaviour {
     {
 		if (validate && parent.keyPressed.Count > 0) // VALIDER
 		{ 
-			parent.ComfirmInput ();
+			parent.ComfirmInput();
 		} 
 		else if(validate && parent.keyPressed.Count == 0) AudioManager.instance.PlaySound("buttonFalse");
 
@@ -63,7 +63,7 @@ public class keyBtn : MonoBehaviour {
 			parent.enabledAmmount++;
 			clicked = true;
 
-			AudioManager.instance.PlaySound ("clickBtn");
+			AudioManager.instance.PlaySound("clickBtn");
 		}
 		else if (clicked) // DESACTIVER UN BOUTON
 		{
@@ -75,7 +75,7 @@ public class keyBtn : MonoBehaviour {
 					gameObject.GetComponent<keyBtn>().clicked = false;
 					parent.keyPressed.RemoveAt(i);
 
-					AudioManager.instance.PlaySound ("clickBtn");
+					AudioManager.instance.PlaySound("clickBtn");
 				}
 			}
 		}
