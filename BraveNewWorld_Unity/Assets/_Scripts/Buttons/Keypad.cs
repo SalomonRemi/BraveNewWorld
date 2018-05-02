@@ -86,6 +86,7 @@ public class Keypad : MonoBehaviour {
                     btn.GetComponent<keyBtn>().clicked = false;
                 }
                 AudioManager.instance.PlaySound("digiError");
+                ep.StopPuzzle();
             }
         }
         else
@@ -131,8 +132,6 @@ public class Keypad : MonoBehaviour {
                     btn.GetComponent<keyBtn>().clicked = false;
                 }
                 StartCoroutine(lightFlashKeys(Color.red, true));
-
-                ep.StopPuzzle();
             }
         }
 	}

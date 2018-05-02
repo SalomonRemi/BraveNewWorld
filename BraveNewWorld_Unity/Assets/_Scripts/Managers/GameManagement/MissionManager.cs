@@ -332,7 +332,7 @@ public class MissionManager : MonoBehaviour {
         yield return new WaitForSeconds(2f);
 
         resestMission();
-        StartCoroutine (mission1());
+        StartCoroutine (mission2());
 
         //StopCoroutine("randomTalk");
         yield return null;
