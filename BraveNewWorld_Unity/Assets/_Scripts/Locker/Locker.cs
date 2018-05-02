@@ -40,8 +40,6 @@ public class Locker : MonoBehaviour {
 
         if(validateNumber == lockerNum.Count)
         {
-            Debug.Log("open");
-
             codeOk = true;
 
             if(!feedbackDone) StartCoroutine(Feedback());

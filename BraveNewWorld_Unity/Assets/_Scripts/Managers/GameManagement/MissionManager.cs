@@ -331,8 +331,8 @@ public class MissionManager : MonoBehaviour {
 
         yield return new WaitForSeconds(2f);
 
-		StartCoroutine (mission2 ());
         resestMission();
+        StartCoroutine (mission1());
 
         //StopCoroutine("randomTalk");
         yield return null;
@@ -555,8 +555,8 @@ public class MissionManager : MonoBehaviour {
 
 		//StopCoroutine("randomTalk");
         doorNums.Clear();
-        StartCoroutine(mission6());
         resestMission();
+        StartCoroutine(mission6());
 
         yield return null;
     }
@@ -566,13 +566,16 @@ public class MissionManager : MonoBehaviour {
     {
         puzzleNum = 6;
         inExePuzzle = true;
+        canStartExePuzzle = false; // RESET MANUEL ? 
 
         Dialogue dialogue = new Dialogue();
-        dialogue.sentences.Add("Bien Wilson, les batteries seront placées dans le broyeur sous peu. J’ai une tâche plus urgente à vous confier.");
+        dialogue.sentences.Add("Merci Wilson, merci pour Jack ! Oh mais c’est déjà l’heure du conditionnement, nous sommes en retard !");
+        dialogue.sentences.Add("Il va falloir régler ça, écoutez moi attentivement je vous indiquerai la marche à suivre."); 
+        dialogue.sentences.Add("Vous êtes devant le panneau de commandes? Bien.");
 
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
 
-        StartCoroutine(DisplayOrder(5f));
+        StartCoroutine(DisplayOrder(10f));
         orderText = "Écoutez les ordres du directeur.";
 
         while (!canStartExePuzzle)
@@ -611,6 +614,7 @@ public class MissionManager : MonoBehaviour {
         //AudioManager.instance.PlayMusic("4dialogue");
 
         Dialogue dialogue = new Dialogue();
+        dialogue.sentences.Add("Merci, voilà un conditionnement parfaitement réalisé");
         dialogue.sentences.Add("Vous savez Wilson, c’est en travaillant comme vous le faites \n que les employés se voient attribués une promotion et…");
         dialogue.sentences.Add("Attendez, la salle de tri est ouverte, c’est étrange… \n Personne n’est censé y avoir accès à cette heure-ci.");
         dialogue.sentences.Add("Je vais essayer de me renseigner si aucune fraude ou détérioration n’a eu lieu…");
