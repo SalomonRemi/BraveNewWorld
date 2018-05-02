@@ -401,6 +401,9 @@ public class MissionManager : MonoBehaviour {
 
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
 
+        StartCoroutine(DisplayOrder(11f));
+        orderText = "Écoutez les ordres du directeur.";
+
         while (!canStartExePuzzle)
         {
             yield return null;
@@ -561,14 +564,36 @@ public class MissionManager : MonoBehaviour {
 
     public IEnumerator mission6()
     {
+        puzzleNum = 6;
+        inExePuzzle = true;
+
+        Dialogue dialogue = new Dialogue();
+        dialogue.sentences.Add("Bien Wilson, les batteries seront placées dans le broyeur sous peu. J’ai une tâche plus urgente à vous confier.");
+
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
+
+        StartCoroutine(DisplayOrder(5f));
+        orderText = "Écoutez les ordres du directeur.";
+
+        while (!canStartExePuzzle)
+        {
+            yield return null;
+        }
+
+        ep.StartPuzzle(puzzleNum);
+
         while (!ep.puzzleDone)
         {
             yield return null;
         }
 
+        keypad.ComfirmInput(); // APPELLE COMFIRMINPUT POUR FEEDBAKC FLASH ET SON
+
+        yield return new WaitForSeconds(3f);
+
         doorNums.Clear();
-        StartCoroutine(mission7());
         resestMission();
+        StartCoroutine(mission4());
 
         yield return null;
     }

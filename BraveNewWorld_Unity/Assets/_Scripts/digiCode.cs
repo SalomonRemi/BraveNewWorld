@@ -13,6 +13,8 @@ public class digiCode : MonoBehaviour {
     public Animator tiroir;
     public Animator door;
 
+    public ExePuzzle ep;
+
 	private Animator levierAnim;
 
 
@@ -35,9 +37,7 @@ public class digiCode : MonoBehaviour {
             enabledAmmount = 0;
             MissionManager.instance.digiTxt.text = "";
         }
-        else
-			MissionManager.instance.digiTxt.text = "" + keycode;
-
+        else MissionManager.instance.digiTxt.text = "" + keycode;
 
         foreach (GameObject btn in keyButtons)
         {
@@ -58,28 +58,38 @@ public class digiCode : MonoBehaviour {
 
     public void validateInput()
     {
-        if (keyPadValidation(keycode))
+        if(MissionManager.instance.inExePuzzle)
         {
-            foreach (GameObject btn in keyButtons)
+            if(keycode == 95 && ep.stepID == 1)
             {
-                btn.GetComponent<digicodeBtn>().clicked = false;
+                ep.nextStep = true;
             }
-            if (GameManager.instance.flashKeypad)
+            else if (keycode == 18 && ep.stepID == 2)
             {
-                //StartCoroutine(flashKeys(Color.green, true));
+                ep.nextStep = true;
             }
-            else
+            else if (keycode == 19 && ep.stepID == 3)
             {
-                //StartCoroutine(flashKeys(Color.green, false));
+                ep.nextStep = true;
             }
         }
         else
         {
-            foreach (GameObject btn in keyButtons)
+            if (keyPadValidation(keycode))
             {
-                btn.GetComponent<digicodeBtn>().clicked = false;
+                foreach (GameObject btn in keyButtons)
+                {
+                    btn.GetComponent<digicodeBtn>().clicked = false;
+                }
             }
-            StartCoroutine(flashKeys(Color.red, true));
+            else
+            {
+                foreach (GameObject btn in keyButtons)
+                {
+                    btn.GetComponent<digicodeBtn>().clicked = false;
+                }
+                StartCoroutine(flashKeys(Color.red, true));
+            }
         }
     }
 

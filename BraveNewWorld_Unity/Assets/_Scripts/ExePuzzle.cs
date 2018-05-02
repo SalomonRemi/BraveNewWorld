@@ -11,9 +11,10 @@ public class ExePuzzle : MonoBehaviour {
     [HideInInspector] public bool puzzleOk;
     [HideInInspector] public bool nextStep;
 
+    [HideInInspector] public int stepID;
+
     private int actualPuzzle;
     private bool inSearch;
-
     private float searchCount;
 
 
@@ -71,8 +72,6 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue1 = new Dialogue();
         dialogue1.sentences.Add("Ouvrez le dépôt des embryons.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
-        StartCoroutine(MissionManager.instance.DisplayOrder(.2f));
-        MissionManager.instance.orderText = "Ouvrez le dépôt des embryons.";
 
         inSearch = true;
         while (!nextStep)
@@ -180,6 +179,127 @@ public class ExePuzzle : MonoBehaviour {
 
     IEnumerator Puzzle6(float waitTime, float timeMax)
     {
+        inSearch = true;
+        stepID = 1;
+
+        while (!nextStep)
+        {
+            yield return null;
+        }
+        puzzleOk = true;
+
+        ResetPuzzle();
+        yield return new WaitForSeconds(.2f);
+
+
+        inSearch = true;
+        while (!nextStep)
+        {
+            if (keypad.keyPressed.Count > 0)
+            {
+                if (keypad.keyPressed[0] == 2)
+                {
+                    puzzleOk = true;
+                }
+            }
+            yield return null;
+        }
+
+        ResetPuzzle();
+        yield return new WaitForSeconds(.2f);
+
+        Dialogue dialogue5 = new Dialogue();
+        dialogue5.sentences.Add("Attendez.");
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue5);
+        yield return new WaitForSeconds(3f);
+
+        yield return new WaitForSeconds(.2f);
+
+        inSearch = true;
+        while (!nextStep)
+        {
+            if (keypad.keyPressed.Count > 0)
+            {
+                if ((keypad.keyPressed[0] == 4 || keypad.keyPressed[0] == 6) && keypad.keyPressed.Count > 1)
+                {
+                    if (keypad.keyPressed[1] == 4 || keypad.keyPressed[1] == 6)
+                    {
+                        puzzleOk = true;
+                    }
+                }
+            }
+            yield return null;
+        }
+
+        ResetPuzzle();
+        yield return new WaitForSeconds(.2f);
+
+
+        inSearch = true;
+        stepID = 2;
+
+        while (!nextStep)
+        {
+            yield return null;
+        }
+        puzzleOk = true;
+
+        ResetPuzzle();
+        yield return new WaitForSeconds(.2f);
+
+
+        inSearch = true;
+        stepID = 3;
+
+        while (!nextStep)
+        {
+            yield return null;
+        }
+        puzzleOk = true;
+
+        ResetPuzzle();
+        yield return new WaitForSeconds(.2f);
+
+        Dialogue dialogue6 = new Dialogue();
+        dialogue6.sentences.Add("Attendez.");
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue6);
+        yield return new WaitForSeconds(3f);
+
+        yield return new WaitForSeconds(.2f);
+
+        inSearch = true;
+        stepID = 1;
+
+        while (!nextStep)
+        {
+            yield return null;
+        }
+        puzzleOk = true;
+
+        ResetPuzzle();
+        yield return new WaitForSeconds(.2f);
+
+        inSearch = true;
+        while (!nextStep)
+        {
+            if (keypad.keyPressed.Count > 0)
+            {
+                if (keypad.keyPressed[0] == 1)
+                {
+                    puzzleOk = true;
+                }
+            }
+            yield return null;
+        }
+
+        ResetPuzzle();
+        yield return new WaitForSeconds(.2f);
+
+        Dialogue dialogue7 = new Dialogue();
+        dialogue7.sentences.Add("Attendez.");
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue7);
+        yield return new WaitForSeconds(3f);
+
         yield return null;
     }
 
@@ -201,7 +321,7 @@ public class ExePuzzle : MonoBehaviour {
         else if (actualPuzzle == 6)
         {
             Dialogue dialogue1 = new Dialogue();
-            dialogue1.sentences.Add("*soupirs*, Vous n’y êtes pas Wilson, un peu de vivacité bon sang, les enfants attendent ! J'espère ne pas vous avoir surestimé après tout. Bref, recommençons calmement.");
+            dialogue1.sentences.Add("*soupirs*. Vous n’y êtes pas Wilson, un peu de vivacité bon sang, les enfants attendent ! J'espère ne pas vous avoir surestimé après tout. Bref, recommençons calmement.");
             FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
         }
         else if (actualPuzzle == 8)

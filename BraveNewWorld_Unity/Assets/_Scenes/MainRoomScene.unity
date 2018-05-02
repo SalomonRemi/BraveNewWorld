@@ -2246,6 +2246,7 @@ MonoBehaviour:
   keycode: 0
   tiroir: {fileID: 0}
   door: {fileID: 0}
+  ep: {fileID: 1255045537}
 --- !u!114 &67783388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6609,7 +6610,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4598124918431636, guid: 8365faf409abcd84c9848487bdaa077c, type: 2}
       propertyPath: m_RootOrder
-      value: 37
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 1611215775982276, guid: 8365faf409abcd84c9848487bdaa077c, type: 2}
       propertyPath: m_Name
@@ -11585,7 +11586,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4598124918431636, guid: 8365faf409abcd84c9848487bdaa077c, type: 2}
       propertyPath: m_RootOrder
-      value: 36
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 4598124918431636, guid: 8365faf409abcd84c9848487bdaa077c, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -12733,7 +12734,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -14417,7 +14418,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4468287641409006, guid: ba70bca196638284ea1f35bffc4824b6, type: 2}
       propertyPath: m_RootOrder
-      value: 48
+      value: 47
       objectReference: {fileID: 0}
     - target: {fileID: 4468287641409006, guid: ba70bca196638284ea1f35bffc4824b6, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -17499,7 +17500,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4930924582615338, guid: fb875806befc9714b808daf9dd2d19fe, type: 2}
       propertyPath: m_RootOrder
-      value: 39
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 1274713433353172, guid: fb875806befc9714b808daf9dd2d19fe, type: 2}
       propertyPath: m_Name
@@ -19896,7 +19897,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4203692960934984, guid: 3b31798ca8856a64b90745cd49b3d11f, type: 2}
       propertyPath: m_RootOrder
-      value: 49
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 1057925401681722, guid: 3b31798ca8856a64b90745cd49b3d11f, type: 2}
       propertyPath: m_Name
@@ -23285,7 +23286,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4203692960934984, guid: 3b31798ca8856a64b90745cd49b3d11f, type: 2}
       propertyPath: m_RootOrder
-      value: 50
+      value: 49
       objectReference: {fileID: 0}
     - target: {fileID: 1057925401681722, guid: 3b31798ca8856a64b90745cd49b3d11f, type: 2}
       propertyPath: m_Name
@@ -26855,7 +26856,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 67b9c699aea6c544bb9c0a3bc0d8da26, type: 3}
       propertyPath: m_RootOrder
-      value: 43
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 67b9c699aea6c544bb9c0a3bc0d8da26, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -27288,7 +27289,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 99d5e0e0f6b81d841ac65cfb2b7de3b4, type: 3}
       propertyPath: m_RootOrder
-      value: 52
+      value: 51
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 99d5e0e0f6b81d841ac65cfb2b7de3b4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -27367,7 +27368,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4468287641409006, guid: ba70bca196638284ea1f35bffc4824b6, type: 2}
       propertyPath: m_RootOrder
-      value: 47
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 4468287641409006, guid: ba70bca196638284ea1f35bffc4824b6, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -28999,7 +29000,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -29056,7 +29057,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 99d5e0e0f6b81d841ac65cfb2b7de3b4, type: 3}
       propertyPath: m_RootOrder
-      value: 53
+      value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 99d5e0e0f6b81d841ac65cfb2b7de3b4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -29708,7 +29709,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -31858,7 +31859,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -33618,7 +33619,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4710694236520440, guid: 243f4da086ca68541ad703487e94ce27, type: 2}
       propertyPath: m_RootOrder
-      value: 44
+      value: 43
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 243f4da086ca68541ad703487e94ce27, type: 2}
@@ -35941,7 +35942,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 67b9c699aea6c544bb9c0a3bc0d8da26, type: 3}
       propertyPath: m_RootOrder
-      value: 42
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 67b9c699aea6c544bb9c0a3bc0d8da26, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -38595,7 +38596,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -43027,6 +43028,7 @@ MonoBehaviour:
   mission1indication: 0
   doorAmmount: 0
   inExePuzzle: 0
+  canStartExePuzzle: 0
   recapText: {fileID: 1514590216}
   oscarOrderText: {fileID: 1704805451}
   flipper: {fileID: 110168445}
@@ -43038,6 +43040,7 @@ MonoBehaviour:
   searchJack: 0
   hideDigicode: 0
   numberOfGoodDoor: 0
+  orderText: 
 --- !u!114 &1255045537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43054,6 +43057,7 @@ MonoBehaviour:
   puzzleDone: 0
   puzzleOk: 0
   nextStep: 0
+  stepID: 0
 --- !u!1 &1257326017
 GameObject:
   m_ObjectHideFlags: 0
@@ -47351,7 +47355,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -48114,7 +48118,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -49617,6 +49621,30 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 65.472
       objectReference: {fileID: 0}
+    - target: {fileID: 4971981478574152, guid: dea61d86eb029a84fa922144daf874e5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.0038
+      objectReference: {fileID: 0}
+    - target: {fileID: 4971981478574152, guid: dea61d86eb029a84fa922144daf874e5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.0813
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973523601501642, guid: dea61d86eb029a84fa922144daf874e5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.003799323
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973523601501642, guid: dea61d86eb029a84fa922144daf874e5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.0813003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4971981478574152, guid: dea61d86eb029a84fa922144daf874e5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.3856
+      objectReference: {fileID: 0}
+    - target: {fileID: 4973523601501642, guid: dea61d86eb029a84fa922144daf874e5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.38560003
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dea61d86eb029a84fa922144daf874e5, type: 2}
   m_IsPrefabParent: 0
@@ -50944,7 +50972,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4598124918431636, guid: 8365faf409abcd84c9848487bdaa077c, type: 2}
       propertyPath: m_RootOrder
-      value: 38
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 4598124918431636, guid: 8365faf409abcd84c9848487bdaa077c, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -52628,7 +52656,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4267901385949728, guid: d38ab9fc63a231142a64312b5f4a3aec, type: 2}
       propertyPath: m_RootOrder
-      value: 45
+      value: 44
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d38ab9fc63a231142a64312b5f4a3aec, type: 2}
@@ -54790,7 +54818,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 67b9c699aea6c544bb9c0a3bc0d8da26, type: 3}
       propertyPath: m_RootOrder
-      value: 46
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 67b9c699aea6c544bb9c0a3bc0d8da26, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -58579,7 +58607,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 99d5e0e0f6b81d841ac65cfb2b7de3b4, type: 3}
       propertyPath: m_RootOrder
-      value: 54
+      value: 53
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 99d5e0e0f6b81d841ac65cfb2b7de3b4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -63646,7 +63674,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4759641770105326, guid: a36aee931d926804b8e587eb330aa509, type: 2}
       propertyPath: m_RootOrder
-      value: 40
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 4759641770105326, guid: a36aee931d926804b8e587eb330aa509, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -75310,7 +75338,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -81609,7 +81637,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -82903,7 +82931,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4203692960934984, guid: 3b31798ca8856a64b90745cd49b3d11f, type: 2}
       propertyPath: m_RootOrder
-      value: 51
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4203692960934984, guid: 3b31798ca8856a64b90745cd49b3d11f, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -83670,7 +83698,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -84390,7 +84418,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4114278562246056, guid: 0ac3fee267ffa544c9627b92db854a7f, type: 2}
       propertyPath: m_RootOrder
-      value: 41
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ac3fee267ffa544c9627b92db854a7f, type: 2}
@@ -87948,7 +87976,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
