@@ -596,7 +596,7 @@ public class MissionManager : MonoBehaviour {
 
         doorNums.Clear();
         resestMission();
-        StartCoroutine(mission4());
+        StartCoroutine(mission7());
 
         yield return null;
     }

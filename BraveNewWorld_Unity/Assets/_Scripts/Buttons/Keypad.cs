@@ -86,10 +86,10 @@ public class Keypad : MonoBehaviour {
                     btn.GetComponent<keyBtn>().clicked = false;
                 }
                 AudioManager.instance.PlaySound("digiError");
-                ep.StopPuzzle();
+                StartCoroutine(flashKeys(Color.red, true));
             }
         }
-        else
+        else if(MissionManager.instance.inExePuzzle)
         {
             if(ep.puzzleOk)
             {
@@ -123,7 +123,6 @@ public class Keypad : MonoBehaviour {
                     StartCoroutine(flashKeys(Color.green, false));
                 }
                 AudioManager.instance.PlaySound("digiOkSound");
-                MissionManager.instance.keyPadCorrect = true;
             }
             else
             {
@@ -131,7 +130,7 @@ public class Keypad : MonoBehaviour {
                 {
                     btn.GetComponent<keyBtn>().clicked = false;
                 }
-                StartCoroutine(lightFlashKeys(Color.red, true));
+                ep.StopPuzzle();
             }
         }
 	}
