@@ -64,8 +64,6 @@ public class Keypad : MonoBehaviour {
         {
             if (MissionManager.instance.ValidateKeypadCode(keyPressed) == true)
             {
-                Debug.Log("validate");
-
                 foreach (GameObject btn in keyButtons)
                 {
                     btn.GetComponent<keyBtn>().clicked = false;
@@ -83,22 +81,18 @@ public class Keypad : MonoBehaviour {
             }
             else
             {
-                Debug.Log("not validate");
-
                 foreach (GameObject btn in keyButtons)
                 {
                     btn.GetComponent<keyBtn>().clicked = false;
                 }
-                StartCoroutine(flashKeys(Color.red, true));
                 AudioManager.instance.PlaySound("digiError");
+                StartCoroutine(flashKeys(Color.red, true));
             }
         }
-        else
+        else if(MissionManager.instance.inExePuzzle)
         {
             if(ep.puzzleOk)
             {
-                Debug.Log("validate exe");
-
                 foreach (GameObject btn in keyButtons)
                 {
                     btn.GetComponent<keyBtn>().clicked = false;
@@ -129,18 +123,13 @@ public class Keypad : MonoBehaviour {
                     StartCoroutine(flashKeys(Color.green, false));
                 }
                 AudioManager.instance.PlaySound("digiOkSound");
-                MissionManager.instance.keyPadCorrect = true;
             }
             else
             {
-                Debug.Log("not validate exe");
-
                 foreach (GameObject btn in keyButtons)
                 {
                     btn.GetComponent<keyBtn>().clicked = false;
                 }
-                StartCoroutine(lightFlashKeys(Color.red, true));
-
                 ep.StopPuzzle();
             }
         }

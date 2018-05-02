@@ -47,6 +47,9 @@ public class ExePuzzle : MonoBehaviour {
         inSearch = false;
 
         StopAllCoroutines();
+
+        StartCoroutine(keypad.flashKeys(Color.red, true));
+        StartCoroutine(digicode.flashKeys(Color.red, true));
         StartCoroutine(RestartPuzzle());
     }
 
@@ -58,6 +61,7 @@ public class ExePuzzle : MonoBehaviour {
         searchCount = 0;
 
         keypad.resetKeypad();
+        digicode.resetKeypad();
     }
 
     public void OutOfTimeFeedback()
@@ -67,7 +71,7 @@ public class ExePuzzle : MonoBehaviour {
     }
 
 
-    public IEnumerator Puzzle3(float waitTime)
+    IEnumerator Puzzle3(float waitTime)
     {
         Dialogue dialogue1 = new Dialogue();
         dialogue1.sentences.Add("Ouvrez le dépôt des embryons.");
@@ -182,6 +186,10 @@ public class ExePuzzle : MonoBehaviour {
         inSearch = true;
         stepID = 1;
 
+        Dialogue dialogue1 = new Dialogue();
+        dialogue1.sentences.Add("Tapez 95 sur le Digicode.");
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
+
         while (!nextStep)
         {
             yield return null;
@@ -193,6 +201,11 @@ public class ExePuzzle : MonoBehaviour {
 
 
         inSearch = true;
+
+        Dialogue dialogue2 = new Dialogue();
+        dialogue2.sentences.Add("Ouvrez la salle de fécondation.");
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue2);
+
         while (!nextStep)
         {
             if (keypad.keyPressed.Count > 0)
@@ -208,14 +221,19 @@ public class ExePuzzle : MonoBehaviour {
         ResetPuzzle();
         yield return new WaitForSeconds(.2f);
 
-        Dialogue dialogue5 = new Dialogue();
-        dialogue5.sentences.Add("Attendez.");
-        FindObjectOfType<DialogSystem>().StartDialogue(dialogue5);
+        Dialogue dialogue3 = new Dialogue();
+        dialogue3.sentences.Add("Attendez un peu.");
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue3);
         yield return new WaitForSeconds(3f);
 
         yield return new WaitForSeconds(.2f);
 
         inSearch = true;
+
+        Dialogue dialogue4 = new Dialogue();
+        dialogue4.sentences.Add("Ouvrez la salle de mise en flacon et de décantation.");
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue4);
+
         while (!nextStep)
         {
             if (keypad.keyPressed.Count > 0)
@@ -238,6 +256,10 @@ public class ExePuzzle : MonoBehaviour {
         inSearch = true;
         stepID = 2;
 
+        Dialogue dialogue5 = new Dialogue();
+        dialogue5.sentences.Add("Tapez 18 sur le Digicode.");
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue5);
+
         while (!nextStep)
         {
             yield return null;
@@ -251,6 +273,10 @@ public class ExePuzzle : MonoBehaviour {
         inSearch = true;
         stepID = 3;
 
+        Dialogue dialogue6 = new Dialogue();
+        dialogue6.sentences.Add("Tapez 19 sur le Digicode.");
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue6);
+
         while (!nextStep)
         {
             yield return null;
@@ -260,15 +286,20 @@ public class ExePuzzle : MonoBehaviour {
         ResetPuzzle();
         yield return new WaitForSeconds(.2f);
 
-        Dialogue dialogue6 = new Dialogue();
-        dialogue6.sentences.Add("Attendez.");
-        FindObjectOfType<DialogSystem>().StartDialogue(dialogue6);
+        Dialogue dialogue7 = new Dialogue();
+        dialogue7.sentences.Add("Attendez.");
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue7);
         yield return new WaitForSeconds(3f);
 
         yield return new WaitForSeconds(.2f);
 
+
         inSearch = true;
         stepID = 1;
+
+        Dialogue dialogue8 = new Dialogue();
+        dialogue8.sentences.Add("Tapez de nouveau 95 sur le Digicode.");
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue8);
 
         while (!nextStep)
         {
@@ -279,7 +310,13 @@ public class ExePuzzle : MonoBehaviour {
         ResetPuzzle();
         yield return new WaitForSeconds(.2f);
 
+
         inSearch = true;
+
+        Dialogue dialogue9 = new Dialogue();
+        dialogue9.sentences.Add("Ouvrez la salle de conditionnement.");
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue9);
+
         while (!nextStep)
         {
             if (keypad.keyPressed.Count > 0)
@@ -295,10 +332,12 @@ public class ExePuzzle : MonoBehaviour {
         ResetPuzzle();
         yield return new WaitForSeconds(.2f);
 
-        Dialogue dialogue7 = new Dialogue();
-        dialogue7.sentences.Add("Attendez.");
-        FindObjectOfType<DialogSystem>().StartDialogue(dialogue7);
+        Dialogue dialogue10 = new Dialogue();
+        dialogue10.sentences.Add("Attendez.");
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue10);
         yield return new WaitForSeconds(3f);
+
+        puzzleDone = true;
 
         yield return null;
     }

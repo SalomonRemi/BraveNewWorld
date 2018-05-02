@@ -58,19 +58,26 @@ public class digiCode : MonoBehaviour {
 
     public void validateInput()
     {
-        if(MissionManager.instance.inExePuzzle)
+        if (MissionManager.instance.inExePuzzle)
         {
-            if(keycode == 95 && ep.stepID == 1)
+            if (keycode == 95 && ep.stepID == 1)
             {
                 ep.nextStep = true;
+                StartCoroutine(lightFlashKeys(Color.green, true));
             }
             else if (keycode == 18 && ep.stepID == 2)
             {
                 ep.nextStep = true;
+                StartCoroutine(lightFlashKeys(Color.green, true));
             }
             else if (keycode == 19 && ep.stepID == 3)
             {
                 ep.nextStep = true;
+                StartCoroutine(lightFlashKeys(Color.green, true));
+            }
+            else
+            {
+                ep.StopPuzzle();
             }
         }
         else
@@ -137,8 +144,8 @@ public class digiCode : MonoBehaviour {
         {
             if (btn.GetComponent<digicodeBtn>().clicked)
             {
-                btn.GetComponent<Renderer>().material.color = Color.grey;
                 btn.GetComponent<digicodeBtn>().clicked = false;
+                btn.GetComponent<Renderer>().material.color = Color.grey;
             }
         }
         enabledAmmount = 0;
@@ -185,6 +192,29 @@ public class digiCode : MonoBehaviour {
             btn.GetComponent<Renderer>().material.color = Color.grey;
         }
         
+        yield return null;
+    }
+
+    public IEnumerator lightFlashKeys(Color col, bool flash)
+    {
+        resetKeypad();
+        if (flash)
+        {
+            foreach (GameObject btn in keyButtons)
+            {
+                btn.GetComponent<Renderer>().material.color = col;
+            }
+            yield return new WaitForSeconds(0.2f);
+            foreach (GameObject btn in keyButtons)
+            {
+                btn.GetComponent<Renderer>().material.color = Color.grey;
+            }
+        }
+        foreach (GameObject btn in keyButtons)
+        {
+            btn.GetComponent<Renderer>().material.color = Color.grey;
+        }
+
         yield return null;
     }
 }
