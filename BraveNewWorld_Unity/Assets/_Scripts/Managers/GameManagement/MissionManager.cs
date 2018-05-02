@@ -50,7 +50,10 @@ public class MissionManager : MonoBehaviour {
     [HideInInspector] public bool mission1indication = false;
     [HideInInspector] public float doorAmmount = 0;
 
-	public TextMeshPro recapText;
+    [HideInInspector] public bool inExePuzzle;
+    [HideInInspector] public bool canStartExePuzzle;
+
+    public TextMeshPro recapText;
 	public TextMeshPro oscarOrderText;
     public flipSwitch flipper;
     public TextMeshPro digiTxt;
@@ -67,13 +70,14 @@ public class MissionManager : MonoBehaviour {
 	[HideInInspector] public bool hideDigicode;
 
     [HideInInspector] public int numberOfGoodDoor = 0;
+    [HideInInspector] public string orderText;
 
     private int alerts = 0;
     private int puzzleNum = 0;
-    private string orderText;
 	private bool doorFeedbackState;
 
 	private MenuManager mm;
+    private ExePuzzle ep;
 
     GameObject player;
 
@@ -102,6 +106,8 @@ public class MissionManager : MonoBehaviour {
 
 		mm = FindObjectOfType<MenuManager>();
 		player = GameObject.FindGameObjectWithTag ("Player");
+        ep = GetComponent<ExePuzzle>();
+
         StartCoroutine(startIntroduction());
         StartCoroutine(scrollingBabies());
 
@@ -136,6 +142,7 @@ public class MissionManager : MonoBehaviour {
             }
         }
     }
+
 
 
 #region Introduction
@@ -374,14 +381,51 @@ public class MissionManager : MonoBehaviour {
 
 		//StopCoroutine("randomTalk");
 		doorNums.Clear();
-		StartCoroutine(mission3());
 		resestMission();
+        StartCoroutine(mission3());
 
-		yield return null;
+        yield return null;
 	}
 
 
-	public IEnumerator mission3()
+    public IEnumerator mission3()
+    {
+        puzzleNum = 3;
+        inExePuzzle = true;
+
+        Dialogue dialogue = new Dialogue();
+        dialogue.sentences.Add("Bien Wilson, les batteries seront placées dans le broyeur sous peu. J’ai une tâche plus urgente à vous confier.");
+        dialogue.sentences.Add("Une équipe d’investigation est entrée dans le centre à la recherche d’Oscar et vous allez devoir leur permettre l'accès aux différentes salles au fur et à mesure de l’opération.");
+        dialogue.sentences.Add("Les enquêteurs ne font pas partie des employés de l’usine, vous ne pourrez pas les localiser.");
+        dialogue.sentences.Add("Je vais donc vous épauler durant le processus, écoutez moi attentivement.");
+
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
+
+        while (!canStartExePuzzle)
+        {
+            yield return null;
+        }
+
+        ep.StartPuzzle(puzzleNum);
+
+        while (!ep.puzzleDone)
+        {
+            yield return null;
+        }
+
+        keypad.ComfirmInput(); // APPELLE COMFIRMINPUT POUR FEEDBAKC FLASH ET SON
+
+        yield return new WaitForSeconds(3f);
+
+        doorNums.Clear();
+        resestMission();
+        StartCoroutine(mission4());
+
+        yield return null;
+    }
+
+
+    public IEnumerator mission4()
 	{
         puzzleNum = 3;
         doorNums.Add(6);
@@ -394,7 +438,8 @@ public class MissionManager : MonoBehaviour {
         //AudioManager.instance.PlayMusic("2dialogue");
 
         Dialogue dialogue = new Dialogue ();
-		dialogue.sentences.Add ("Très bien Wilson, je sens que vous avez compris ce que l’entreprise attend de vous.\n Vous n’êtes pas comme votre prédécesseur.");
+        dialogue.sentences.Add ("Merci Wilson. Mh, toujours aucune nouvelle d’Oscar, je commence à croire qu’il s’est tout simplement volatilisé. Nous reviendrons à ce cas plus tard.");
+        dialogue.sentences.Add ("Très bien, je sens que vous avez compris ce que l’entreprise attend de vous.\n Vous n’êtes pas comme votre prédécesseur.");
 		dialogue.sentences.Add ("Bref, on vient de me faire parvenir qu’une livraison à été facturée \n et stockée en salle de fécondation, il y a 5 jours.");
 		dialogue.sentences.Add ("Avec tout ça, personne n’a eu le temps de s’en occuper. \n Trouvez sa destination et assurez son transfert.");
 
@@ -423,14 +468,14 @@ public class MissionManager : MonoBehaviour {
 
         //StopCoroutine("randomTalk");
         doorNums.Clear();
-        StartCoroutine(mission4());
+        StartCoroutine(mission5());
         resestMission();
 
         yield return null;
     }
 
 
-	public IEnumerator mission4()
+	public IEnumerator mission5()
     {
 		hideDigicode = true;
 		searchJack = true;
@@ -507,14 +552,29 @@ public class MissionManager : MonoBehaviour {
 
 		//StopCoroutine("randomTalk");
         doorNums.Clear();
-        StartCoroutine(mission5());
+        StartCoroutine(mission6());
         resestMission();
 
         yield return null;
     }
 
 
-    public IEnumerator mission5()
+    public IEnumerator mission6()
+    {
+        while (!ep.puzzleDone)
+        {
+            yield return null;
+        }
+
+        doorNums.Clear();
+        StartCoroutine(mission7());
+        resestMission();
+
+        yield return null;
+    }
+
+
+    public IEnumerator mission7()
     {
         puzzleNum = 5;
         inLastPuzzle = true;
@@ -579,12 +639,24 @@ public class MissionManager : MonoBehaviour {
 
 		AudioManager.instance.PlaySound("weirdSoundsTri");
         doorNums.Clear();
+        StartCoroutine(mission8());
+        resestMission();
+    }
+
+
+    public IEnumerator mission8()
+    {
+        while (!ep.puzzleDone)
+        {
+            yield return null;
+        }
+
+        doorNums.Clear();
         resestMission();
 
-		yield return new WaitForSeconds(5f);
-
-		mm.LoadSmallLevel("EndSceneInProgress");
+        yield return null;
     }
+
 
 
     public void resestMission()
@@ -593,9 +665,13 @@ public class MissionManager : MonoBehaviour {
         finishedStep01 = false;
         finishedLevel = false;
 		digiFinishPuzzle = false;
-		doorFeedbackState = false;
+        doorFeedbackState = false;
 
-		foreach (GameObject btn in digicode.keyButtons)
+        ep.puzzleDone = false;
+        inExePuzzle = false;
+        canStartExePuzzle = false;
+
+        foreach (GameObject btn in digicode.keyButtons)
 		{
 			btn.GetComponent<Renderer>().material.color = Color.grey;
 		}

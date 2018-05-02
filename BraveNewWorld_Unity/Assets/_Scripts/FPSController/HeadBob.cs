@@ -89,7 +89,6 @@ public class HeadBob : MonoBehaviour {
 			else if(camera.transform.localPosition.y != originalCamLocalY)
 			{
 				camPauseCounter = 0;
-				Debug.Log ("return original pos");
 				LeanTween.moveLocalY(cam.gameObject, originalCamLocalY, .5f);
 			}
 		}

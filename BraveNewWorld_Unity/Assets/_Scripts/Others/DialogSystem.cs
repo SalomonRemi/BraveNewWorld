@@ -49,6 +49,7 @@ public class DialogSystem : MonoBehaviour {
 		dialogueText.text = "";
 		Debug.Log ("Conversation Over");
         GameManager.instance.canLOS = true; // ACTIVE DIALOGUE DYNAMIQUE
+        MissionManager.instance.canStartExePuzzle = true; // LANCE EXE PUZZLE A LA FIN DE LA CONVERSATION SI EXE PUZZLE IL Y A
     }
 
 	IEnumerator dialogueType(string sentence)
