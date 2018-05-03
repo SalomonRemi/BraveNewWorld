@@ -75,6 +75,47 @@ public class digiCode : MonoBehaviour {
                 ep.nextStep = true;
                 StartCoroutine(lightFlashKeys(Color.green, true));
             }
+            else if (keycode == 260 && ep.stepID == 4)
+            {
+                ep.nextStep = true;
+                StartCoroutine(lightFlashKeys(Color.green, true));
+            }
+            else if (keycode == 270 && ep.stepID == 5)
+            {
+                ep.nextStep = true;
+                StartCoroutine(lightFlashKeys(Color.green, true));
+            }
+            else if (keycode == 280 && ep.stepID == 6)
+            {
+                ep.nextStep = true;
+                StartCoroutine(lightFlashKeys(Color.green, true));
+            }
+            else if (keycode == 450 && ep.stepID == 7)
+            {
+                ep.nextStep = true;
+                StartCoroutine(lightFlashKeys(Color.green, true));
+            }
+            else if (keycode == 860 && ep.stepID == 8)
+            {
+                ep.nextStep = true;
+                StartCoroutine(lightFlashKeys(Color.green, true));
+            }
+            else if (keycode == 870 && ep.stepID == 9)
+            {
+                ep.nextStep = true;
+                StartCoroutine(lightFlashKeys(Color.green, true));
+            }
+            else if (keycode == 850 && ep.stepID == 10)
+            {
+                ep.nextStep = true;
+                StartCoroutine(lightFlashKeys(Color.green, true));
+            }
+            else if (keycode == 461 && ep.stepID == 11)
+            {
+                ep.nextStep = true;
+                StartCoroutine(lightFlashKeys(Color.green, true));
+            }
+
             else
             {
                 ep.StopPuzzle();

@@ -667,25 +667,67 @@ public class MissionManager : MonoBehaviour {
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue3);
 
 		AudioManager.instance.PlaySound("weirdSoundsTri");
+
+        yield return new WaitForSeconds(5f);
+
         doorNums.Clear();
-        StartCoroutine(mission8());
         resestMission();
+        StartCoroutine(mission8());
     }
 
 
     public IEnumerator mission8()
     {
+        commandPanel.SetBool("isDigicodeAvailable", true);
+
+        puzzleNum = 8;
+        inExePuzzle = true;
+        canStartExePuzzle = false;  
+
+        Dialogue dialogue = new Dialogue();
+        dialogue.sentences.Add("Nous venons d'interroger le responsable de la sécurité, nous nous sommes rendu compte qu’il n’était pas en état d'exercer sa fonction ce matin.");
+        dialogue.sentences.Add("Il a négligé beaucoup de possibilité quant à la fuite d’Oscar.");
+        dialogue.sentences.Add("Nous allons devoir nous en occuper nous-mêmes ! Il y a nombre de couloirs et de conduits à vérifier.");
+
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
+
+        StartCoroutine(DisplayOrder(10f));
+        orderText = "Écoutez les ordres du directeur.";
+
+        while (!canStartExePuzzle)
+        {
+            yield return null;
+        }
+
+        ep.StartPuzzle(puzzleNum);
+
         while (!ep.puzzleDone)
         {
             yield return null;
         }
+
+        keypad.ComfirmInput(); // APPELLE COMFIRMINPUT POUR FEEDBACK FLASH ET SON
+
+        yield return new WaitForSeconds(1f);
+
+        Dialogue dialogue1 = new Dialogue();
+        dialogue1.sentences.Add("Tiens sacré Oscar c’est donc là que tu es parti ! Rah j’ai peur de ce qui a pu lui arriver...");
+        dialogue1.sentences.Add("J’aimerais que vous rendiez un service à l’entreprise, ce qui jouerait, je vous l’avoue, beaucoup sur vos chances de promotions.");
+        dialogue1.sentences.Add("Pourriez-vous jeter un oeil derrière cette grille de ventilation au fond de la pièce ?");
+        dialogue1.sentences.Add("Le code est normalement 461.");
+
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
+
+        StartCoroutine(DisplayOrder(15f));
+        orderText = "Ouvrez la grille de ventilation, le code est 461.";
+
+        yield return new WaitForSeconds(20f);
 
         doorNums.Clear();
         resestMission();
 
         yield return null;
     }
-
 
 
     public void resestMission()
