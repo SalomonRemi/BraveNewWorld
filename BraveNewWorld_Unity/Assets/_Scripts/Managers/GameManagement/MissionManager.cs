@@ -9,6 +9,7 @@ public class MissionManager : MonoBehaviour {
 
 	public static MissionManager instance = null;
 
+
     [Header("Introduction Settings")]
 
     public float timeInElevator;
@@ -36,8 +37,10 @@ public class MissionManager : MonoBehaviour {
     private bool doScrolling;
     private float counter;
 
+
     [Header("Missions Settings")]
 
+    [Range(210f,310f)] public float timeBeforeHint;
     public Animator levier;
     public Animator commandPanel;
 
@@ -57,6 +60,7 @@ public class MissionManager : MonoBehaviour {
 	public TextMeshPro oscarOrderText;
     public flipSwitch flipper;
     public TextMeshPro digiTxt;
+
 
 	[Header("Other Settings")]
 
@@ -310,7 +314,8 @@ public class MissionManager : MonoBehaviour {
         numberOfGoodDoor = 2;
         doorAmmount = 7;
 
-		//StartCoroutine(randomTalk(puzzleNum));
+		StartCoroutine(randomTalk(puzzleNum));
+        StartCoroutine(GiveHint(puzzleNum));
 
         while (!finishedLevel)
         {
@@ -334,7 +339,7 @@ public class MissionManager : MonoBehaviour {
         resestMission();
         StartCoroutine (mission2());
 
-        //StopCoroutine("randomTalk");
+        StopCoroutine("randomTalk");
         yield return null;
     }
 
@@ -348,9 +353,10 @@ public class MissionManager : MonoBehaviour {
 		numberOfGoodDoor = 3;
 		doorAmmount = 7;
 
-		//StartCoroutine(randomTalk(puzzleNum));
+		StartCoroutine(randomTalk(puzzleNum));
+        StartCoroutine(GiveHint(puzzleNum));
 
-		Dialogue dialogue = new Dialogue ();
+        Dialogue dialogue = new Dialogue ();
 		dialogue.sentences.Add ("Hum, Oscar reste introuvable, nos recherches nous ont permis de conclure qu'il était en liaison avec un individu particulier. Restez sur vos gardes.");
 		dialogue.sentences.Add ("Bien ! Vous semblez apprendre vite, Wilson, continuons sur notre lancée.");
 		dialogue.sentences.Add ("Mr. Jay vient de se rendre compte que les batteries sont usées, vous rendez-vous compte ?");
@@ -379,7 +385,7 @@ public class MissionManager : MonoBehaviour {
 			yield return null;
 		}
 
-		//StopCoroutine("randomTalk");
+		StopCoroutine("randomTalk");
 		doorNums.Clear();
 		resestMission();
         StartCoroutine(mission3());
@@ -436,7 +442,8 @@ public class MissionManager : MonoBehaviour {
         numberOfGoodDoor = 2;
         doorAmmount = 7;
 
-		//StartCoroutine(randomTalk(puzzleNum));
+		StartCoroutine(randomTalk(puzzleNum));
+        StartCoroutine(GiveHint(puzzleNum));
         //AudioManager.instance.StopMusic();
         //AudioManager.instance.PlayMusic("2dialogue");
 
@@ -469,7 +476,7 @@ public class MissionManager : MonoBehaviour {
 			yield return null;
 		}
 
-        //StopCoroutine("randomTalk");
+        StopCoroutine("randomTalk");
         doorNums.Clear();
         StartCoroutine(mission5());
         resestMission();
@@ -487,7 +494,8 @@ public class MissionManager : MonoBehaviour {
 
         GameManager.instance.flashKeypad = false;
 
-		//StartCoroutine(randomTalk(puzzleNum));
+		StartCoroutine(randomTalk(puzzleNum));
+        StartCoroutine(GiveHint(puzzleNum));
         //AudioManager.instance.StopMusic();
         //AudioManager.instance.PlayMusic("3dialogue");
 
@@ -553,7 +561,7 @@ public class MissionManager : MonoBehaviour {
 			yield return null;
 		}
 
-		//StopCoroutine("randomTalk");
+		StopCoroutine("randomTalk");
         doorNums.Clear();
         resestMission();
         StartCoroutine(mission6());
@@ -609,7 +617,8 @@ public class MissionManager : MonoBehaviour {
 
         GameManager.instance.flashKeypad = true;
 
-        //StartCoroutine(randomTalk(puzzleNum));
+        StartCoroutine(randomTalk(puzzleNum));
+        StartCoroutine(GiveHint(puzzleNum));
         //AudioManager.instance.StopMusic();
         //AudioManager.instance.PlayMusic("4dialogue");
 
@@ -636,6 +645,8 @@ public class MissionManager : MonoBehaviour {
             yield return null;
         }
 
+        StopCoroutine("GiveHint");
+
         Dialogue dialogue2 = new Dialogue();
         dialogue2.sentences.Add("Mhhh je vois. Mademoiselle Fanny Woods donc.\nElle a posé beaucoup de problème à l’entreprise auparavant.");
         dialogue2.sentences.Add("Il est temps de régler définitivement le problème.\n Je vous donne accès au levier pour activer la salle de tri.");
@@ -658,7 +669,7 @@ public class MissionManager : MonoBehaviour {
             yield return null;
         }
 
-        //StopCoroutine("randomTalk");
+        StopCoroutine("randomTalk");
         //AudioManager.instance.StopMusic();
         //AudioManager.instance.PlayMusic("5dialogue");
 
@@ -828,26 +839,65 @@ public class MissionManager : MonoBehaviour {
 
     public IEnumerator randomTalk(int missionLevel)
     {
-        int i = Random.Range(1, 6);
-        yield return new WaitForSeconds(180);
+        int i = Random.Range(1, 7);
+        yield return new WaitForSeconds(180f);
         if (missionLevel == puzzleNum)
         {
             switch (i)
             {
                 case 1:
-                    AudioManager.instance.PlayMusic("rand1");
+                    Debug.Log("Rand 1 ");
+                    //AudioManager.instance.PlayMusic("rand1");
+                    Dialogue dialogue1 = new Dialogue();
+                    dialogue1.sentences.Add("Vous avez sûrement eu vent du séisme au Japon, pas vrai ? Quels sont les chiffres déjà ?");
+                    dialogue1.sentences.Add("15 000 morts ? Plus ? Il y aura des répercussions au niveau international, je vous le garantis.");
+                    dialogue1.sentences.Add("Enfin au moins ça va nous faire du travail, nous devrions nous réjouir !");
+                    FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
                     break;
                 case 2:
-                    AudioManager.instance.PlayMusic("rand2");
+                    Debug.Log("Rand 2 ");
+                    //AudioManager.instance.PlayMusic("rand2");
+                    Dialogue dialogue2 = new Dialogue();
+                    dialogue2.sentences.Add("Plus je prend de l’âge, plus j'apprécie rester dans mon bureau.");
+                    dialogue2.sentences.Add("C’est grand, lumineux et calme, croyez moi Wilson, le parfait endroit pour travailler sereinement.");
+                    dialogue2.sentences.Add("Je pourrais passer ma vie dans cette usine !");
+                    FindObjectOfType<DialogSystem>().StartDialogue(dialogue2);
                     break;
                 case 3:
-                    AudioManager.instance.PlayMusic("rand3");
+                    Debug.Log("Rand 3 ");
+                    //AudioManager.instance.PlayMusic("rand3");
+                    Dialogue dialogue3 = new Dialogue();
+                    dialogue3.sentences.Add("Vous avez entendu parler de ce réseau de contestataire ?");
+                    dialogue3.sentences.Add("Je ne les comprends pas Wilson, peut-être devraient-ils consulter plutôt que de perturber le monde…");
+                    dialogue3.sentences.Add("Et ce Kreep, quelles folles idées le pousse à agir ainsi ? Ils doivent en souffrir croyez-moi.");
+                    FindObjectOfType<DialogSystem>().StartDialogue(dialogue3);
                     break;
                 case 4:
-                    AudioManager.instance.PlayMusic("rand2");
+                    Debug.Log("Rand 4 ");
+                    //AudioManager.instance.PlayMusic("rand2");
+                    Dialogue dialogue4 = new Dialogue();
+                    dialogue4.sentences.Add("Je me demandais Wilson, pensez vous que les castes inférieures se laissent pousser la barbe pour dissimuler leur visage, ou s’agit-il d’un phénomène de mode ?");
+                    dialogue4.sentences.Add("J’ai ma petite idée mais dans l’absolu, il faudrait comparer avec d’autres régions.");
+                    dialogue4.sentences.Add("Après tout ils arrivent bien à compter jusqu’à cinq ahah !");
+                    FindObjectOfType<DialogSystem>().StartDialogue(dialogue4);
                     break;
                 case 5:
-                    AudioManager.instance.PlayMusic("rand5");
+                    Debug.Log("Rand 5 ");
+                    Dialogue dialogue5 = new Dialogue();
+                    dialogue5.sentences.Add("Scarlet a encore oublié de déposer les inventaires sur mon bureau. Enfin, sans elle j’aurais eu plus d’une fois la tête sous l’eau.");
+                    dialogue5.sentences.Add("J’imagine que je vais passer l’éponge, encore une fois.");
+                    dialogue5.sentences.Add("Elle se débrouille quand même plutôt bien pour une Béta, prenez-en de la graine Wilson.");
+                    FindObjectOfType<DialogSystem>().StartDialogue(dialogue5);
+                    //AudioManager.instance.PlayMusic("rand5");
+                    break;
+                case 6:
+                    Debug.Log("Rand 6 ");
+                    Dialogue dialogue6 = new Dialogue();
+                    dialogue6.sentences.Add("Alors Wilson, ce métier est bien plus complexe qu’il n’en a l’air pas vrai ?");
+                    dialogue6.sentences.Add("J’en ai conscience, doutez vous bien que si il s’agissait simplement de rester assis à un bureau et d’ouvrir des portes, un simple delta moins aurait suffit.");
+                    dialogue6.sentences.Add("Vous prendrez le rythme, ne vous inquiétez pas !");
+                    FindObjectOfType<DialogSystem>().StartDialogue(dialogue6);
+                    //AudioManager.instance.PlayMusic("rand5");
                     break;
             }
         }
@@ -879,5 +929,50 @@ public class MissionManager : MonoBehaviour {
 
         doScrolling = false;
 		Destroy (elevator);
+    }
+
+
+    private IEnumerator GiveHint(float puzzleID)
+    {
+        yield return new WaitForSeconds(timeBeforeHint);
+
+        if(puzzleID == 1)
+        {
+            Dialogue dialogue1 = new Dialogue();
+            dialogue1.sentences.Add("Bon, ça va que c’est votre premier jour.");
+            dialogue1.sentences.Add("Vous devriez trouver les informations dont vous avez besoin dans le manuel d’utilisation. Courage !");
+            FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
+        }
+        else if (puzzleID == 2)
+        {
+            Dialogue dialogue2 = new Dialogue();
+            dialogue2.sentences.Add("Faites un effort Wilson ! La liste de matériel se trouve elle aussi dans le manuel.");
+            dialogue2.sentences.Add("Et le matériel défectueux et bien faites preuve d’un peu de bon sens !");
+            FindObjectOfType<DialogSystem>().StartDialogue(dialogue2);
+        }
+        else if (puzzleID == 4)
+        {
+            Dialogue dialogue3 = new Dialogue();
+            dialogue3.sentences.Add("Bon ! Je vois que vous avez des difficultés, je n’ai pas l’habitude de travailler avec des gens de votre caste après tout… ");
+            dialogue3.sentences.Add("Peut-être devriez-vous commencer par trouver la date d’aujourd’hui ?");
+            dialogue3.sentences.Add("Vous n’auriez plus qu’à trouver à quoi la livraison correspond dans la liste de matériel du manuel.");
+            FindObjectOfType<DialogSystem>().StartDialogue(dialogue3);
+        }
+        else if (puzzleID == 5)
+        {
+            Dialogue dialogue4 = new Dialogue();
+            dialogue4.sentences.Add("Je vois que vous avez décidé de ne pas y mettre du vôtre Wilson. Soyez soucieux de votre bonheur et conscient de votre chance d’être ici.");
+            dialogue4.sentences.Add("Il vous suffit de trouver l’identifiant de Jack, sa caste devrait vous permettre de savoir où il se trouve. Reprenez-vous !");
+            FindObjectOfType<DialogSystem>().StartDialogue(dialogue4);
+        }
+        else if (puzzleID == 7)
+        {
+            Dialogue dialogue5 = new Dialogue();
+            dialogue5.sentences.Add("Je vois, un vol de badge a eu lieu en salle de conditionnement, vous n’avez plus qu’à trouver qui s’y trouvait à ce moment-là.");
+            dialogue5.sentences.Add("Soyez plus vif la prochaine fois, je pense que vous souhaitez rester parmi nous.");
+            FindObjectOfType<DialogSystem>().StartDialogue(dialogue5);
+        }
+
+        yield return null;
     }
 }

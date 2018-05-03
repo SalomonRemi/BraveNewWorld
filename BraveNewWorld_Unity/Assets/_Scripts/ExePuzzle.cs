@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ExePuzzle : MonoBehaviour {
 
+    public float waitTime;
+    public float maxTime;
+
     public digiCode digicode;
     public Keypad keypad;
 
@@ -24,7 +27,7 @@ public class ExePuzzle : MonoBehaviour {
         {
             searchCount += Time.unscaledDeltaTime;
 
-            if (searchCount > 10)
+            if (searchCount > maxTime)
             {
                 OutOfTimeFeedback();
             }
@@ -37,9 +40,9 @@ public class ExePuzzle : MonoBehaviour {
     {
         actualPuzzle = puzzleID;
 
-        if (puzzleID == 3) StartCoroutine(Puzzle3(5f));
-        else if (puzzleID == 6) StartCoroutine(Puzzle6(5f, 10f));
-        else if (puzzleID == 8) StartCoroutine(Puzzle8(5f, 10f));
+        if (puzzleID == 3) StartCoroutine(Puzzle3());
+        else if (puzzleID == 6) StartCoroutine(Puzzle6());
+        else if (puzzleID == 8) StartCoroutine(Puzzle8());
     }
 
     public void StopPuzzle()
@@ -71,7 +74,7 @@ public class ExePuzzle : MonoBehaviour {
     }
 
 
-    IEnumerator Puzzle3(float waitTime)
+    IEnumerator Puzzle3()
     {
         Dialogue dialogue1 = new Dialogue();
         dialogue1.sentences.Add("Ouvrez le dépôt des embryons.");
@@ -96,7 +99,7 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue2 = new Dialogue();
         dialogue2.sentences.Add("Attendez.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue2);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(waitTime);
 
         yield return new WaitForSeconds(.2f);
 
@@ -146,7 +149,7 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue5 = new Dialogue();
         dialogue5.sentences.Add("Attendez.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue5);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(waitTime);
 
         yield return new WaitForSeconds(.2f);
 
@@ -173,7 +176,7 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue7 = new Dialogue();
         dialogue7.sentences.Add("Attendez.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue7);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(waitTime);
 
         yield return new WaitForSeconds(.2f);
 
@@ -181,7 +184,7 @@ public class ExePuzzle : MonoBehaviour {
     }
 
 
-    IEnumerator Puzzle6(float waitTime, float timeMax)
+    IEnumerator Puzzle6()
     {
         inSearch = true;
         stepID = 1;
@@ -224,7 +227,7 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue3 = new Dialogue();
         dialogue3.sentences.Add("Attendez un peu.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue3);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(waitTime);
 
         yield return new WaitForSeconds(.2f);
 
@@ -289,7 +292,7 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue7 = new Dialogue();
         dialogue7.sentences.Add("Attendez.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue7);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(waitTime);
 
         yield return new WaitForSeconds(.2f);
 
@@ -335,7 +338,7 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue10 = new Dialogue();
         dialogue10.sentences.Add("Attendez.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue10);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(waitTime);
 
         puzzleDone = true;
 
@@ -343,12 +346,12 @@ public class ExePuzzle : MonoBehaviour {
     }
 
 
-    IEnumerator Puzzle8(float waitTime, float timeMax)
+    IEnumerator Puzzle8()
     {
         Dialogue dialogue1 = new Dialogue();
         dialogue1.sentences.Add("Attendez un petit peu.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(waitTime);
 
         yield return new WaitForSeconds(.2f);
 
@@ -427,7 +430,7 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue6 = new Dialogue();
         dialogue6.sentences.Add("Ah, attendez.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue6);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(waitTime);
 
         yield return new WaitForSeconds(.2f);
 
@@ -543,7 +546,7 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue13 = new Dialogue();
         dialogue13.sentences.Add("Ah, attendez.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue13);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(waitTime);
 
         yield return new WaitForSeconds(.2f);
 
@@ -571,7 +574,7 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue15 = new Dialogue();
         dialogue15.sentences.Add("Attendez, attendez.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue15);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(waitTime);
 
         yield return new WaitForSeconds(.2f);
 

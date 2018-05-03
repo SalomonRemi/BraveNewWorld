@@ -43016,6 +43016,7 @@ MonoBehaviour:
   enterInRoom: 0
   closeDoor: 0
   isAtDesk: 0
+  timeBeforeHint: 260
   levier: {fileID: 1779029867}
   commandPanel: {fileID: 205229682}
   digicode: {fileID: 67783387}
@@ -43050,6 +43051,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c267e4aadb76c4a4c83c3ddc18a48a88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 3
+  maxTime: 10
   digicode: {fileID: 67783387}
   keypad: {fileID: 67783388}
   puzzleDone: 0
