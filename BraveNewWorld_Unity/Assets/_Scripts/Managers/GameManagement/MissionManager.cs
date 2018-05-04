@@ -436,7 +436,7 @@ public class MissionManager : MonoBehaviour {
 
     public IEnumerator mission4()
 	{
-        puzzleNum = 3;
+        puzzleNum = 4;
         doorNums.Add(6);
         doorNums.Add(2);
         numberOfGoodDoor = 2;
@@ -490,7 +490,7 @@ public class MissionManager : MonoBehaviour {
 		hideDigicode = true;
 		searchJack = true;
 
-		puzzleNum = 4;
+		puzzleNum = 5;
 
         GameManager.instance.flashKeypad = false;
 
@@ -973,6 +973,6 @@ public class MissionManager : MonoBehaviour {
             FindObjectOfType<DialogSystem>().StartDialogue(dialogue5);
         }
 
-        yield return null;
+        yield break;
     }
 }
