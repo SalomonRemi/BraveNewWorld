@@ -10,6 +10,9 @@ public class Locker : MonoBehaviour {
 	public string objectAnimClipName;
     public string soundPlay;
 
+    public bool isAdditionalSound;
+    public string additionalSound;
+
 	private Animator objectAnim;
 
     [HideInInspector] public bool codeOk;
@@ -60,6 +63,12 @@ public class Locker : MonoBehaviour {
     {
         objectAnim.SetBool(objectAnimClipName, true);
         AudioManager.instance.PlaySound(soundPlay);
+
+        if (isAdditionalSound)
+        {
+            AudioManager.instance.StopMusic();
+            AudioManager.instance.PlayMusic(additionalSound);
+        } 
 
         yield return null;
 
