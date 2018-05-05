@@ -414,8 +414,8 @@ public class MissionManager : MonoBehaviour {
 
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
 
-        //AudioManager.instance.StopMusic();
-        //AudioManager.instance.PlayMusic("puzzle3");
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("puzzle3_1");
 
         StartCoroutine(DisplayOrder(11f));
         orderText = "Écoutez les ordres du directeur.";
@@ -434,7 +434,17 @@ public class MissionManager : MonoBehaviour {
 
         keypad.ComfirmInput(); // APPELLE COMFIRMINPUT POUR FEEDBAKC FLASH ET SON
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
+
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("puzzle3_2");
+
+        Dialogue dialogue1 = new Dialogue();
+        dialogue1.sentences.Add("Merci Wilson. Toujours aucune nouvelles d'Oscar... je commence tout simplement à croire qu'il s'est volatilisé. Nous reviendros à ce cas plus tard.");
+
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
+
+        yield return new WaitForSeconds(10f);
 
         doorNums.Clear();
         resestMission();
@@ -594,7 +604,10 @@ public class MissionManager : MonoBehaviour {
 
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
 
-        StartCoroutine(DisplayOrder(10f));
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("puzzle3");
+
+        StartCoroutine(DisplayOrder(13f));
         orderText = "Écoutez les ordres du directeur.";
 
         while (!canStartExePuzzle)
@@ -611,7 +624,16 @@ public class MissionManager : MonoBehaviour {
 
         keypad.ComfirmInput(); // APPELLE COMFIRMINPUT POUR FEEDBAKC FLASH ET SON
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
+
+        Dialogue dialogue1 = new Dialogue();
+        dialogue1.sentences.Add("Bien voilà un conditionnement parfaitement réalisé !");
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
+
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("puzzle6_2");
+
+        yield return new WaitForSeconds(6f);
 
         doorNums.Clear();
         resestMission();

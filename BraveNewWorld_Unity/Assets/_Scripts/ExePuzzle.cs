@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DigitalRuby.SoundManagerNamespace;
 
 public class ExePuzzle : MonoBehaviour {
 
@@ -80,6 +81,9 @@ public class ExePuzzle : MonoBehaviour {
         dialogue1.sentences.Add("Ouvrez le dépôt des embryons.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
 
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle3_1");
+
         inSearch = true;
         while (!nextStep)
         {
@@ -99,6 +103,9 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue2 = new Dialogue();
         dialogue2.sentences.Add("Attendez.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue2);
+
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderWait1");
         yield return new WaitForSeconds(waitTime);
 
         yield return new WaitForSeconds(.2f);
@@ -106,6 +113,9 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue3 = new Dialogue();
         dialogue3.sentences.Add("Ouvrez la salle de fécondation ET le self.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue3);
+
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle3_2");
 
         inSearch = true;
         while (!nextStep)
@@ -130,6 +140,9 @@ public class ExePuzzle : MonoBehaviour {
         dialogue4.sentences.Add("Ouvrez la salle de tri.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue4);
 
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle3_3");
+
         inSearch = true;
         while (!nextStep)
         {
@@ -149,6 +162,9 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue5 = new Dialogue();
         dialogue5.sentences.Add("Attendez.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue5);
+
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderWait2");
         yield return new WaitForSeconds(waitTime);
 
         yield return new WaitForSeconds(.2f);
@@ -156,6 +172,9 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue6 = new Dialogue();
         dialogue6.sentences.Add("Ouvrez la salle de décantation.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue6);
+
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle3_4");
 
         inSearch = true;
         while (!nextStep)
@@ -176,6 +195,10 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue7 = new Dialogue();
         dialogue7.sentences.Add("Attendez.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue7);
+
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderWait1");
+
         yield return new WaitForSeconds(waitTime);
 
         yield return new WaitForSeconds(.2f);
@@ -605,12 +628,18 @@ public class ExePuzzle : MonoBehaviour {
             Dialogue dialogue = new Dialogue();
             dialogue.sentences.Add("Vous n’êtes pas assez réactif Wilson, soyez un peu plus attentif. C’est votre premier jour, ça ira pour cette fois. Recommençons depuis le début.");
             FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
+
+            AudioManager.instance.StopMusic();
+            AudioManager.instance.PlayMusic("hint3");
         }
         else if (actualPuzzle == 6)
         {
             Dialogue dialogue1 = new Dialogue();
             dialogue1.sentences.Add("*soupirs*. Vous n’y êtes pas Wilson, un peu de vivacité bon sang, les enfants attendent ! J'espère ne pas vous avoir surestimé après tout. Bref, recommençons calmement.");
             FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
+
+            AudioManager.instance.StopMusic();
+            AudioManager.instance.PlayMusic("hint6");
         }
         else if (actualPuzzle == 8)
         {
