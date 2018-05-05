@@ -24,8 +24,10 @@ public class MissionManager : MonoBehaviour {
     public GameObject babiesPrefab;
 	public GameObject elevator;
     public GameObject liftLoopObj;
-    public Transform instantiateTransform1;
-    public Transform instantiateTransform2;
+    public Transform instantiateTransform;
+    public GameObject instance1;
+    public GameObject instance2;
+    public GameObject instance3;
 
     [HideInInspector] public bool goToNextStep;
     [HideInInspector] public bool isInElevator;
@@ -137,11 +139,9 @@ public class MissionManager : MonoBehaviour {
         if(doScrolling)
         {
             counter += Time.deltaTime;
-            if(counter >= 1.5f)
+            if(counter >= 2.15f)
             {
-				Instantiate(babiesPrefab, instantiateTransform1.position, Quaternion.Euler(new Vector3(0,-90,0)));
-				Instantiate(babiesPrefab, instantiateTransform2.position, Quaternion.Euler(new Vector3(0,90,0)));
-
+				Instantiate(babiesPrefab, instantiateTransform.position, Quaternion.Euler(new Vector3(-180,-135,0)));
                 counter = 0;
             }
         }
@@ -924,10 +924,14 @@ public class MissionManager : MonoBehaviour {
 
 		blockView.SetBool ("goDown", true); 
 		tutoRotateObject.SetActive(true);
-
-		yield return new WaitForSeconds(fadeTime + timeInElevator * 0.1f);
-
         doScrolling = false;
+
+        instance1.SetActive(true);
+        instance2.SetActive(true);
+        instance3.SetActive(true);
+
+        yield return new WaitForSeconds(fadeTime + timeInElevator * 0.1f);
+
 		Destroy (elevator);
     }
 
