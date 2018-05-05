@@ -605,7 +605,7 @@ public class MissionManager : MonoBehaviour {
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
 
         AudioManager.instance.StopMusic();
-        AudioManager.instance.PlayMusic("puzzle3");
+        AudioManager.instance.PlayMusic("puzzle6");
 
         StartCoroutine(DisplayOrder(13f));
         orderText = "Écoutez les ordres du directeur.";

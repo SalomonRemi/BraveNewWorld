@@ -216,6 +216,9 @@ public class ExePuzzle : MonoBehaviour {
         dialogue1.sentences.Add("Tapez 95 sur le Digicode.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
 
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle6_1");
+
         while (!nextStep)
         {
             yield return null;
@@ -231,6 +234,9 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue2 = new Dialogue();
         dialogue2.sentences.Add("Ouvrez la salle de fécondation.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue2);
+
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle6_2");
 
         while (!nextStep)
         {
@@ -248,8 +254,11 @@ public class ExePuzzle : MonoBehaviour {
         yield return new WaitForSeconds(.2f);
 
         Dialogue dialogue3 = new Dialogue();
-        dialogue3.sentences.Add("Attendez un peu.");
+        dialogue3.sentences.Add("Attendez.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue3);
+
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle6_3");
         yield return new WaitForSeconds(waitTime);
 
         yield return new WaitForSeconds(.2f);
@@ -259,6 +268,9 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue4 = new Dialogue();
         dialogue4.sentences.Add("Ouvrez la salle de mise en flacon et de décantation.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue4);
+
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle6_4");
 
         while (!nextStep)
         {
@@ -278,13 +290,15 @@ public class ExePuzzle : MonoBehaviour {
         ResetPuzzle();
         yield return new WaitForSeconds(.2f);
 
-
         inSearch = true;
         stepID = 2;
 
         Dialogue dialogue5 = new Dialogue();
         dialogue5.sentences.Add("Tapez 18 sur le Digicode.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue5);
+
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle6_5");
 
         while (!nextStep)
         {
@@ -303,6 +317,9 @@ public class ExePuzzle : MonoBehaviour {
         dialogue6.sentences.Add("Tapez 19 sur le Digicode.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue6);
 
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle6_6");
+
         while (!nextStep)
         {
             yield return null;
@@ -315,6 +332,9 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue7 = new Dialogue();
         dialogue7.sentences.Add("Attendez.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue7);
+
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle6_7");
         yield return new WaitForSeconds(waitTime);
 
         yield return new WaitForSeconds(.2f);
@@ -326,6 +346,9 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue8 = new Dialogue();
         dialogue8.sentences.Add("Tapez de nouveau 95 sur le Digicode.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue8);
+
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle6_8");
 
         while (!nextStep)
         {
@@ -342,6 +365,9 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue9 = new Dialogue();
         dialogue9.sentences.Add("Ouvrez la salle de conditionnement.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue9);
+
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle6_9");
 
         while (!nextStep)
         {
@@ -361,6 +387,10 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue10 = new Dialogue();
         dialogue10.sentences.Add("Attendez.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue10);
+
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle6_10");
+
         yield return new WaitForSeconds(waitTime);
 
         puzzleDone = true;
