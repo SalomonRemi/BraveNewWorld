@@ -42,7 +42,8 @@ public class MissionManager : MonoBehaviour {
 
     [Header("Missions Settings")]
 
-    [Range(210f,310f)] public float timeBeforeHint;
+    [Range(60f, 360f)] public float timeBeforeRandTalk;
+    [Range(60f,360f)] public float timeBeforeHint;
     public Animator levier;
     public Animator commandPanel;
 
@@ -86,8 +87,11 @@ public class MissionManager : MonoBehaviour {
     private ExePuzzle ep;
 
     GameObject player;
+    Coroutine randomTalkRoutine = null;
+    Coroutine giveHintRoutine = null;
 
-	List<int> doorNums = new List<int>();
+
+    List<int> doorNums = new List<int>();
 
 
     void Awake()
@@ -318,8 +322,8 @@ public class MissionManager : MonoBehaviour {
         numberOfGoodDoor = 2;
         doorAmmount = 7;
 
-		StartCoroutine(randomTalk(puzzleNum));
-        StartCoroutine(GiveHint(puzzleNum));
+		randomTalkRoutine =  StartCoroutine(randomTalk(puzzleNum));
+        giveHintRoutine = StartCoroutine(GiveHint(puzzleNum));
 
         while (!finishedLevel)
         {
@@ -340,10 +344,14 @@ public class MissionManager : MonoBehaviour {
 
         yield return new WaitForSeconds(2f);
 
+        StopCoroutine(randomTalkRoutine);
+        StopCoroutine(giveHintRoutine);
+
+        yield return new WaitForSeconds(.1f);
+
         resestMission();
         StartCoroutine (mission2());
 
-        StopCoroutine("randomTalk");
         yield return null;
     }
 
@@ -357,8 +365,8 @@ public class MissionManager : MonoBehaviour {
 		numberOfGoodDoor = 3;
 		doorAmmount = 7;
 
-		StartCoroutine(randomTalk(puzzleNum));
-        StartCoroutine(GiveHint(puzzleNum));
+        randomTalkRoutine = StartCoroutine(randomTalk(puzzleNum));
+        giveHintRoutine = StartCoroutine(GiveHint(puzzleNum));
 
         Dialogue dialogue = new Dialogue ();
 		//dialogue.sentences.Add ("Hum, Oscar reste introuvable, nos recherches nous ont permis de conclure qu'il était en liaison avec un individu particulier. Restez sur vos gardes.");
@@ -392,8 +400,12 @@ public class MissionManager : MonoBehaviour {
 			yield return null;
 		}
 
-		StopCoroutine("randomTalk");
-		doorNums.Clear();
+        StopCoroutine(randomTalkRoutine);
+        StopCoroutine(giveHintRoutine);
+
+        yield return new WaitForSeconds(.1f);
+
+        doorNums.Clear();
 		resestMission();
         StartCoroutine(mission3());
 
@@ -462,8 +474,8 @@ public class MissionManager : MonoBehaviour {
         numberOfGoodDoor = 2;
         doorAmmount = 7;
 
-		StartCoroutine(randomTalk(puzzleNum));
-        StartCoroutine(GiveHint(puzzleNum));
+        randomTalkRoutine = StartCoroutine(randomTalk(puzzleNum));
+        giveHintRoutine = StartCoroutine(GiveHint(puzzleNum));
 
         Dialogue dialogue = new Dialogue ();
         dialogue.sentences.Add ("Très bien, je sens que vous avez compris ce que l’entreprise attend de vous.\n Vous n’êtes pas comme votre prédécesseur.");
@@ -495,8 +507,12 @@ public class MissionManager : MonoBehaviour {
 		{
 			yield return null;
 		}
+        
+        StopCoroutine(randomTalkRoutine);
+        StopCoroutine(giveHintRoutine);
 
-        StopCoroutine("randomTalk");
+        yield return new WaitForSeconds(.1f);
+
         doorNums.Clear();
         StartCoroutine(mission5());
         resestMission();
@@ -514,8 +530,8 @@ public class MissionManager : MonoBehaviour {
 
         GameManager.instance.flashKeypad = false;
 
-		StartCoroutine(randomTalk(puzzleNum));
-        StartCoroutine(GiveHint(puzzleNum));
+        randomTalkRoutine = StartCoroutine(randomTalk(puzzleNum));
+        giveHintRoutine = StartCoroutine(GiveHint(puzzleNum));
 
         Dialogue dialogue = new Dialogue();
 		dialogue.sentences.Add("Revenons à un réel un peu plus radieux si vous le voulez bien !");
@@ -560,7 +576,7 @@ public class MissionManager : MonoBehaviour {
 		dialogue2.sentences.Add("Bien vous l'avez localisé, ouvrez lui les portes vers le self.");
 
         AudioManager.instance.StopMusic();
-        AudioManager.instance.PlayMusic("puzzle5_1");
+        AudioManager.instance.PlayMusic("puzzle5_2");
 
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue2);
 
@@ -582,7 +598,11 @@ public class MissionManager : MonoBehaviour {
 			yield return null;
 		}
 
-		StopCoroutine("randomTalk");
+        StopCoroutine(randomTalkRoutine);
+        StopCoroutine(giveHintRoutine);
+
+        yield return new WaitForSeconds(.1f);
+
         doorNums.Clear();
         resestMission();
         StartCoroutine(mission6());
@@ -650,8 +670,8 @@ public class MissionManager : MonoBehaviour {
 
         GameManager.instance.flashKeypad = true;
 
-        StartCoroutine(randomTalk(puzzleNum));
-        StartCoroutine(GiveHint(puzzleNum));
+        randomTalkRoutine = StartCoroutine(randomTalk(puzzleNum));
+        giveHintRoutine = StartCoroutine(GiveHint(puzzleNum));
 
         Dialogue dialogue = new Dialogue();
         dialogue.sentences.Add("Vous savez Wilson, c’est en travaillant comme vous le faites \n que les employés se voient attribués une promotion et…");
@@ -705,11 +725,12 @@ public class MissionManager : MonoBehaviour {
             yield return null;
         }
 
-        StopCoroutine("randomTalk");
+        StopCoroutine(randomTalkRoutine);
+        StopCoroutine(giveHintRoutine);
 
-		AudioManager.instance.PlaySound("weirdSoundsTri");
+        AudioManager.instance.PlaySound("weirdSoundsTri");
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
 
         doorNums.Clear();
         resestMission();
@@ -869,8 +890,7 @@ public class MissionManager : MonoBehaviour {
 
     public IEnumerator randomTalk(int missionLevel)
     {
-        int i = Random.Range(1, 7);
-        yield return new WaitForSeconds(180f);
+        yield return new WaitForSeconds(timeBeforeRandTalk);
         if (missionLevel == puzzleNum)
         {
             switch (missionLevel)
@@ -943,7 +963,7 @@ public class MissionManager : MonoBehaviour {
             }
         }
         yield return null;
-        StartCoroutine(randomTalk(missionLevel));
+        //StartCoroutine(randomTalk(missionLevel));
     }
 
 
@@ -977,7 +997,7 @@ public class MissionManager : MonoBehaviour {
     }
 
 
-    private IEnumerator GiveHint(float puzzleID)
+    private IEnumerator GiveHint(int puzzleID)
     {
         yield return new WaitForSeconds(timeBeforeHint);
 
