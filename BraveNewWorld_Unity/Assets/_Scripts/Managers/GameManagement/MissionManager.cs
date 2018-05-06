@@ -223,6 +223,7 @@ public class MissionManager : MonoBehaviour {
 		dialogueOrdre.sentences.Add("Allez y je vous prie.");
 
         hallDoorAnim.SetBool("Open", true);
+        AudioManager.instance.PlaySound("doorOpen");
 
         yield return new WaitForSeconds(1f);
 
@@ -266,6 +267,7 @@ public class MissionManager : MonoBehaviour {
         }
 
         doorRoomAnim.SetBool("Open", false);
+        AudioManager.instance.PlaySound("doorClose");
 
         yield return new WaitForSeconds(.5f);
 

@@ -12,6 +12,7 @@ public class DoorButton : MonoBehaviour {
     public void OpenDoor()
     {
         doorAnim.SetBool("Open", true);
+        AudioManager.instance.PlaySound("doorOpen");
         AudioManager.instance.PlaySound("buttonFalse");
     }
 }
