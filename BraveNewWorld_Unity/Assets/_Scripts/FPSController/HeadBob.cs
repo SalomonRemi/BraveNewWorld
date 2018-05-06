@@ -62,10 +62,13 @@ public class HeadBob : MonoBehaviour {
 
     void Update()
     {
-        HeadBobVertical();
-        HeadBobIDLE();
-        HeadBobSideMovement();
-        //HeadBobHitGround();
+        if(!GameManager.instance.isPaused)
+        {
+            HeadBobVertical();
+            HeadBobIDLE();
+            HeadBobSideMovement();
+            //HeadBobHitGround();
+        }
     }
 
 

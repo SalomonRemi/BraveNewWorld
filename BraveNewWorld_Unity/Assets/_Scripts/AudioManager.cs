@@ -39,7 +39,19 @@ namespace DigitalRuby.SoundManagerNamespace
 			}
 		}
 
-		public void PlaySound(string Clip)
+        public void ChangePitchByTime()
+        {
+            for (int i = 0; i < SoundAudioSources.Length; i++)
+            {
+                SoundAudioSources[i].pitch = Time.timeScale;
+            }
+            for (int i = 0; i < MusicAudioSources.Length; i++)
+            {
+                MusicAudioSources[i].pitch = Time.timeScale;
+            }
+        }
+
+        public void PlaySound(string Clip)
 		{
 			for (int i = 0; i < SoundAudioSources.Length; i++)
 			{

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DigitalRuby.SoundManagerNamespace;
 
 public class GameManager : MonoBehaviour {
 
@@ -71,6 +72,7 @@ public class GameManager : MonoBehaviour {
 				Cursor.lockState = CursorLockMode.Locked;
 				Cursor.visible = false;
 				player.GetComponent<FPSController> ().enabled = true;
+                AudioManager.instance.ChangePitchByTime();
 			}
             else // Si je met le jeu en pause avec ESCAPE, ou que je suis en pause, je me met en pause
             {
@@ -80,7 +82,8 @@ public class GameManager : MonoBehaviour {
 				Cursor.lockState = CursorLockMode.None;
 				Cursor.visible = true;
 				player.GetComponent<FPSController> ().enabled = false;
-			}
+                AudioManager.instance.ChangePitchByTime();
+            }
 		}
 
 		if (!isPaused)

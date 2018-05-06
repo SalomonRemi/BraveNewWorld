@@ -54,6 +54,8 @@ public class ExePuzzle : MonoBehaviour {
 
         StartCoroutine(keypad.flashKeys(Color.red, true));
         StartCoroutine(digicode.flashKeys(Color.red, true));
+        AudioManager.instance.PlaySound("digiError");
+
         StartCoroutine(RestartPuzzle());
     }
 
@@ -314,7 +316,7 @@ public class ExePuzzle : MonoBehaviour {
         stepID = 3;
 
         Dialogue dialogue6 = new Dialogue();
-        dialogue6.sentences.Add("Tapez 19 sur le Digicode.");
+        dialogue6.sentences.Add("Tapez 19.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue6);
 
         AudioManager.instance.StopMusic();
@@ -344,7 +346,7 @@ public class ExePuzzle : MonoBehaviour {
         stepID = 1;
 
         Dialogue dialogue8 = new Dialogue();
-        dialogue8.sentences.Add("Tapez de nouveau 95 sur le Digicode.");
+        dialogue8.sentences.Add("Tapez 95 à nouveau.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue8);
 
         AudioManager.instance.StopMusic();
@@ -665,7 +667,7 @@ public class ExePuzzle : MonoBehaviour {
         else if (actualPuzzle == 6)
         {
             Dialogue dialogue1 = new Dialogue();
-            dialogue1.sentences.Add("*soupirs*. Vous n’y êtes pas Wilson, un peu de vivacité bon sang, les enfants attendent ! J'espère ne pas vous avoir surestimé après tout. Bref, recommençons calmement.");
+            dialogue1.sentences.Add("*longs soupirs*. Vous n’y êtes pas Wilson, un peu de vivacité bon sang, les enfants attendent ! J'espère ne pas vous avoir surestimé après tout. Bref, recommençons calmement.");
             FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
 
             AudioManager.instance.StopMusic();
@@ -678,7 +680,7 @@ public class ExePuzzle : MonoBehaviour {
             FindObjectOfType<DialogSystem>().StartDialogue(dialogue2);
         }
 
-        yield return new WaitForSeconds(9f);
+        yield return new WaitForSeconds(10f);
 
         StartPuzzle(actualPuzzle);
     }
