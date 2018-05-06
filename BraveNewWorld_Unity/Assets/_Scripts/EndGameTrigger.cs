@@ -31,7 +31,7 @@ public class EndGameTrigger : MonoBehaviour {
 	{
 		yield return new WaitForSeconds (2f);
 
-		mm.LoadSmallLevel ("EndSceneInProgress");
+		mm.LoadSmallLevel ("Credits");
 
 		yield return null;
 	}

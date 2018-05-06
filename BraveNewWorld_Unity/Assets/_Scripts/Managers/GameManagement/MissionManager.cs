@@ -797,6 +797,8 @@ public class MissionManager : MonoBehaviour {
         doorNums.Clear();
         resestMission();
 
+        mm.LoadSmallLevel("Credits");
+
         yield return null;
     }
 
