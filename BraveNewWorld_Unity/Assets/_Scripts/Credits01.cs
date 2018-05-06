@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScrollingBabies : MonoBehaviour {
-
+public class Credits01 : MonoBehaviour {
 
 	private Animator usineBlockAnim;
 	private Animation currentAnim;
