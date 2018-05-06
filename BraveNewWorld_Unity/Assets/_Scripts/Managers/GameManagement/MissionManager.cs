@@ -900,79 +900,62 @@ public class MissionManager : MonoBehaviour {
     public IEnumerator randomTalk(int missionLevel)
     {
         yield return new WaitForSeconds(timeBeforeRandTalk);
-        if (missionLevel == puzzleNum)
+        if (missionLevel == 1)
         {
-            switch (missionLevel)
-            {
-                case 1:
-                    Debug.Log("Rand 1");
+            Dialogue dialogue1 = new Dialogue();
+            dialogue1.sentences.Add("Vous avez sûrement eu vent du séisme au Japon, pas vrai ? Quels sont les chiffres déjà ?");
+            dialogue1.sentences.Add("15 000 morts ? Plus ? Il y aura des répercussions au niveau international, c'est moi qui vous le dit !");
+            dialogue1.sentences.Add("Nous devrions nous réjouir ! Au mois ça nous fera du travail.");
+            FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
 
-                    Dialogue dialogue1 = new Dialogue();
-                    dialogue1.sentences.Add("Vous avez sûrement eu vent du séisme au Japon, pas vrai ? Quels sont les chiffres déjà ?");
-                    dialogue1.sentences.Add("15 000 morts ? Plus ? Il y aura des répercussions au niveau international, c'est moi qui vous le dit !");
-                    dialogue1.sentences.Add("Nous devrions nous réjouir ! Au mois ça nous fera du travail.");
-                    FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
+            AudioManager.instance.StopMusic();
+            AudioManager.instance.PlayMusic("anecdote1");
+        }
+        else if (missionLevel == 2)
+        {
+            Dialogue dialogue2 = new Dialogue();
+            dialogue2.sentences.Add("Ah... plus je prend de l’âge, plus j'apprécie rester dans mon bureau.");
+            dialogue2.sentences.Add("C’est grand, lumineux et calme, croyez moi Wilson, le parfait endroit pour travailler sereinement.");
+            dialogue2.sentences.Add("Je pourrais passer ma vie dans cette usine !");
+            FindObjectOfType<DialogSystem>().StartDialogue(dialogue2);
 
-                    AudioManager.instance.StopMusic();
-                    AudioManager.instance.PlayMusic("anecdote1");
+            AudioManager.instance.StopMusic();
+            AudioManager.instance.PlayMusic("anecdote2");
+        }
+        else if (missionLevel == 4)
+        {
+            Dialogue dialogue4 = new Dialogue();
+            dialogue4.sentences.Add("Je me demandais Wilson, pensez vous que les castes inférieures se laissent pousser la barbe pour dissimuler leur visage, ou s’agit-il d’un phénomène de mode ?");
+            dialogue4.sentences.Add("J’ai ma petite idée mais dans l’absolu, il faudrait comparer avec d’autres régions.");
+            dialogue4.sentences.Add("Après tout ils arrivent bien à compter jusqu’à cinq ahah !");
+            FindObjectOfType<DialogSystem>().StartDialogue(dialogue4);
 
-                    break;
-                case 2:
-                    Debug.Log("Rand 2");
+            AudioManager.instance.StopMusic();
+            AudioManager.instance.PlayMusic("anecdote3");
+        }
+        else if (missionLevel == 5)
+        {
+            Dialogue dialogue5 = new Dialogue();
+            dialogue5.sentences.Add("Scarlett a encore oublié de déposer les inventaires sur mon bureau. Enfin, sans elle j’aurais eu plus d’une fois la tête sous l’eau.");
+            dialogue5.sentences.Add("J’imagine que je vais passer l’éponge, encore une fois.");
+            dialogue5.sentences.Add("Elle se débrouille quand même plutôt bien pour une Béta, prenez-en de la graine Wilson.");
+            FindObjectOfType<DialogSystem>().StartDialogue(dialogue5);
 
-                    Dialogue dialogue2 = new Dialogue();
-                    dialogue2.sentences.Add("Ah... plus je prend de l’âge, plus j'apprécie rester dans mon bureau.");
-                    dialogue2.sentences.Add("C’est grand, lumineux et calme, croyez moi Wilson, le parfait endroit pour travailler sereinement.");
-                    dialogue2.sentences.Add("Je pourrais passer ma vie dans cette usine !");
-                    FindObjectOfType<DialogSystem>().StartDialogue(dialogue2);
+            AudioManager.instance.StopMusic();
+            AudioManager.instance.PlayMusic("anecdote4");
+        }
+        else if (missionLevel == 7)
+        {
+            Dialogue dialogue6 = new Dialogue();
+            dialogue6.sentences.Add("Alors Wilson, le métier est bien plus complexe qu’il n’en a l’air pas vrai ?");
+            dialogue6.sentences.Add("J’en ai conscience, doutez vous bien que si il s’agissait simplement de rester assis à un bureau et d’ouvrir des portes, un simple delta moins aurait suffit.");
+            dialogue6.sentences.Add("Vous prendrez le rythme, ne vous inquiétez pas !");
+            FindObjectOfType<DialogSystem>().StartDialogue(dialogue6);
 
-                    AudioManager.instance.StopMusic();
-                    AudioManager.instance.PlayMusic("anecdote2");
-
-                    break;
-                case 4:
-                    Debug.Log("Rand 4");
-
-                    Dialogue dialogue4 = new Dialogue();
-                    dialogue4.sentences.Add("Je me demandais Wilson, pensez vous que les castes inférieures se laissent pousser la barbe pour dissimuler leur visage, ou s’agit-il d’un phénomène de mode ?");
-                    dialogue4.sentences.Add("J’ai ma petite idée mais dans l’absolu, il faudrait comparer avec d’autres régions.");
-                    dialogue4.sentences.Add("Après tout ils arrivent bien à compter jusqu’à cinq ahah !");
-                    FindObjectOfType<DialogSystem>().StartDialogue(dialogue4);
-
-                    AudioManager.instance.StopMusic();
-                    AudioManager.instance.PlayMusic("anecdote3");
-
-                    break;
-                case 5:
-                    Debug.Log("Rand 5");
-
-                    Dialogue dialogue5 = new Dialogue();
-                    dialogue5.sentences.Add("Scarlett a encore oublié de déposer les inventaires sur mon bureau. Enfin, sans elle j’aurais eu plus d’une fois la tête sous l’eau.");
-                    dialogue5.sentences.Add("J’imagine que je vais passer l’éponge, encore une fois.");
-                    dialogue5.sentences.Add("Elle se débrouille quand même plutôt bien pour une Béta, prenez-en de la graine Wilson.");
-                    FindObjectOfType<DialogSystem>().StartDialogue(dialogue5);
-
-                    AudioManager.instance.StopMusic();
-                    AudioManager.instance.PlayMusic("anecdote4");
-
-                    break;
-                case 7:
-                    Debug.Log("Rand 7");
-
-                    Dialogue dialogue6 = new Dialogue();
-                    dialogue6.sentences.Add("Alors Wilson, le métier est bien plus complexe qu’il n’en a l’air pas vrai ?");
-                    dialogue6.sentences.Add("J’en ai conscience, doutez vous bien que si il s’agissait simplement de rester assis à un bureau et d’ouvrir des portes, un simple delta moins aurait suffit.");
-                    dialogue6.sentences.Add("Vous prendrez le rythme, ne vous inquiétez pas !");
-                    FindObjectOfType<DialogSystem>().StartDialogue(dialogue6);
-
-                    AudioManager.instance.StopMusic();
-                    AudioManager.instance.PlayMusic("anecdote5");
-
-                    break;
-            }
+            AudioManager.instance.StopMusic();
+            AudioManager.instance.PlayMusic("anecdote5");
         }
         yield return null;
-        //StartCoroutine(randomTalk(missionLevel));
     }
 
 
