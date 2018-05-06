@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/_Scenes/MainRoomScene.unity
     guid: 00a214d547c4c0640aa1be3a7e9fde10
   - enabled: 1
+    path: Assets/_Scenes/Credits.unity
+    guid: 3cb69703c5411ab44a87c04adce16dce
+  - enabled: 1
     path: Assets/_Scenes/EndSceneInProgress.unity
     guid: f6d645316c6036d42bc1cbf926d3c39a
   - enabled: 0
