@@ -21,13 +21,12 @@ public class MissionManager : MonoBehaviour {
 	public Animator blockView;
     public GameObject tutoMoveObject;
 	public GameObject tutoRotateObject;
-    public GameObject babiesPrefab;
-	public GameObject elevator;
+    public GameObject usinePrefab1;
+    public GameObject usinePrefab2;
+    public GameObject usinePrefab3;
+    public GameObject elevator;
     public GameObject liftLoopObj;
     public Transform instantiateTransform;
-    public GameObject instance1;
-    public GameObject instance2;
-    public GameObject instance3;
 
     [HideInInspector] public bool goToNextStep;
     [HideInInspector] public bool isInElevator;
@@ -38,6 +37,7 @@ public class MissionManager : MonoBehaviour {
 
     private bool doScrolling;
     private float counter;
+    private List<GameObject> usinePrefabList;
 
 
     [Header("Missions Settings")]
@@ -115,7 +115,12 @@ public class MissionManager : MonoBehaviour {
         enterInRoom = false;
         closeDoor = false;
 
-		mm = FindObjectOfType<MenuManager>();
+        usinePrefabList = new List<GameObject>();
+        usinePrefabList.Add(usinePrefab1);
+        usinePrefabList.Add(usinePrefab2);
+        usinePrefabList.Add(usinePrefab3);
+
+        mm = FindObjectOfType<MenuManager>();
 		player = GameObject.FindGameObjectWithTag ("Player");
         ep = GetComponent<ExePuzzle>();
 
@@ -144,9 +149,10 @@ public class MissionManager : MonoBehaviour {
         if(doScrolling)
         {
             counter += Time.deltaTime;
+
             if(counter >= 2.15f)
             {
-				Instantiate(babiesPrefab, instantiateTransform.position, Quaternion.Euler(new Vector3(-180,-135,0)));
+				Instantiate(usinePrefabList[Random.Range(0, 3)], instantiateTransform.position, Quaternion.Euler(new Vector3(-180,-135,0)));
                 counter = 0;
             }
         }
@@ -989,10 +995,6 @@ public class MissionManager : MonoBehaviour {
 		blockView.SetBool ("goDown", true); 
 		tutoRotateObject.SetActive(true);
         doScrolling = false;
-
-        instance1.SetActive(true);
-        instance2.SetActive(true);
-        instance3.SetActive(true);
 
         yield return new WaitForSeconds(fadeTime + timeInElevator * 0.1f);
 
