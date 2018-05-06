@@ -150,7 +150,7 @@ public class MissionManager : MonoBehaviour {
         {
             counter += Time.deltaTime;
 
-            if(counter >= 2.15f)
+            if(counter >= 3.25f)
             {
 				Instantiate(usinePrefabList[Random.Range(0, 3)], instantiateTransform.position, Quaternion.Euler(new Vector3(-180,-135,0)));
                 counter = 0;

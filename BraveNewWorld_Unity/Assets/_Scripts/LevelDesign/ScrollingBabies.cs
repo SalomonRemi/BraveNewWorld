@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScrollingBabies : MonoBehaviour {
 
 	private Vector3 pos;
-    private float scrollingSpeed = 3f;
+    private float scrollingSpeed = 2f;
 
 	private void Start()
 	{
