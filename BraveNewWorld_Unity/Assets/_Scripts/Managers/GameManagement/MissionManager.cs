@@ -58,6 +58,7 @@ public class MissionManager : MonoBehaviour {
 
     [HideInInspector] public bool inExePuzzle;
     [HideInInspector] public bool canStartExePuzzle;
+    [HideInInspector] public bool isInLastPuzzle;
 
     public TextMeshPro recapText;
 	public TextMeshPro oscarOrderText;
@@ -771,6 +772,8 @@ public class MissionManager : MonoBehaviour {
         keypad.ComfirmInput(); // APPELLE COMFIRMINPUT POUR FEEDBACK FLASH ET SON
 
         yield return new WaitForSeconds(1f);
+
+        isInLastPuzzle = true;
 
         Dialogue dialogue1 = new Dialogue();
         dialogue1.sentences.Add("Tiens sacré Oscar c’est donc là que tu es parti ! Rah j’ai peur de ce qui a pu lui arriver...");
