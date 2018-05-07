@@ -761,6 +761,8 @@ public class MissionManager : MonoBehaviour {
         dialogue.sentences.Add("Nous allons devoir nous en occuper nous-mêmes ! Il y a nombre de couloirs et de conduits à vérifier.");
 
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue);
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("puzzle8_1");
 
         StartCoroutine(DisplayOrder(10f));
         orderText = "Écoutez les ordres du directeur.";
@@ -779,15 +781,27 @@ public class MissionManager : MonoBehaviour {
 
         keypad.ComfirmInput(); // APPELLE COMFIRMINPUT POUR FEEDBACK FLASH ET SON
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f); 
 
         isInLastPuzzle = true;
 
+        Dialogue dialogue2 = new Dialogue();
+        dialogue2.sentences.Add("Tiens sacré Oscar c’est donc là que tu es parti !");
+        FindObjectOfType<DialogSystem>().StartDialogue(dialogue2);
+
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("puzzle8_2");
+
+        yield return new WaitForSeconds(4f);
+
         Dialogue dialogue1 = new Dialogue();
-        dialogue1.sentences.Add("Tiens sacré Oscar c’est donc là que tu es parti ! Rah j’ai peur de ce qui a pu lui arriver...");
+        dialogue1.sentences.Add("Rah j’ai peur de ce qui a pu lui arriver...");
         dialogue1.sentences.Add("J’aimerais que vous rendiez un service à l’entreprise, ce qui jouerait, je vous l’avoue, beaucoup sur vos chances de promotions.");
         dialogue1.sentences.Add("Pourriez-vous jeter un oeil derrière cette grille de ventilation au fond de la pièce ?");
         dialogue1.sentences.Add("Le code est normalement 461.");
+
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("puzzle8_3");
 
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
 

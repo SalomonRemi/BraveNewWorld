@@ -406,6 +406,8 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue1 = new Dialogue();
         dialogue1.sentences.Add("Attendez un petit peu.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue1);
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle8_1");
         yield return new WaitForSeconds(waitTime);
 
         yield return new WaitForSeconds(.2f);
@@ -415,6 +417,9 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue2 = new Dialogue();
         dialogue2.sentences.Add("Ouvrez la salle de conditionnement et de décantation.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue2);
+        AudioManager.instance.StopMusic();
+
+        AudioManager.instance.PlayMusic("orderPuzzle8_2");
 
         while (!nextStep)
         {
@@ -440,6 +445,9 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue3 = new Dialogue();
         dialogue3.sentences.Add("Tapez 260 sur le Digicode.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue3);
+        AudioManager.instance.StopMusic();
+
+        AudioManager.instance.PlayMusic("orderPuzzle8_3");
 
         while (!nextStep)
         {
@@ -456,6 +464,10 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue4 = new Dialogue();
         dialogue4.sentences.Add("Non, tapez 270 sur le digicode.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue4);
+        AudioManager.instance.StopMusic();
+
+        AudioManager.instance.PlayMusic("orderPuzzle8_4");
+
 
         while (!nextStep)
         {
@@ -472,6 +484,9 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue5 = new Dialogue();
         dialogue5.sentences.Add("Toujours pas, essayez 280.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue5);
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle8_5");
+
 
         while (!nextStep)
         {
@@ -485,6 +500,8 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue6 = new Dialogue();
         dialogue6.sentences.Add("Ah, attendez.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue6);
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle8_6");
         yield return new WaitForSeconds(waitTime);
 
         yield return new WaitForSeconds(.2f);
@@ -494,6 +511,8 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue7 = new Dialogue();
         dialogue7.sentences.Add("Ouvrez la salle de fécondation et de mise en flacon.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue7);
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle8_7");
 
         while (!nextStep)
         {
@@ -520,6 +539,8 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue8 = new Dialogue();
         dialogue8.sentences.Add("Tapez 450 sur le digicode.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue8);
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle8_8");
 
         while (!nextStep)
         {
@@ -535,6 +556,8 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue9 = new Dialogue();
         dialogue9.sentences.Add("D'accord, ouvrez la salle de tri.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue9);
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle8_9");
 
         while (!nextStep)
         {
@@ -556,6 +579,8 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue10 = new Dialogue();
         dialogue10.sentences.Add("Wilson, tapez 860 sur le digicode.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue10);
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle8_10");
 
         while (!nextStep)
         {
@@ -572,6 +597,9 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue11 = new Dialogue();
         dialogue11.sentences.Add("Toujours pas, tapez 870.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue11);
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle8_11");
+
 
         while (!nextStep)
         {
@@ -588,6 +616,8 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue12 = new Dialogue();
         dialogue12.sentences.Add("Non... essayez 850.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue12);
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle8_12");
 
         while (!nextStep)
         {
@@ -601,6 +631,8 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue13 = new Dialogue();
         dialogue13.sentences.Add("Ah, attendez.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue13);
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle8_13");
         yield return new WaitForSeconds(waitTime);
 
         yield return new WaitForSeconds(.2f);
@@ -610,6 +642,8 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue14 = new Dialogue();
         dialogue14.sentences.Add("Très bien ouvrez encore la salle de tri.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue14);
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle8_14");
 
         while (!nextStep)
         {
@@ -629,6 +663,8 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue15 = new Dialogue();
         dialogue15.sentences.Add("Attendez, attendez.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue15);
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle8_15");
         yield return new WaitForSeconds(waitTime);
 
         yield return new WaitForSeconds(.2f);
@@ -639,6 +675,8 @@ public class ExePuzzle : MonoBehaviour {
         Dialogue dialogue16 = new Dialogue();
         dialogue16.sentences.Add("Wilson, tapez 461.");
         FindObjectOfType<DialogSystem>().StartDialogue(dialogue16);
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayMusic("orderPuzzle8_16");
 
         while (!nextStep)
         {
@@ -678,6 +716,8 @@ public class ExePuzzle : MonoBehaviour {
             Dialogue dialogue2 = new Dialogue();
             dialogue2.sentences.Add("Vous devriez commencer à savoir faire Wilson, nous ne serons pas toujours aussi tolérants croyez-le. Soyez plus minutieux !");
             FindObjectOfType<DialogSystem>().StartDialogue(dialogue2);
+            AudioManager.instance.StopMusic();
+            AudioManager.instance.PlayMusic("hint8");
         }
 
         yield return new WaitForSeconds(10f);

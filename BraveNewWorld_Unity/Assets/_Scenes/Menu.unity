@@ -342,7 +342,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Le Meilleur des Mondes - Build v0.5.2 - 06/05/18 - @BraveNewWorldG
+  m_Text: Le Meilleur des Mondes - Build v0.6 - 07/05/18 - @BraveNewWorldG
 --- !u!222 &661948970
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour {
     [Header("Line Of Sight")]
     public bool canLOS = false;
     public Collider chariotCol;
-    public string chariotLine;
 
     private bool sawChariot;
 
@@ -167,9 +166,10 @@ public class GameManager : MonoBehaviour {
                 if(Vector3.Distance(player.transform.position, chariotCol.transform.position) < 5f)
                 {
                     Dialogue dialogueChariot = new Dialogue();
-                    dialogueChariot.sentences.Add(chariotLine);
+                    dialogueChariot.sentences.Add("Ce que vous voyez ici sont des conteneurs pour Epsilons. Le service d'entretient passera les chercher demain.");
                     FindObjectOfType<DialogSystem>().StartDialogue(dialogueChariot);
                     sawChariot = true;
+                    AudioManager.instance.PlayMusic("losChariot");
                 }
             }
         }
