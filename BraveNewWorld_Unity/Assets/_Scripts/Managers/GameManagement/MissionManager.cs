@@ -97,10 +97,12 @@ public class MissionManager : MonoBehaviour {
 
     void Awake()
 	{
-		if (instance == null) {
+		if (instance == null)
+        {
 			instance = this;
-		} else if (instance != this) {
-
+		}
+        else if (instance != this)
+        {
 			Destroy (gameObject);
 		}
 		DontDestroyOnLoad (gameObject);
@@ -135,16 +137,16 @@ public class MissionManager : MonoBehaviour {
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.M))
-        {
-            StopAllCoroutines();
+   //     if(Input.GetKeyDown(KeyCode.M))
+   //     {
+   //         StopAllCoroutines();
 
-            AudioManager.instance.StopMusic();
+   //         AudioManager.instance.StopMusic();
 
-            StartCoroutine(startMission());
+   //         StartCoroutine(startMission());
 
-			player.transform.position = debugTransform.position;
-        }
+			//player.transform.position = debugTransform.position;
+   //     }
 
         if(doScrolling)
         {
@@ -674,6 +676,8 @@ public class MissionManager : MonoBehaviour {
 
     public IEnumerator mission7()
     {
+        commandPanel.SetBool("isDigicodeAvailable", true);
+
         puzzleNum = 5;
         inLastPuzzle = true;
 
@@ -749,13 +753,12 @@ public class MissionManager : MonoBehaviour {
 
     public IEnumerator mission8()
     {
-        commandPanel.SetBool("isDigicodeAvailable", true);
-
         puzzleNum = 8;
         inExePuzzle = true;
         canStartExePuzzle = false;  
 
         Dialogue dialogue = new Dialogue();
+        dialogue.sentences.Add("Parfait Wilson ! Nous lui trouverons bientôt un remplaçant. J'ai du nouveau concernant Oscar.");
         dialogue.sentences.Add("Nous venons d'interroger le responsable de la sécurité, nous nous sommes rendu compte qu’il n’était pas en état d'exercer sa fonction ce matin.");
         dialogue.sentences.Add("Il a négligé beaucoup de possibilité quant à la fuite d’Oscar.");
         dialogue.sentences.Add("Nous allons devoir nous en occuper nous-mêmes ! Il y a nombre de couloirs et de conduits à vérifier.");
@@ -812,8 +815,6 @@ public class MissionManager : MonoBehaviour {
 
         doorNums.Clear();
         resestMission();
-
-        mm.LoadSmallLevel("Credits");
 
         yield return null;
     }
