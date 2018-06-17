@@ -1,0 +1,191 @@
+fileFormatVersion: 2
+guid: 441ded41639eb2749afccdd9fe8fda57
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: extrudedSurface3
+    100004: pCube28
+    100006: pCube29
+    100008: pCube30
+    100010: pCube31
+    100012: pCube32
+    100014: pCube33
+    100016: pCube34
+    100018: pCylinder19
+    100020: pCylinder20
+    100022: pCylinder21
+    100024: pCylinder22
+    100026: pSphere15
+    100028: pSphere16
+    100030: pSphere17
+    100032: transform38
+    100034: transform39
+    100036: transform40
+    100038: transform41
+    100040: transform42
+    100042: transform43
+    100044: transform44
+    100046: transform45
+    100048: transform46
+    100050: transform47
+    100052: transform48
+    100054: transform49
+    100056: transform50
+    100058: transform51
+    400000: //RootNode
+    400002: extrudedSurface3
+    400004: pCube28
+    400006: pCube29
+    400008: pCube30
+    400010: pCube31
+    400012: pCube32
+    400014: pCube33
+    400016: pCube34
+    400018: pCylinder19
+    400020: pCylinder20
+    400022: pCylinder21
+    400024: pCylinder22
+    400026: pSphere15
+    400028: pSphere16
+    400030: pSphere17
+    400032: transform38
+    400034: transform39
+    400036: transform40
+    400038: transform41
+    400040: transform42
+    400042: transform43
+    400044: transform44
+    400046: transform45
+    400048: transform46
+    400050: transform47
+    400052: transform48
+    400054: transform49
+    400056: transform50
+    400058: transform51
+    2300000: pCube34
+    3300000: pCube34
+    4300000: pCube34
+    9500000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Black
+    second: {fileID: 2100000, guid: 14328a95806ca1640b70a1a85a5f2229, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BoitierBas
+    second: {fileID: 2100000, guid: ad0669abce802b547a629c5bcf03965d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FaceAvantCameraBoitier
+    second: {fileID: 2100000, guid: c58661f618a458c4da2664e5aaf615f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: 63e53c8f349532943b7ac600ad7c2dde, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RedLight1
+    second: {fileID: 2100000, guid: a2f05d4b3af563241ad3e8c85db5257b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sliders
+    second: {fileID: 2100000, guid: bd8eac72926b7d2429f2eccfb2ff9d81, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Zoom1
+    second: {fileID: 2100000, guid: c0673cef42df2f542880a1f1faa45753, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 2a9b4abcda0519f439df8f3c25bb2aca, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 3.5
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
