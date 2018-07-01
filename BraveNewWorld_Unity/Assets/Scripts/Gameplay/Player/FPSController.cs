@@ -147,12 +147,33 @@ public class FPSController : MonoBehaviour {
 
     private void RotateCamera()
     {
-        _yRot = Input.GetAxis("Mouse X") * mouseSensitivity;
-        transform.Rotate(0, _yRot, 0);
+        if(!InputManager.instance.isControllerPlugged)
+        {
+            _yRot = Input.GetAxis("Mouse X");
+            transform.Rotate(0, _yRot * mouseSensitivity, 0);
 
-        _xRot -= Input.GetAxis("Mouse Y") * mouseSensitivity;
-        _xRot = Mathf.Clamp(_xRot, -clampRotation, clampRotation);
-        Camera.main.transform.localRotation = Quaternion.Euler(_xRot, 0, 0);
+            _xRot -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+            _xRot = Mathf.Clamp(_xRot, -clampRotation, clampRotation);
+            Camera.main.transform.localRotation = Quaternion.Euler(_xRot, 0, 0);
+        }
+        else
+        {
+            if (Input.GetAxis("Joy X") > 0.2f || Input.GetAxis("Joy X") < -0.2f)
+            {
+                _yRot = Input.GetAxis("Joy X");
+            }
+            else _yRot = 0f;
+            transform.Rotate(0, _yRot * mouseSensitivity, 0);
+
+            if (Input.GetAxis("Joy Y") > 0.2f || Input.GetAxis("Joy Y") < -0.2f)
+            {
+                _xRot -= Input.GetAxis("Joy Y");
+            }
+            else _xRot = 0;
+
+            _xRot = Mathf.Clamp(_xRot, -clampRotation, clampRotation);
+            Camera.main.transform.Rotate(_xRot, 0, 0);
+        }
     }
 
 
