@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "com.unity.probuilder": "3.0.9"
+    "com.unity.probuilder": "3.0.9",
+    "com.unity.render-pipelines.high-definition": "1.1.11-preview"
   }
 }
